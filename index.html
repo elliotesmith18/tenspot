@@ -428,8 +428,8 @@ function tickNext() {
 /* ================= Global scores (Supabase) =================
    Each finished game posts one row (list number, anonymous player id, score 0–10). Raw rows aren't readable;
    score_dist() returns only counts per score. Leave these blank and the results sheet says it isn't connected. */
-const SUPABASE_URL = "";
-const SUPABASE_KEY = "";   // the project's public "anon" key, meant to be used in browsers
+const SUPABASE_URL = "https://osjncfzmzhjiqabzollx.supabase.co";
+const SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9zam5jZnptemhqaXFhYnpvbGx4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTMyMTA1MzgsImV4cCI6MjEwODc4NjUzOH0.zS8DAmKcEZ1f0G18phR6Xdkptz7mcDCSmzwfXbnXbXo";   // the project's public "anon" key, meant to be used in browsers
 function playerId() {
   try {
     let id = localStorage.getItem("tenspot-player");
