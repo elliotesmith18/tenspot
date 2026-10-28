@@ -12,14 +12,15 @@
 <meta name="theme-color" content="#1b1030">
 <link rel="stylesheet" href="fonts.css">
 <style>
-/* Layout: one column. Header, the list's question, a 10-row LED scoreboard, then a guess bar pinned to the
-   bottom of the screen. The results sheet replaces the guess bar when the game ends. */
+/* Layout: one column. Header, the list's question, a 10-row scoreboard, your misses in real-rank order, then a
+   guess bar pinned to the bottom of the screen. The results sheet replaces the guess bar when the game ends.
+   Look: Relic's calm navy "ocean" with a faint pixel world map behind everything, pastel rows. */
 :root {
   color-scheme: dark;
-  --bg: #1b1030; --bg-2: #241540; --panel: #2c1a4d; --panel-2: #36215c; --line: #45306e; --line-2: #5d4590;
-  --amber: #ffb454; --amber-dim: #6b4a2a; --mint: #72e3a9; --mint-dark: #1f5a45; --red: #ff6b7f; --cyan: #8fe3f0;
-  --ink: #f7efe2; --ink-soft: #c4b8dc; --ink-faint: #8a7bad; --dark-ink: #160c26;
-  --drop: 4px 4px 0 #0c0618;
+  --bg: #0b1530; --bg-2: #0e1a39; --panel: #13234a; --panel-2: #1a2d5a; --line: #2a3b6a; --line-2: #3d5491;
+  --amber: #f6d36b; --mint: #9fe3b8; --mint-bg: #c4ead2; --mint-rank: #8fd6ab; --red: #f4a09a; --cyan: #8fe3f0;
+  --ink: #f3ecdc; --ink-soft: #a9b4d3; --ink-faint: #6878a6; --dark-ink: #141a2e;
+  --drop: 4px 4px 0 #030816;
   --font-px: "Silkscreen", ui-monospace, Menlo, monospace;
   --font-head: "Pixelify Sans", ui-monospace, Menlo, monospace;
   --font-num: "VT323", ui-monospace, Menlo, monospace;
@@ -29,8 +30,10 @@ html, body { min-height: 100%; }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
   font: 21px/1.2 var(--font-num); -webkit-font-smoothing: none; overflow-x: hidden;
-  background-image: repeating-linear-gradient(to bottom, rgba(0,0,0,.12) 0 1px, transparent 1px 3px), radial-gradient(ellipse at 50% 0%, #34195e 0%, transparent 65%);
-  background-attachment: fixed;
+}
+body::before {
+  content: ""; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+  background: url(map.png) center 38% / max(1100px, 150vw) auto no-repeat; image-rendering: pixelated; opacity: .07;
 }
 a { color: var(--cyan); }
 button { font: inherit; color: inherit; }
@@ -38,17 +41,17 @@ button { font: inherit; color: inherit; }
 
 /* Header */
 .top { display: flex; align-items: center; gap: 10px; }
-.logo { margin: 0; font-family: var(--font-head); font-weight: 700; font-size: 30px; letter-spacing: .06em; line-height: 1; text-shadow: -2px 0 var(--red), 2px 0 var(--cyan), 0 3px 0 #0c0618; white-space: nowrap; }
+.logo { margin: 0; font-family: var(--font-head); font-weight: 700; font-size: 30px; letter-spacing: .06em; line-height: 1; text-shadow: 0 3px 0 #030816; white-space: nowrap; }
 .logo b { color: var(--amber); font-weight: 700; }
 .meta { font-family: var(--font-num); font-size: 19px; color: var(--ink-faint); margin-right: auto; white-space: nowrap; }
-.icon-btn { width: 38px; height: 38px; display: grid; place-items: center; background: var(--panel); border: 2px solid var(--line-2); box-shadow: 3px 3px 0 #0c0618; cursor: pointer; font-family: var(--font-px); font-size: 14px; color: var(--ink-soft); }
+.icon-btn { width: 38px; height: 38px; display: grid; place-items: center; background: var(--panel); border: 2px solid var(--line-2); box-shadow: 3px 3px 0 #030816; cursor: pointer; font-family: var(--font-px); font-size: 14px; color: var(--ink-soft); }
 .icon-btn:hover { color: var(--amber); border-color: var(--amber); }
-.icon-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #0c0618; }
+.icon-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #030816; }
 .icon-btn:focus-visible, .btn:focus-visible, .guess input:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
 
 /* The question */
 .q { margin: 18px 0 12px; }
-.chip { display: inline-block; font-family: var(--font-px); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--amber); color: var(--dark-ink); padding: 3px 7px; box-shadow: 2px 2px 0 #0c0618; }
+.chip { display: inline-block; font-family: var(--font-px); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--amber); color: var(--dark-ink); padding: 3px 7px; box-shadow: 2px 2px 0 #030816; }
 .q h2 { margin: 10px 0 4px; font-family: var(--font-head); font-weight: 700; font-size: clamp(24px, 6vw, 32px); line-height: 1.1; }
 .q .by { margin: 0; color: var(--ink-soft); font-size: 20px; }
 .status { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 12px 0 10px; }
@@ -59,39 +62,61 @@ button { font: inherit; color: inherit; }
 .x { width: 22px; height: 22px; image-rendering: pixelated; }
 .x rect { fill: var(--line); }
 .x.on rect { fill: var(--red); }
-.x.on { animation: pop .3s steps(3); }
-@keyframes pop { 50% { transform: scale(1.35); } }
 
 /* Scoreboard */
-.board { list-style: none; margin: 0; padding: 8px; background: var(--dark-ink); border: 2px solid var(--line-2); box-shadow: var(--drop); display: grid; gap: 6px; }
+.board { list-style: none; margin: 0; padding: 8px; background: rgba(11,21,48,.85); border: 2px solid var(--line-2); box-shadow: var(--drop); display: grid; gap: 6px; }
 .row { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; min-height: 46px; background: var(--panel); border: 2px solid var(--line); position: relative; }
+.row .nm, .row .val { min-width: 0; }
 .rk { align-self: stretch; display: grid; place-items: center; font-family: var(--font-num); font-size: 28px; color: var(--amber); background: var(--bg-2); border-right: 2px solid var(--line); }
 .nm { padding: 4px 12px; font-size: 22px; line-height: 1.05; overflow-wrap: anywhere; }
 .val { padding: 0 12px; font-size: 22px; color: var(--ink-soft); white-space: nowrap; text-align: right; }
 .row .hidden { display: block; height: 12px; width: 70%; background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); opacity: .7; }
 .row .clue { font-family: var(--font-num); letter-spacing: .12em; color: var(--amber); }
-.row.hit { background: var(--mint-dark); border-color: var(--mint); }
-.row.hit .rk { background: var(--mint); color: var(--dark-ink); border-color: var(--mint); }
-.row.hit .val { color: var(--ink); }
-.row.flip { animation: flip .45s steps(4); }
-@keyframes flip { 0% { transform: scaleY(1); } 40% { transform: scaleY(.1); } 100% { transform: scaleY(1); } }
+.row.hit { background: var(--mint-bg); border-color: var(--mint-rank); color: var(--dark-ink); }
+.row.hit .rk { background: var(--mint-rank); color: var(--dark-ink); border-color: var(--mint-rank); }
+.row.hit .val { color: var(--dark-ink); }
+.row.flip { animation: flip .3s steps(3); }
+@keyframes flip { 0% { transform: scaleY(.2); } 100% { transform: scaleY(1); } }
 .row.revealed .nm, .row.revealed .val { color: var(--ink-faint); }
 .row.revealed .rk { color: var(--ink-faint); }
 
 /* Guess bar */
 .dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; padding: 8px 16px calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--bg); border-top: 2px solid var(--line); box-shadow: 0 -8px 16px rgba(12,6,24,.6); }
 .dock-in { width: min(600px, 100%); margin: 0 auto; }
-.feedback { min-height: 26px; margin: 0 0 6px; font-size: 20px; text-align: center; color: var(--ink-soft); text-shadow: 0 2px 0 #0c0618; }
+.feedback { min-height: 26px; margin: 0 0 6px; font-size: 20px; text-align: center; color: var(--ink-soft); text-shadow: 0 2px 0 #030816; }
 .feedback.good { color: var(--mint); } .feedback.bad { color: var(--red); } .feedback.warn { color: var(--amber); }
 .guess { display: flex; gap: 8px; }
 .guess input { flex: 1; min-width: 0; height: 48px; padding: 0 12px; background: var(--dark-ink); color: var(--ink); border: 2px solid var(--amber); box-shadow: var(--drop); font: 24px var(--font-num); -webkit-font-smoothing: none; border-radius: 0; }
 .guess input::placeholder { color: var(--ink-faint); }
-.btn { height: 48px; padding: 0 16px; border: 2px solid var(--dark-ink); background: var(--amber); color: var(--dark-ink); font: 13px var(--font-px); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; box-shadow: inset -3px -3px 0 rgba(0,0,0,.2), 3px 3px 0 #0c0618; white-space: nowrap; }
-.btn:active { transform: translate(2px, 2px); box-shadow: inset -3px -3px 0 rgba(0,0,0,.2), 1px 1px 0 #0c0618; }
+.btn { height: 48px; padding: 0 16px; border: 2px solid var(--dark-ink); background: var(--amber); color: var(--dark-ink); font: 13px var(--font-px); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; box-shadow: inset -3px -3px 0 rgba(0,0,0,.2), 3px 3px 0 #030816; white-space: nowrap; }
+.btn:active { transform: translate(2px, 2px); box-shadow: inset -3px -3px 0 rgba(0,0,0,.2), 1px 1px 0 #030816; }
 .btn:disabled { opacity: .45; cursor: default; transform: none; }
-.btn.ghost { background: var(--panel); color: var(--ink-soft); border-color: var(--line-2); box-shadow: 3px 3px 0 #0c0618; }
+.btn.ghost { background: var(--panel); color: var(--ink-soft); border-color: var(--line-2); box-shadow: 3px 3px 0 #030816; }
 .btn.small { height: 34px; padding: 0 10px; font-size: 11px; }
 .tools { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; }
+
+/* Country picker: suggestions open upward from the guess box, styled like board rows */
+.dock-in { position: relative; }
+.suggest { position: absolute; left: 0; right: 0; bottom: calc(100% - 26px); z-index: 2; list-style: none; margin: 0; padding: 6px; display: grid; gap: 4px; background: var(--bg-2); border: 2px solid var(--amber); box-shadow: var(--drop); }
+.suggest[hidden] { display: none; }
+.suggest li { display: flex; align-items: center; gap: 10px; min-height: 40px; padding: 0 12px; background: var(--panel); border: 2px solid var(--line); cursor: pointer; font-size: 22px; }
+.suggest li small { margin-left: auto; font-size: 18px; color: var(--ink-faint); }
+.suggest li mark { background: none; color: var(--amber); }
+.suggest li:hover, .suggest li[aria-selected="true"] { border-color: var(--amber); background: var(--panel-2); }
+.suggest .hint { cursor: default; background: none; border: 0; min-height: 0; padding: 2px 4px 0; font-family: var(--font-px); font-size: 10px; letter-spacing: .1em; color: var(--ink-faint); }
+
+/* Your misses, sorted by where they really rank */
+.missed { margin-top: 14px; }
+.missed[hidden] { display: none; }
+.missed h3 { display: flex; align-items: center; gap: 10px; margin: 0 0 8px; font-family: var(--font-px); font-weight: 400; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); }
+.missed h3::after { content: ""; flex: 1; border-top: 2px dashed var(--line); }
+.miss-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.miss-list li { display: grid; grid-template-columns: 58px 1fr auto; align-items: center; min-height: 38px; background: rgba(19,35,74,.75); border: 2px solid var(--line); font-size: 20px; }
+.miss-list .mr { align-self: stretch; display: grid; place-items: center; color: var(--red); border-right: 2px solid var(--line); background: var(--bg-2); }
+.miss-list .mn { padding: 0 12px; min-width: 0; overflow-wrap: anywhere; }
+.miss-list .mv { padding: 0 12px; color: var(--ink-soft); white-space: nowrap; }
+.miss-list li.near { border-color: var(--red); }
+.miss-list li.unranked .mr, .miss-list li.unranked .mv { color: var(--ink-faint); }
 
 /* Results */
 .sheet { margin-top: 20px; background: var(--panel); border: 2px solid var(--amber); box-shadow: var(--drop); padding: 16px; }
@@ -118,7 +143,7 @@ button { font: inherit; color: inherit; }
 .tip { position: fixed; z-index: 40; pointer-events: none; background: var(--dark-ink); border: 2px solid var(--line-2); padding: 2px 8px; font-size: 18px; }
 
 /* Help modal */
-.modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 16px; background: rgba(8,4,18,.75); }
+.modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 16px; background: rgba(3,8,22,.75); }
 .modal[hidden] { display: none; }
 .card { width: min(520px, 100%); max-height: calc(100vh - 32px); overflow: auto; background: var(--panel); border: 2px solid var(--amber); box-shadow: var(--drop); padding: 18px; }
 .card h3 { margin: 0 0 10px; font-family: var(--font-head); font-weight: 700; font-size: 26px; }
@@ -163,15 +188,20 @@ button { font: inherit; color: inherit; }
   </div>
 
   <ol class="board" id="board" aria-label="The top 10"></ol>
+  <section class="missed" id="missed" hidden aria-label="Your misses, by their real rank">
+    <h3>Your misses · where they really rank</h3>
+    <ol class="miss-list" id="missList"></ol>
+  </section>
   <div id="sheet"></div>
 </div>
 
 <div class="dock" id="dock">
   <div class="dock-in">
     <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+    <ul class="suggest" id="suggest" role="listbox" aria-label="Matching countries" hidden></ul>
     <form class="guess" id="guessForm" autocomplete="off">
       <label class="sr" for="guess">Your guess</label>
-      <input id="guess" type="text" placeholder="Type a guess…" enterkeyhint="go" autocapitalize="words" spellcheck="false">
+      <input id="guess" type="text" placeholder="Type a guess…" enterkeyhint="go" autocapitalize="words" spellcheck="false" autocomplete="off">
       <button class="btn" type="submit">Guess</button>
     </form>
     <div class="tools">
@@ -180,7 +210,6 @@ button { font: inherit; color: inherit; }
     </div>
   </div>
 </div>
-<datalist id="countryList"></datalist>
 
 <div class="modal" id="help" hidden role="dialog" aria-modal="true" aria-labelledby="helpTitle">
   <div class="card">
@@ -189,7 +218,7 @@ button { font: inherit; color: inherit; }
     <ol>
       <li><b>Type a guess.</b> If it's on the list, it lands in its spot on the board.</li>
       <li><b>You have 5 misses.</b> A wrong guess costs one. Small typos still count, and repeats or vague answers ("Bush", "Star Wars") are free.</li>
-      <li><b>Just outside?</b> If your guess is #11–13, you'll hear how close you were, but it still counts as a miss.</li>
+      <li><b>See where your misses rank.</b> Each miss is listed under the board at its real position, e.g. #12 Saudi Arabia. Still a miss, though.</li>
       <li><b>One free clue</b> shows the first letters of the lowest unfound answer.</li>
       <li><b>1 point per answer</b>, so 10 is a perfect game. A new list arrives at midnight.</li>
     </ol>
@@ -323,31 +352,54 @@ function renderBoard(flipIdx) {
   $("#misses").setAttribute("aria-label", `${state.misses.length} of ${MAX_MISSES} misses used`);
   $("#clueBtn").disabled = state.clue !== null || state.done;
   $("#clueBtn").textContent = state.clue !== null ? "Clue used" : "Clue · 1 free";
+  renderMisses();
+}
+// Misses sorted by where they really rank on the full list; ones the source doesn't rank go last.
+function renderMisses() {
+  const items = state.misses.map((m, i) => {
+    const r = resolve(m.text), e = r && r.e;
+    return { i, rank: e ? e.rank : Infinity, name: e ? e.name : (r && r.name) || m.text, value: e && e.value };
+  }).sort((a, b) => a.rank - b.rank || a.i - b.i);
+  $("#missed").hidden = !items.length;
+  $("#missList").innerHTML = items.map(m => m.rank === Infinity
+    ? `<li class="unranked"><span class="mr">–</span><span class="mn">${esc(m.name)}</span><span class="mv">${PUZZLE.kind === "country" && PUZZLE.rest ? "not ranked" : "not top " + (10 + ENTRIES.filter(e => e.answer === undefined).length)}</span></li>`
+    : `<li class="${m.rank <= 13 ? "near" : ""}"><span class="mr">#${m.rank}</span><span class="mn">${esc(m.name)}</span><span class="mv">${m.value ? esc(m.value) : ""}</span></li>`).join("");
 }
 function say(text, tone) {
   const f = $("#feedback"); f.textContent = text; f.className = "feedback" + (tone ? " " + tone : "");
 }
 
-/* ================= Guessing ================= */
-function guess(raw) {
+/* ================= Guessing =================
+   resolve() works out what a typed guess means without changing anything, so the misses list can re-read old
+   guesses too. It returns null for an empty guess, or { type, e, name, note }:
+   free (a note, no miss) · notcountry · ambiguous · hit · miss (e is set when the source still ranks it). */
+function resolve(raw) {
   const g = norm(raw);
-  if (!g || state.done) return;
-  if (state.tried.includes(g)) { say(`You already tried "${raw.trim()}".`, "warn"); return; }
+  if (!g) return null;
   const free = (PUZZLE.free || []).find(f => f.match.map(norm).includes(g));
-  if (free && !free.miss) { say(free.note, "warn"); return; }
-
-  let hits = lookup(g, ENTRIES);
-  if (PUZZLE.kind === "country") {
+  if (free && !free.miss) return { type: "free", note: free.note };
+  let hits, name = null;
+  if (PUZZLE.kind === "country" && !free) {
     // Resolve to a real country first: unknown places and typos that fit nothing don't cost a miss.
-    const c = free ? [] : lookup(g, WORLD);
-    if (!free && !c.length) { say(`"${raw.trim()}" isn't a country I know. Check the spelling. No miss.`, "warn"); return; }
-    if (c.length > 1) { say(`"${raw.trim()}" could be ${c.map(e => e.name).join(" or ")}. Be more specific. No miss.`, "warn"); return; }
-    hits = c.length ? ENTRIES.filter(e => e.name === c[0].name) : [];
-  }
-  if (hits.length > 1) { say(`"${raw.trim()}" fits more than one name. Be more specific. No miss.`, "warn"); return; }
-
+    const c = lookup(g, WORLD);
+    if (!c.length) return { type: "notcountry" };
+    if (c.length > 1) return { type: "ambiguous", names: c.map(e => e.name) };
+    name = c[0].name; hits = ENTRIES.filter(e => e.name === name);
+  } else hits = free ? [] : lookup(g, ENTRIES);
+  if (hits.length > 1) return { type: "ambiguous" };
   const e = hits[0];
-  if (e && e.answer !== undefined) {
+  return { type: e && e.answer !== undefined ? "hit" : "miss", e, name: e ? e.name : name, note: free && free.note };
+}
+function guess(raw) {
+  const g = norm(raw), shown = raw.trim();
+  if (!g || state.done) return;
+  if (state.tried.includes(g)) { say(`You already tried "${shown}".`, "warn"); return; }
+  const r = resolve(raw);
+  if (r.type === "free") { say(r.note, "warn"); return; }
+  if (r.type === "notcountry") { say(`"${shown}" isn't a country I know. Check the spelling. No miss.`, "warn"); return; }
+  if (r.type === "ambiguous") { say(r.names ? `"${shown}" could be ${r.names.join(" or ")}. Be more specific. No miss.` : `"${shown}" fits more than one name. Be more specific. No miss.`, "warn"); return; }
+  const e = r.e;
+  if (r.type === "hit") {
     if (state.found.includes(e.answer)) { say(`${e.name} is already on the board.`, "warn"); return; }
     state.found.push(e.answer); state.tried.push(g);
     say(`${e.name}, #${rankLabel(e.answer)}!`, "good");
@@ -356,14 +408,56 @@ function guess(raw) {
     if (state.found.length === PUZZLE.answers.length) finish();
     save(); return;
   }
+  if (r.name && state.misses.some(m => resolve(m.text)?.name === r.name)) { say(`You already tried ${r.name}.`, "warn"); return; }
   state.tried.push(g);
-  if (e) { state.misses.push({ text: raw.trim(), close: e.rank }); say(`So close! ${e.name} is #${e.rank}, just outside the top 10.`, "bad"); }
-  else if (free) { state.misses.push({ text: raw.trim() }); say(free.note, "bad"); }
-  else { state.misses.push({ text: raw.trim() }); say(`${raw.trim()} isn't in the top 10.`, "bad"); }
+  state.misses.push({ text: shown });
+  if (r.note) say(r.note, "bad");
+  else if (e && e.rank <= 13) say(`So close! ${e.name} is #${e.rank}, just outside the top 10.`, "bad");
+  else if (e) say(`${e.name} is #${e.rank}. Not top 10.`, "bad");
+  else say(`${r.name || shown} isn't in the top 10.`, "bad");
   renderBoard();
   if (state.misses.length >= MAX_MISSES) finish();
   save();
 }
+
+/* ================= Country picker =================
+   On country lists, matching countries pop up above the guess box (every country, so it gives nothing away).
+   Arrow keys move, Enter or a tap guesses the highlighted one; with no match, Enter guesses what you typed. */
+let sugg = [], active = -1;
+function guessedNames() {
+  const names = new Set(state.found.map(i => PUZZLE.answers[i].name));
+  for (const m of state.misses) { const r = resolve(m.text); if (r && r.name) names.add(r.name); }
+  return names;
+}
+function updateSuggest() {
+  const box = $("#suggest"), input = $("#guess"), q = norm(input.value);
+  if (PUZZLE.kind !== "country" || state.done || !q) { hideSuggest(); return; }
+  const done = guessedNames();
+  sugg = COUNTRIES.map(c => {
+    const n = norm(c.name), al = c.aliases.find(a => norm(a).startsWith(q));
+    const score = n === q ? 0 : n.startsWith(q) ? 1 : n.split(" ").some(w => w.startsWith(q)) ? 2 : al ? 3 : -1;
+    return { name: c.name, score, alias: score === 3 ? al : null, prefix: score <= 1 };
+  }).filter(c => c.score >= 0 && !done.has(c.name))
+    .sort((a, b) => a.score - b.score || a.name.length - b.name.length || a.name.localeCompare(b.name)).slice(0, 6);
+  active = sugg.length ? 0 : -1;
+  box.innerHTML = sugg.length
+    ? sugg.map((c, i) => `<li role="option" id="sg${i}" data-i="${i}" aria-selected="${i === active}"><span>${c.prefix ? `<mark>${esc(c.name.slice(0, input.value.trim().length))}</mark>${esc(c.name.slice(input.value.trim().length))}` : esc(c.name)}</span>${c.alias ? `<small>${esc(c.alias.toUpperCase())}</small>` : ""}</li>`).join("")
+    : `<li class="hint" role="presentation">No country starts with that. Enter guesses it anyway.</li>`;
+  box.hidden = false;
+  input.setAttribute("aria-expanded", "true");
+  input.setAttribute("aria-activedescendant", active >= 0 ? "sg" + active : "");
+}
+function hideSuggest() {
+  $("#suggest").hidden = true; sugg = []; active = -1;
+  $("#guess").setAttribute("aria-expanded", "false"); $("#guess").removeAttribute("aria-activedescendant");
+}
+function moveActive(d) {
+  if (!sugg.length) return;
+  active = (active + d + sugg.length) % sugg.length;
+  document.querySelectorAll("#suggest li[role=option]").forEach((li, i) => li.setAttribute("aria-selected", i === active));
+  $("#guess").setAttribute("aria-activedescendant", "sg" + active);
+}
+function submitGuess(text) { $("#guess").value = ""; hideSuggest(); guess(text); }
 function useClue() {
   if (state.clue !== null || state.done) return;
   // The lowest-ranked answer still hidden: usually the hardest one.
@@ -393,7 +487,7 @@ function renderSheet() {
   $("#sheet").innerHTML = `<section class="sheet" aria-label="Your result">
     <div class="eyebrow">No. ${esc(PUZZLE.no)} · ${state.gaveUp ? "You stopped at" : sc === 10 ? "Cleared the board" : "Out of misses"}</div>
     <div class="big"><span class="score">${sc}<small>/10</small></span><span class="title">${title(sc)}</span></div>
-    <p>${state.misses.length} miss${state.misses.length === 1 ? "" : "es"}${state.clue !== null ? " · clue used" : ""}${state.misses.some(m => m.close) ? ` · so close with ${state.misses.filter(m => m.close).map(m => esc(m.text)).join(", ")}` : ""}</p>
+    <p>${state.misses.length} miss${state.misses.length === 1 ? "" : "es"}${state.clue !== null ? " · clue used" : ""}${(() => { const near = state.misses.map(m => resolve(m.text)?.e).filter(e => e && e.rank <= 13); return near.length ? ` · so close with ${near.map(e => esc(e.name)).join(", ")}` : ""; })()}</p>
     <div class="share-row">
       <button class="btn" id="shareBtn" type="button">Share result</button>
       <span class="next" id="next">${next ? "" : "More lists coming soon."}</span>
@@ -508,13 +602,24 @@ async function start() {
   PUZZLE = puzzleFor(todayISO());
   ENTRIES = [
     ...PUZZLE.answers.map((a, i) => ({ ...a, answer: i, keys: keysFor(a, PUZZLE.kind) })),
-    ...(PUZZLE.close || []).map(c => ({ ...c, keys: keysFor(c, PUZZLE.kind) }))
+    ...[...(PUZZLE.close || []), ...(PUZZLE.rest || [])].map(c => ({ ...c, keys: keysFor(c, PUZZLE.kind) }))
   ];
   if (PUZZLE.kind === "country") {
     WORLD = COUNTRIES.map(c => ({ ...c, keys: keysFor(c, "country") }));
-    $("#countryList").innerHTML = COUNTRIES.map(c => `<option value="${esc(c.name)}">`).join("");
-    $("#guess").setAttribute("list", "countryList");
-    $("#guess").placeholder = "Type a country…";
+    const input = $("#guess");
+    input.placeholder = "Type a country…";
+    input.setAttribute("role", "combobox"); input.setAttribute("aria-autocomplete", "list");
+    input.setAttribute("aria-controls", "suggest"); input.setAttribute("aria-expanded", "false");
+    input.addEventListener("input", updateSuggest);
+    input.addEventListener("keydown", e => {
+      if (e.key === "ArrowDown" || e.key === "ArrowUp") { e.preventDefault(); moveActive(e.key === "ArrowDown" ? 1 : -1); }
+      else if (e.key === "Escape" && !$("#suggest").hidden) { e.stopPropagation(); hideSuggest(); }
+    });
+    input.addEventListener("blur", () => setTimeout(hideSuggest, 120));
+    $("#suggest").addEventListener("pointerdown", e => {
+      const li = e.target.closest("li[data-i]"); if (!li) return;
+      e.preventDefault(); submitGuess(sugg[+li.dataset.i].name);
+    });
   }
   state = load();
   $("#meta").textContent = `No. ${PUZZLE.no} · ${dateLabel(PUZZLE.date)}`;
@@ -524,7 +629,10 @@ async function start() {
   renderBoard();
   if (state.done) renderSheet();
 
-  $("#guessForm").addEventListener("submit", e => { e.preventDefault(); const v = $("#guess").value; $("#guess").value = ""; guess(v); });
+  $("#guessForm").addEventListener("submit", e => {
+    e.preventDefault();
+    submitGuess(active >= 0 && sugg[active] ? sugg[active].name : $("#guess").value);
+  });
   $("#clueBtn").addEventListener("click", useClue);
   $("#giveUp").addEventListener("click", () => {
     if (state.done) return;

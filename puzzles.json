@@ -1,204 +1,3193 @@
 {
-  "_readme": "One list per start date; the newest whose date has arrived (player's local time) is today's. kind 'country' turns on country spell-checking and suggestions. aliases are extra accepted spellings; for people, a unique surname is accepted automatically. close = ranks just outside the top 10 (still a miss, but the game says how close). free = guesses that get a note and don't cost a miss.",
+  "_readme": "One list per start date; the newest whose date has arrived (player's local time) is today's. kind 'country' turns on country spell-checking and suggestions. aliases are extra accepted spellings; for people, a unique surname is accepted automatically. close = ranks just outside the top 10 (people/film lists); rest = every ranked country beyond #10 (country lists), so misses show their real rank (still a miss, but the game says how close). free = guesses that get a note and don't cost a miss.",
   "puzzles": [
     {
-      "date": "2026-10-28", "no": "001", "category": "Geography", "kind": "country",
+      "date": "2026-10-28",
+      "no": "001",
+      "category": "Geography",
+      "kind": "country",
       "title": "The 10 largest countries by total area",
       "unit": "km²",
-      "source": { "name": "CIA World Factbook, total area (land + water)", "url": "https://www.cia.gov/the-world-factbook/field/area/country-comparison/" },
+      "source": {
+        "name": "CIA World Factbook (top 10); ranks 11+ from Wikipedia's area table",
+        "url": "https://www.cia.gov/the-world-factbook/field/area/country-comparison/"
+      },
       "answers": [
-        { "rank": 1, "name": "Russia", "value": "17,098,242" },
-        { "rank": 2, "name": "Canada", "value": "9,984,670" },
-        { "rank": 3, "name": "United States", "value": "9,833,517" },
-        { "rank": 4, "name": "China", "value": "9,596,960" },
-        { "rank": 5, "name": "Brazil", "value": "8,515,770" },
-        { "rank": 6, "name": "Australia", "value": "7,741,220" },
-        { "rank": 7, "name": "India", "value": "3,287,263" },
-        { "rank": 8, "name": "Argentina", "value": "2,780,400" },
-        { "rank": 9, "name": "Kazakhstan", "value": "2,724,900" },
-        { "rank": 10, "name": "Algeria", "value": "2,381,741" }
-      ],
-      "close": [
-        { "rank": 11, "name": "DR Congo", "value": "2,344,858" },
-        { "rank": 12, "name": "Saudi Arabia", "value": "2,149,690" },
-        { "rank": 13, "name": "Mexico", "value": "1,964,375" }
+        {
+          "rank": 1,
+          "name": "Russia",
+          "value": "17,098,242"
+        },
+        {
+          "rank": 2,
+          "name": "Canada",
+          "value": "9,984,670"
+        },
+        {
+          "rank": 3,
+          "name": "United States",
+          "value": "9,833,517"
+        },
+        {
+          "rank": 4,
+          "name": "China",
+          "value": "9,596,960"
+        },
+        {
+          "rank": 5,
+          "name": "Brazil",
+          "value": "8,515,770"
+        },
+        {
+          "rank": 6,
+          "name": "Australia",
+          "value": "7,741,220"
+        },
+        {
+          "rank": 7,
+          "name": "India",
+          "value": "3,287,263"
+        },
+        {
+          "rank": 8,
+          "name": "Argentina",
+          "value": "2,780,400"
+        },
+        {
+          "rank": 9,
+          "name": "Kazakhstan",
+          "value": "2,724,900"
+        },
+        {
+          "rank": 10,
+          "name": "Algeria",
+          "value": "2,381,741"
+        }
       ],
       "free": [
-        { "match": ["greenland"], "note": "Greenland is part of the Kingdom of Denmark, so it isn't counted as a country here. No miss." },
-        { "match": ["antarctica"], "note": "Antarctica isn't a country. No miss." }
+        {
+          "match": [
+            "greenland"
+          ],
+          "note": "Greenland is part of the Kingdom of Denmark, so it isn't counted as a country here. No miss."
+        },
+        {
+          "match": [
+            "antarctica"
+          ],
+          "note": "Antarctica isn't a country. No miss."
+        }
+      ],
+      "rest": [
+        {
+          "rank": 11,
+          "name": "DR Congo",
+          "value": "2,344,858"
+        },
+        {
+          "rank": 12,
+          "name": "Saudi Arabia",
+          "value": "2,149,690"
+        },
+        {
+          "rank": 13,
+          "name": "Mexico",
+          "value": "1,964,375"
+        },
+        {
+          "rank": 14,
+          "name": "Indonesia",
+          "value": "1,904,569"
+        },
+        {
+          "rank": 15,
+          "name": "Sudan",
+          "value": "1,878,000"
+        },
+        {
+          "rank": 16,
+          "name": "Libya",
+          "value": "1,759,540"
+        },
+        {
+          "rank": 17,
+          "name": "Iran",
+          "value": "1,648,195"
+        },
+        {
+          "rank": 18,
+          "name": "Mongolia",
+          "value": "1,564,116"
+        },
+        {
+          "rank": 19,
+          "name": "Peru",
+          "value": "1,285,216"
+        },
+        {
+          "rank": 20,
+          "name": "Chad",
+          "value": "1,284,000"
+        },
+        {
+          "rank": 21,
+          "name": "Niger",
+          "value": "1,267,000"
+        },
+        {
+          "rank": 22,
+          "name": "Angola",
+          "value": "1,246,700"
+        },
+        {
+          "rank": 23,
+          "name": "Mali",
+          "value": "1,240,192"
+        },
+        {
+          "rank": 24,
+          "name": "South Africa",
+          "value": "1,219,090"
+        },
+        {
+          "rank": 25,
+          "name": "Colombia",
+          "value": "1,138,910"
+        },
+        {
+          "rank": 26,
+          "name": "Ethiopia",
+          "value": "1,104,300"
+        },
+        {
+          "rank": 27,
+          "name": "Bolivia",
+          "value": "1,098,581"
+        },
+        {
+          "rank": 28,
+          "name": "Mauritania",
+          "value": "1,030,700"
+        },
+        {
+          "rank": 29,
+          "name": "Egypt",
+          "value": "1,001,450"
+        },
+        {
+          "rank": 30,
+          "name": "Tanzania",
+          "value": "947,303"
+        },
+        {
+          "rank": 31,
+          "name": "Nigeria",
+          "value": "923,768"
+        },
+        {
+          "rank": 32,
+          "name": "Venezuela",
+          "value": "912,050"
+        },
+        {
+          "rank": 33,
+          "name": "Pakistan",
+          "value": "882,363"
+        },
+        {
+          "rank": 34,
+          "name": "Namibia",
+          "value": "824,292"
+        },
+        {
+          "rank": 35,
+          "name": "Mozambique",
+          "value": "799,380"
+        },
+        {
+          "rank": 36,
+          "name": "Turkey",
+          "value": "783,562"
+        },
+        {
+          "rank": 37,
+          "name": "Chile",
+          "value": "756,102"
+        },
+        {
+          "rank": 38,
+          "name": "Zambia",
+          "value": "752,612"
+        },
+        {
+          "rank": 39,
+          "name": "Myanmar",
+          "value": "676,578"
+        },
+        {
+          "rank": 40,
+          "name": "Afghanistan",
+          "value": "652,864"
+        },
+        {
+          "rank": 41,
+          "name": "South Sudan",
+          "value": "644,329"
+        },
+        {
+          "rank": 42,
+          "name": "France",
+          "value": "643,801"
+        },
+        {
+          "rank": 43,
+          "name": "Somalia",
+          "value": "637,657"
+        },
+        {
+          "rank": 44,
+          "name": "Central African Republic",
+          "value": "622,984"
+        },
+        {
+          "rank": 45,
+          "name": "Ukraine",
+          "value": "603,550"
+        },
+        {
+          "rank": 46,
+          "name": "Madagascar",
+          "value": "587,041"
+        },
+        {
+          "rank": 47,
+          "name": "Botswana",
+          "value": "582,000"
+        },
+        {
+          "rank": 48,
+          "name": "Kenya",
+          "value": "580,367"
+        },
+        {
+          "rank": 49,
+          "name": "Thailand",
+          "value": "513,120"
+        },
+        {
+          "rank": 50,
+          "name": "Spain",
+          "value": "505,370"
+        },
+        {
+          "rank": 51,
+          "name": "Turkmenistan",
+          "value": "488,100"
+        },
+        {
+          "rank": 52,
+          "name": "Cameroon",
+          "value": "475,650"
+        },
+        {
+          "rank": 53,
+          "name": "Papua New Guinea",
+          "value": "462,840"
+        },
+        {
+          "rank": 54,
+          "name": "Yemen",
+          "value": "455,503"
+        },
+        {
+          "rank": 55,
+          "name": "Sweden",
+          "value": "450,295"
+        },
+        {
+          "rank": 56,
+          "name": "Uzbekistan",
+          "value": "447,400"
+        },
+        {
+          "rank": 57,
+          "name": "Morocco",
+          "value": "446,550"
+        },
+        {
+          "rank": 58,
+          "name": "Iraq",
+          "value": "438,317"
+        },
+        {
+          "rank": 59,
+          "name": "Paraguay",
+          "value": "406,752"
+        },
+        {
+          "rank": 60,
+          "name": "Zimbabwe",
+          "value": "390,757"
+        },
+        {
+          "rank": 61,
+          "name": "Norway",
+          "value": "386,224"
+        },
+        {
+          "rank": 62,
+          "name": "Japan",
+          "value": "377,915"
+        },
+        {
+          "rank": 63,
+          "name": "Germany",
+          "value": "357,581"
+        },
+        {
+          "rank": 64,
+          "name": "Republic of the Congo",
+          "value": "342,000"
+        },
+        {
+          "rank": 65,
+          "name": "Finland",
+          "value": "338,145"
+        },
+        {
+          "rank": 66,
+          "name": "Vietnam",
+          "value": "331,340"
+        },
+        {
+          "rank": 67,
+          "name": "Malaysia",
+          "value": "330,621"
+        },
+        {
+          "rank": 68,
+          "name": "Ivory Coast",
+          "value": "322,462"
+        },
+        {
+          "rank": 69,
+          "name": "Poland",
+          "value": "312,685"
+        },
+        {
+          "rank": 70,
+          "name": "Oman",
+          "value": "309,500"
+        },
+        {
+          "rank": 71,
+          "name": "Italy",
+          "value": "302,068"
+        },
+        {
+          "rank": 72,
+          "name": "Philippines",
+          "value": "300,000"
+        },
+        {
+          "rank": 73,
+          "name": "Ecuador",
+          "value": "283,561"
+        },
+        {
+          "rank": 74,
+          "name": "Burkina Faso",
+          "value": "274,200"
+        },
+        {
+          "rank": 75,
+          "name": "New Zealand",
+          "value": "268,838"
+        },
+        {
+          "rank": 76,
+          "name": "Gabon",
+          "value": "267,668"
+        },
+        {
+          "rank": 77,
+          "name": "Guinea",
+          "value": "245,857"
+        },
+        {
+          "rank": 78,
+          "name": "United Kingdom",
+          "value": "244,376"
+        },
+        {
+          "rank": 79,
+          "name": "Uganda",
+          "value": "241,550"
+        },
+        {
+          "rank": 80,
+          "name": "Ghana",
+          "value": "238,537"
+        },
+        {
+          "rank": 81,
+          "name": "Romania",
+          "value": "238,398"
+        },
+        {
+          "rank": 82,
+          "name": "Laos",
+          "value": "236,800"
+        },
+        {
+          "rank": 83,
+          "name": "Guyana",
+          "value": "214,969"
+        },
+        {
+          "rank": 84,
+          "name": "Belarus",
+          "value": "207,600"
+        },
+        {
+          "rank": 85,
+          "name": "Kyrgyzstan",
+          "value": "199,949"
+        },
+        {
+          "rank": 86,
+          "name": "Senegal",
+          "value": "196,712"
+        },
+        {
+          "rank": 87,
+          "name": "Syria",
+          "value": "185,180"
+        },
+        {
+          "rank": 88,
+          "name": "Cambodia",
+          "value": "181,035"
+        },
+        {
+          "rank": 89,
+          "name": "Uruguay",
+          "value": "176,215"
+        },
+        {
+          "rank": 90,
+          "name": "Suriname",
+          "value": "163,820"
+        },
+        {
+          "rank": 91,
+          "name": "Tunisia",
+          "value": "163,610"
+        },
+        {
+          "rank": 92,
+          "name": "Bangladesh",
+          "value": "148,460"
+        },
+        {
+          "rank": 93,
+          "name": "Nepal",
+          "value": "147,181"
+        },
+        {
+          "rank": 94,
+          "name": "Tajikistan",
+          "value": "144,100"
+        },
+        {
+          "rank": 95,
+          "name": "Greece",
+          "value": "131,957"
+        },
+        {
+          "rank": 96,
+          "name": "Nicaragua",
+          "value": "130,373"
+        },
+        {
+          "rank": 97,
+          "name": "North Korea",
+          "value": "120,538"
+        },
+        {
+          "rank": 98,
+          "name": "Malawi",
+          "value": "118,484"
+        },
+        {
+          "rank": 99,
+          "name": "Eritrea",
+          "value": "117,600"
+        },
+        {
+          "rank": 100,
+          "name": "Benin",
+          "value": "114,763"
+        },
+        {
+          "rank": 101,
+          "name": "Honduras",
+          "value": "112,492"
+        },
+        {
+          "rank": 102,
+          "name": "Liberia",
+          "value": "111,369"
+        },
+        {
+          "rank": 103,
+          "name": "Bulgaria",
+          "value": "110,879"
+        },
+        {
+          "rank": 104,
+          "name": "Cuba",
+          "value": "109,884"
+        },
+        {
+          "rank": 105,
+          "name": "Guatemala",
+          "value": "108,889"
+        },
+        {
+          "rank": 106,
+          "name": "Iceland",
+          "value": "103,000"
+        },
+        {
+          "rank": 107,
+          "name": "South Korea",
+          "value": "100,432"
+        },
+        {
+          "rank": 108,
+          "name": "Hungary",
+          "value": "93,025"
+        },
+        {
+          "rank": 109,
+          "name": "Portugal",
+          "value": "92,090"
+        },
+        {
+          "rank": 110,
+          "name": "Jordan",
+          "value": "89,318"
+        },
+        {
+          "rank": 111,
+          "name": "Serbia",
+          "value": "88,499"
+        },
+        {
+          "rank": 112,
+          "name": "Azerbaijan",
+          "value": "86,600"
+        },
+        {
+          "rank": 113,
+          "name": "Austria",
+          "value": "83,878"
+        },
+        {
+          "rank": 114,
+          "name": "United Arab Emirates",
+          "value": "83,600"
+        },
+        {
+          "rank": 115,
+          "name": "Czechia",
+          "value": "78,871"
+        },
+        {
+          "rank": 116,
+          "name": "Panama",
+          "value": "75,320"
+        },
+        {
+          "rank": 117,
+          "name": "Sierra Leone",
+          "value": "72,300"
+        },
+        {
+          "rank": 118,
+          "name": "Ireland",
+          "value": "70,273"
+        },
+        {
+          "rank": 119,
+          "name": "Georgia",
+          "value": "69,700"
+        },
+        {
+          "rank": 120,
+          "name": "Sri Lanka",
+          "value": "67,240"
+        },
+        {
+          "rank": 121,
+          "name": "Lithuania",
+          "value": "65,286"
+        },
+        {
+          "rank": 122,
+          "name": "Latvia",
+          "value": "64,594"
+        },
+        {
+          "rank": 123,
+          "name": "Togo",
+          "value": "56,785"
+        },
+        {
+          "rank": 124,
+          "name": "Croatia",
+          "value": "56,594"
+        },
+        {
+          "rank": 125,
+          "name": "Bosnia and Herzegovina",
+          "value": "51,209"
+        },
+        {
+          "rank": 126,
+          "name": "Costa Rica",
+          "value": "51,180"
+        },
+        {
+          "rank": 127,
+          "name": "Slovakia",
+          "value": "49,035"
+        },
+        {
+          "rank": 128,
+          "name": "Dominican Republic",
+          "value": "48,670"
+        },
+        {
+          "rank": 129,
+          "name": "Estonia",
+          "value": "45,339"
+        },
+        {
+          "rank": 130,
+          "name": "Denmark",
+          "value": "42,947"
+        },
+        {
+          "rank": 131,
+          "name": "Netherlands",
+          "value": "41,865"
+        },
+        {
+          "rank": 132,
+          "name": "Switzerland",
+          "value": "41,291"
+        },
+        {
+          "rank": 133,
+          "name": "Bhutan",
+          "value": "38,394"
+        },
+        {
+          "rank": 134,
+          "name": "Guinea-Bissau",
+          "value": "36,125"
+        },
+        {
+          "rank": 135,
+          "name": "Taiwan",
+          "value": "35,980"
+        },
+        {
+          "rank": 136,
+          "name": "Moldova",
+          "value": "33,847"
+        },
+        {
+          "rank": 137,
+          "name": "Belgium",
+          "value": "30,528"
+        },
+        {
+          "rank": 138,
+          "name": "Lesotho",
+          "value": "30,355"
+        },
+        {
+          "rank": 139,
+          "name": "Armenia",
+          "value": "29,743"
+        },
+        {
+          "rank": 140,
+          "name": "Solomon Islands",
+          "value": "28,896"
+        },
+        {
+          "rank": 141,
+          "name": "Albania",
+          "value": "28,748"
+        },
+        {
+          "rank": 142,
+          "name": "Equatorial Guinea",
+          "value": "28,051"
+        },
+        {
+          "rank": 143,
+          "name": "Burundi",
+          "value": "27,834"
+        },
+        {
+          "rank": 144,
+          "name": "Haiti",
+          "value": "27,750"
+        },
+        {
+          "rank": 145,
+          "name": "Rwanda",
+          "value": "26,338"
+        },
+        {
+          "rank": 146,
+          "name": "North Macedonia",
+          "value": "25,713"
+        },
+        {
+          "rank": 147,
+          "name": "Djibouti",
+          "value": "23,200"
+        },
+        {
+          "rank": 148,
+          "name": "Belize",
+          "value": "22,965"
+        },
+        {
+          "rank": 149,
+          "name": "Israel",
+          "value": "21,937"
+        },
+        {
+          "rank": 150,
+          "name": "El Salvador",
+          "value": "21,041"
+        },
+        {
+          "rank": 151,
+          "name": "Slovenia",
+          "value": "20,273"
+        },
+        {
+          "rank": 152,
+          "name": "Fiji",
+          "value": "18,272"
+        },
+        {
+          "rank": 153,
+          "name": "Kuwait",
+          "value": "17,818"
+        },
+        {
+          "rank": 154,
+          "name": "Eswatini",
+          "value": "17,363"
+        },
+        {
+          "rank": 155,
+          "name": "East Timor",
+          "value": "14,874"
+        },
+        {
+          "rank": 156,
+          "name": "Montenegro",
+          "value": "13,888"
+        },
+        {
+          "rank": 157,
+          "name": "Bahamas",
+          "value": "13,880"
+        },
+        {
+          "rank": 158,
+          "name": "Vanuatu",
+          "value": "12,189"
+        },
+        {
+          "rank": 159,
+          "name": "Qatar",
+          "value": "11,586"
+        },
+        {
+          "rank": 160,
+          "name": "Gambia",
+          "value": "11,295"
+        },
+        {
+          "rank": 161,
+          "name": "Jamaica",
+          "value": "10,991"
+        },
+        {
+          "rank": 162,
+          "name": "Kosovo",
+          "value": "10,887"
+        },
+        {
+          "rank": 163,
+          "name": "Lebanon",
+          "value": "10,452"
+        },
+        {
+          "rank": 164,
+          "name": "Cyprus",
+          "value": "9,251"
+        },
+        {
+          "rank": 165,
+          "name": "Palestine",
+          "value": "6,020"
+        },
+        {
+          "rank": 166,
+          "name": "Brunei",
+          "value": "5,765"
+        },
+        {
+          "rank": 167,
+          "name": "Trinidad and Tobago",
+          "value": "5,127"
+        },
+        {
+          "rank": 168,
+          "name": "Cape Verde",
+          "value": "4,033"
+        },
+        {
+          "rank": 169,
+          "name": "Samoa",
+          "value": "2,842"
+        },
+        {
+          "rank": 170,
+          "name": "Luxembourg",
+          "value": "2,586"
+        },
+        {
+          "rank": 171,
+          "name": "Mauritius",
+          "value": "2,096"
+        },
+        {
+          "rank": 172,
+          "name": "Comoros",
+          "value": "1,861"
+        },
+        {
+          "rank": 173,
+          "name": "Sao Tome and Principe",
+          "value": "964"
+        },
+        {
+          "rank": 174,
+          "name": "Kiribati",
+          "value": "811"
+        },
+        {
+          "rank": 175,
+          "name": "Bahrain",
+          "value": "778"
+        },
+        {
+          "rank": 176,
+          "name": "Dominica",
+          "value": "750"
+        },
+        {
+          "rank": 177,
+          "name": "Tonga",
+          "value": "747"
+        },
+        {
+          "rank": 178,
+          "name": "Singapore",
+          "value": "745"
+        },
+        {
+          "rank": 179,
+          "name": "Micronesia",
+          "value": "702"
+        },
+        {
+          "rank": 180,
+          "name": "Saint Lucia",
+          "value": "616"
+        },
+        {
+          "rank": 181,
+          "name": "Andorra",
+          "value": "468"
+        },
+        {
+          "rank": 182,
+          "name": "Palau",
+          "value": "459"
+        },
+        {
+          "rank": 183,
+          "name": "Seychelles",
+          "value": "457"
+        },
+        {
+          "rank": 184,
+          "name": "Antigua and Barbuda",
+          "value": "442"
+        },
+        {
+          "rank": 185,
+          "name": "Barbados",
+          "value": "431"
+        },
+        {
+          "rank": 186,
+          "name": "Saint Vincent and the Grenadines",
+          "value": "389"
+        },
+        {
+          "rank": 187,
+          "name": "Grenada",
+          "value": "345"
+        },
+        {
+          "rank": 188,
+          "name": "Malta",
+          "value": "315"
+        },
+        {
+          "rank": 189,
+          "name": "Maldives",
+          "value": "300"
+        },
+        {
+          "rank": 190,
+          "name": "Saint Kitts and Nevis",
+          "value": "261"
+        },
+        {
+          "rank": 191,
+          "name": "Marshall Islands",
+          "value": "181"
+        },
+        {
+          "rank": 192,
+          "name": "Liechtenstein",
+          "value": "160"
+        },
+        {
+          "rank": 193,
+          "name": "San Marino",
+          "value": "61"
+        },
+        {
+          "rank": 194,
+          "name": "Tuvalu",
+          "value": "26"
+        },
+        {
+          "rank": 195,
+          "name": "Nauru",
+          "value": "21"
+        },
+        {
+          "rank": 196,
+          "name": "Monaco",
+          "value": "2"
+        },
+        {
+          "rank": 197,
+          "name": "Vatican City",
+          "value": "0.44"
+        }
       ]
     },
     {
-      "date": "2026-10-29", "no": "002", "category": "Football", "kind": "person",
+      "date": "2026-10-29",
+      "no": "002",
+      "category": "Football",
+      "kind": "person",
       "title": "Premier League all-time top goalscorers",
       "unit": "goals",
       "asOf": "end of the 2025–26 season",
-      "source": { "name": "Premier League records, via Wikipedia (as of 24 May 2026)", "url": "https://en.wikipedia.org/wiki/Premier_League#Top_scorers" },
+      "source": {
+        "name": "Premier League records, via Wikipedia (as of 24 May 2026)",
+        "url": "https://en.wikipedia.org/wiki/Premier_League#Top_scorers"
+      },
       "answers": [
-        { "rank": 1, "name": "Alan Shearer", "value": "260" },
-        { "rank": 2, "name": "Harry Kane", "value": "213" },
-        { "rank": 3, "name": "Wayne Rooney", "value": "208" },
-        { "rank": 4, "name": "Mohamed Salah", "value": "193", "aliases": ["mo salah", "mohammed salah"] },
-        { "rank": 5, "name": "Andy Cole", "value": "187", "aliases": ["andrew cole"] },
-        { "rank": 6, "name": "Sergio Agüero", "value": "184", "aliases": ["kun aguero"] },
-        { "rank": 7, "name": "Frank Lampard", "value": "177" },
-        { "rank": 8, "name": "Thierry Henry", "value": "175" },
-        { "rank": 9, "name": "Robbie Fowler", "value": "163" },
-        { "rank": 10, "name": "Jermain Defoe", "value": "162" }
+        {
+          "rank": 1,
+          "name": "Alan Shearer",
+          "value": "260"
+        },
+        {
+          "rank": 2,
+          "name": "Harry Kane",
+          "value": "213"
+        },
+        {
+          "rank": 3,
+          "name": "Wayne Rooney",
+          "value": "208"
+        },
+        {
+          "rank": 4,
+          "name": "Mohamed Salah",
+          "value": "193",
+          "aliases": [
+            "mo salah",
+            "mohammed salah"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "Andy Cole",
+          "value": "187",
+          "aliases": [
+            "andrew cole"
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "Sergio Agüero",
+          "value": "184",
+          "aliases": [
+            "kun aguero"
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "Frank Lampard",
+          "value": "177"
+        },
+        {
+          "rank": 8,
+          "name": "Thierry Henry",
+          "value": "175"
+        },
+        {
+          "rank": 9,
+          "name": "Robbie Fowler",
+          "value": "163"
+        },
+        {
+          "rank": 10,
+          "name": "Jermain Defoe",
+          "value": "162"
+        }
       ],
       "close": [
-        { "rank": 11, "name": "Michael Owen", "value": "150" },
-        { "rank": 12, "name": "Les Ferdinand", "value": "149" },
-        { "rank": 13, "name": "Teddy Sheringham", "value": "146" }
+        {
+          "rank": 11,
+          "name": "Michael Owen",
+          "value": "150"
+        },
+        {
+          "rank": 12,
+          "name": "Les Ferdinand",
+          "value": "149"
+        },
+        {
+          "rank": 13,
+          "name": "Teddy Sheringham",
+          "value": "146"
+        }
       ]
     },
     {
-      "date": "2026-10-30", "no": "003", "category": "Pop culture", "kind": "film",
+      "date": "2026-10-30",
+      "no": "003",
+      "category": "Pop culture",
+      "kind": "film",
       "title": "The 10 highest-grossing films of all time",
       "unit": "worldwide box office",
       "asOf": "late October 2026",
-      "source": { "name": "Wikipedia, List of highest-grossing films (week of 23 Oct 2026)", "url": "https://en.wikipedia.org/wiki/List_of_highest-grossing_films" },
+      "source": {
+        "name": "Wikipedia, List of highest-grossing films (week of 23 Oct 2026)",
+        "url": "https://en.wikipedia.org/wiki/List_of_highest-grossing_films"
+      },
       "answers": [
-        { "rank": 1, "name": "Avengers: Endgame", "value": "$2.94B", "aliases": ["endgame", "avengers endgame", "avengers 4", "avengers"] },
-        { "rank": 2, "name": "Avatar", "value": "$2.92B", "aliases": ["avatar 1", "avatar 2009"] },
-        { "rank": 3, "name": "Spider-Man: Brand New Day", "value": "$2.52B", "aliases": ["brand new day", "spiderman brand new day", "spider man brand new day", "spider-man 4", "spiderman 4", "spider-man", "spiderman", "spider man"] },
-        { "rank": 4, "name": "Avatar: The Way of Water", "value": "$2.33B", "aliases": ["the way of water", "way of water", "avatar 2", "avatar way of water"] },
-        { "rank": 5, "name": "Titanic", "value": "$2.26B" },
-        { "rank": 6, "name": "Ne Zha 2", "value": "$2.22B", "aliases": ["nezha 2"] },
-        { "rank": 7, "name": "Star Wars: The Force Awakens", "value": "$2.07B", "aliases": ["the force awakens", "force awakens", "star wars 7", "star wars vii", "star wars episode vii", "star wars episode 7"] },
-        { "rank": 8, "name": "Avengers: Infinity War", "value": "$2.05B", "aliases": ["infinity war", "avengers infinity war", "avengers 3", "avengers"] },
-        { "rank": 9, "name": "Spider-Man: No Way Home", "value": "$1.92B", "aliases": ["no way home", "spiderman no way home", "spider man no way home", "spider-man", "spiderman", "spider man"] },
-        { "rank": 10, "name": "Zootopia 2", "value": "$1.87B", "aliases": ["zootropolis 2"] }
+        {
+          "rank": 1,
+          "name": "Avengers: Endgame",
+          "value": "$2.94B",
+          "aliases": [
+            "endgame",
+            "avengers endgame",
+            "avengers 4",
+            "avengers"
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "Avatar",
+          "value": "$2.92B",
+          "aliases": [
+            "avatar 1",
+            "avatar 2009"
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "Spider-Man: Brand New Day",
+          "value": "$2.52B",
+          "aliases": [
+            "brand new day",
+            "spiderman brand new day",
+            "spider man brand new day",
+            "spider-man 4",
+            "spiderman 4",
+            "spider-man",
+            "spiderman",
+            "spider man"
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "Avatar: The Way of Water",
+          "value": "$2.33B",
+          "aliases": [
+            "the way of water",
+            "way of water",
+            "avatar 2",
+            "avatar way of water"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "Titanic",
+          "value": "$2.26B"
+        },
+        {
+          "rank": 6,
+          "name": "Ne Zha 2",
+          "value": "$2.22B",
+          "aliases": [
+            "nezha 2"
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "Star Wars: The Force Awakens",
+          "value": "$2.07B",
+          "aliases": [
+            "the force awakens",
+            "force awakens",
+            "star wars 7",
+            "star wars vii",
+            "star wars episode vii",
+            "star wars episode 7"
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "Avengers: Infinity War",
+          "value": "$2.05B",
+          "aliases": [
+            "infinity war",
+            "avengers infinity war",
+            "avengers 3",
+            "avengers"
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "Spider-Man: No Way Home",
+          "value": "$1.92B",
+          "aliases": [
+            "no way home",
+            "spiderman no way home",
+            "spider man no way home",
+            "spider-man",
+            "spiderman",
+            "spider man"
+          ]
+        },
+        {
+          "rank": 10,
+          "name": "Zootopia 2",
+          "value": "$1.87B",
+          "aliases": [
+            "zootropolis 2"
+          ]
+        }
       ],
       "close": [
-        { "rank": 11, "name": "The Odyssey", "value": "$1.80B", "aliases": ["odyssey"] }
+        {
+          "rank": 11,
+          "name": "The Odyssey",
+          "value": "$1.80B",
+          "aliases": [
+            "odyssey"
+          ]
+        }
       ],
       "free": [
-        { "match": ["star wars"], "note": "Which Star Wars film? Add the subtitle or episode. No miss." },
-        { "match": ["zootopia", "zootropolis"], "note": "The first Zootopia or the sequel? Add the number. No miss." },
-        { "match": ["ne zha", "nezha"], "note": "The first Ne Zha or the sequel? Add the number. No miss." }
+        {
+          "match": [
+            "star wars"
+          ],
+          "note": "Which Star Wars film? Add the subtitle or episode. No miss."
+        },
+        {
+          "match": [
+            "zootopia",
+            "zootropolis"
+          ],
+          "note": "The first Zootopia or the sequel? Add the number. No miss."
+        },
+        {
+          "match": [
+            "ne zha",
+            "nezha"
+          ],
+          "note": "The first Ne Zha or the sequel? Add the number. No miss."
+        }
       ]
     },
     {
-      "date": "2026-10-31", "no": "004", "category": "Trade", "kind": "country",
+      "date": "2026-10-31",
+      "no": "004",
+      "category": "Trade",
+      "kind": "country",
       "title": "The world's 10 biggest oil producers",
-      "unit": "million barrels a day",
-      "asOf": "2023, all petroleum liquids",
-      "source": { "name": "U.S. Energy Information Administration (2023 data)", "url": "https://www.eia.gov/tools/faqs/faq.php?id=709&t=6" },
+      "unit": "thousand barrels a day of crude oil",
+      "asOf": "January 2026",
+      "source": {
+        "name": "U.S. Energy Information Administration, January 2026 (via Wikipedia)",
+        "url": "https://en.wikipedia.org/wiki/List_of_countries_by_oil_production"
+      },
       "answers": [
-        { "rank": 1, "name": "United States", "value": "21.91" },
-        { "rank": 2, "name": "Saudi Arabia", "value": "11.13" },
-        { "rank": 3, "name": "Russia", "value": "10.75" },
-        { "rank": 4, "name": "Canada", "value": "5.76" },
-        { "rank": 5, "name": "China", "value": "5.26" },
-        { "rank": 6, "name": "Iraq", "value": "4.42" },
-        { "rank": 7, "name": "Brazil", "value": "4.28" },
-        { "rank": 8, "name": "United Arab Emirates", "value": "4.16" },
-        { "rank": 9, "name": "Iran", "value": "3.99" },
-        { "rank": 10, "name": "Kuwait", "value": "2.91" }
+        {
+          "rank": 1,
+          "name": "United States",
+          "value": "13,246"
+        },
+        {
+          "rank": 2,
+          "name": "Saudi Arabia",
+          "value": "10,110"
+        },
+        {
+          "rank": 3,
+          "name": "Russia",
+          "value": "10,027"
+        },
+        {
+          "rank": 4,
+          "name": "Canada",
+          "value": "5,059"
+        },
+        {
+          "rank": 5,
+          "name": "China",
+          "value": "4,420"
+        },
+        {
+          "rank": 6,
+          "name": "Iraq",
+          "value": "4,391"
+        },
+        {
+          "rank": 7,
+          "name": "Iran",
+          "value": "4,030"
+        },
+        {
+          "rank": 8,
+          "name": "United Arab Emirates",
+          "value": "4,010"
+        },
+        {
+          "rank": 9,
+          "name": "Brazil",
+          "value": "3,953"
+        },
+        {
+          "rank": 10,
+          "name": "Kuwait",
+          "value": "2,660"
+        }
       ],
-      "close": [
-        { "rank": 11, "name": "Norway" },
-        { "rank": 12, "name": "Mexico" }
+      "rest": [
+        {
+          "rank": 11,
+          "name": "Norway",
+          "value": "1,994"
+        },
+        {
+          "rank": 12,
+          "name": "Mexico",
+          "value": "1,745"
+        },
+        {
+          "rank": 13,
+          "name": "Nigeria",
+          "value": "1,548"
+        },
+        {
+          "rank": 14,
+          "name": "Libya",
+          "value": "1,398"
+        },
+        {
+          "rank": 15,
+          "name": "Kazakhstan",
+          "value": "1,280"
+        },
+        {
+          "rank": 16,
+          "name": "Qatar",
+          "value": "1,275"
+        },
+        {
+          "rank": 17,
+          "name": "Algeria",
+          "value": "1,170"
+        },
+        {
+          "rank": 18,
+          "name": "Oman",
+          "value": "1,024"
+        },
+        {
+          "rank": 19,
+          "name": "Angola",
+          "value": "954"
+        },
+        {
+          "rank": 20,
+          "name": "Guyana",
+          "value": "895"
+        },
+        {
+          "rank": 21,
+          "name": "Argentina",
+          "value": "873"
+        },
+        {
+          "rank": 22,
+          "name": "Venezuela",
+          "value": "805"
+        },
+        {
+          "rank": 23,
+          "name": "Colombia",
+          "value": "746"
+        },
+        {
+          "rank": 24,
+          "name": "United Kingdom",
+          "value": "565"
+        },
+        {
+          "rank": 25,
+          "name": "India",
+          "value": "564"
+        },
+        {
+          "rank": 26,
+          "name": "Azerbaijan",
+          "value": "545"
+        },
+        {
+          "rank": 27,
+          "name": "Malaysia",
+          "value": "533"
+        },
+        {
+          "rank": 28,
+          "name": "Indonesia",
+          "value": "506"
+        },
+        {
+          "rank": 29,
+          "name": "Egypt",
+          "value": "496"
+        },
+        {
+          "rank": 30,
+          "name": "Ecuador",
+          "value": "456"
+        },
+        {
+          "rank": 31,
+          "name": "Republic of the Congo",
+          "value": "243"
+        },
+        {
+          "rank": 32,
+          "name": "Australia",
+          "value": "241"
+        },
+        {
+          "rank": 33,
+          "name": "Gabon",
+          "value": "240"
+        },
+        {
+          "rank": 34,
+          "name": "Turkmenistan",
+          "value": "191"
+        },
+        {
+          "rank": 35,
+          "name": "Ghana",
+          "value": "178"
+        },
+        {
+          "rank": 36,
+          "name": "Thailand",
+          "value": "176"
+        },
+        {
+          "rank": 37,
+          "name": "Vietnam",
+          "value": "175"
+        },
+        {
+          "rank": 38,
+          "name": "Chad",
+          "value": "124"
+        },
+        {
+          "rank": 39,
+          "name": "Turkey",
+          "value": "118"
+        },
+        {
+          "rank": 40,
+          "name": "Brunei",
+          "value": "108"
+        },
+        {
+          "rank": 41,
+          "name": "Niger",
+          "value": "107"
+        },
+        {
+          "rank": 42,
+          "name": "South Sudan",
+          "value": "100"
+        },
+        {
+          "rank": 43,
+          "name": "Senegal",
+          "value": "98"
+        },
+        {
+          "rank": 44,
+          "name": "Syria",
+          "value": "95"
+        },
+        {
+          "rank": 45,
+          "name": "Italy",
+          "value": "90"
+        },
+        {
+          "rank": 46,
+          "name": "Equatorial Guinea",
+          "value": "79"
+        },
+        {
+          "rank": 47,
+          "name": "Denmark",
+          "value": "73"
+        },
+        {
+          "rank": 48,
+          "name": "Ivory Coast",
+          "value": "67"
+        },
+        {
+          "rank": 49,
+          "name": "Bahrain",
+          "value": "66"
+        },
+        {
+          "rank": 50,
+          "name": "Cameroon",
+          "value": "57"
+        },
+        {
+          "rank": 51,
+          "name": "Pakistan",
+          "value": "54"
+        },
+        {
+          "rank": 52,
+          "name": "Trinidad and Tobago",
+          "value": "51"
+        },
+        {
+          "rank": 53,
+          "name": "Romania",
+          "value": "50"
+        },
+        {
+          "rank": 54,
+          "name": "Peru",
+          "value": "38"
+        },
+        {
+          "rank": 55,
+          "name": "Germany",
+          "value": "32"
+        },
+        {
+          "rank": 56,
+          "name": "Papua New Guinea",
+          "value": "31"
+        },
+        {
+          "rank": 57,
+          "name": "Sudan",
+          "value": "30"
+        },
+        {
+          "rank": 58,
+          "name": "Uzbekistan",
+          "value": "29"
+        },
+        {
+          "rank": 59,
+          "name": "Belarus",
+          "value": "25"
+        },
+        {
+          "rank": 59,
+          "name": "Tunisia",
+          "value": "25"
+        },
+        {
+          "rank": 61,
+          "name": "Cuba",
+          "value": "24"
+        },
+        {
+          "rank": 61,
+          "name": "Hungary",
+          "value": "24"
+        },
+        {
+          "rank": 63,
+          "name": "Netherlands",
+          "value": "21"
+        },
+        {
+          "rank": 64,
+          "name": "Bolivia",
+          "value": "18"
+        },
+        {
+          "rank": 65,
+          "name": "Israel",
+          "value": "15"
+        },
+        {
+          "rank": 65,
+          "name": "Poland",
+          "value": "15"
+        },
+        {
+          "rank": 65,
+          "name": "Yemen",
+          "value": "15"
+        },
+        {
+          "rank": 68,
+          "name": "DR Congo",
+          "value": "14"
+        },
+        {
+          "rank": 69,
+          "name": "Mongolia",
+          "value": "12"
+        },
+        {
+          "rank": 69,
+          "name": "Albania",
+          "value": "12"
+        },
+        {
+          "rank": 69,
+          "name": "Suriname",
+          "value": "12"
+        },
+        {
+          "rank": 72,
+          "name": "Serbia",
+          "value": "11"
+        },
+        {
+          "rank": 73,
+          "name": "France",
+          "value": "10"
+        },
+        {
+          "rank": 74,
+          "name": "Croatia",
+          "value": "9"
+        },
+        {
+          "rank": 75,
+          "name": "Austria",
+          "value": "8"
+        },
+        {
+          "rank": 76,
+          "name": "Myanmar",
+          "value": "6"
+        },
+        {
+          "rank": 76,
+          "name": "New Zealand",
+          "value": "6"
+        },
+        {
+          "rank": 78,
+          "name": "Guatemala",
+          "value": "5"
+        },
+        {
+          "rank": 78,
+          "name": "Kyrgyzstan",
+          "value": "5"
+        },
+        {
+          "rank": 80,
+          "name": "Bangladesh",
+          "value": "3"
+        },
+        {
+          "rank": 80,
+          "name": "Japan",
+          "value": "3"
+        },
+        {
+          "rank": 82,
+          "name": "Chile",
+          "value": "2"
+        },
+        {
+          "rank": 82,
+          "name": "Greece",
+          "value": "2"
+        },
+        {
+          "rank": 82,
+          "name": "East Timor",
+          "value": "2"
+        },
+        {
+          "rank": 85,
+          "name": "Barbados",
+          "value": "1"
+        },
+        {
+          "rank": 85,
+          "name": "Bulgaria",
+          "value": "1"
+        },
+        {
+          "rank": 85,
+          "name": "Czechia",
+          "value": "1"
+        },
+        {
+          "rank": 88,
+          "name": "Belize",
+          "value": "0.8"
+        },
+        {
+          "rank": 89,
+          "name": "Lithuania",
+          "value": "0.7"
+        },
+        {
+          "rank": 90,
+          "name": "Philippines",
+          "value": "0.5"
+        },
+        {
+          "rank": 91,
+          "name": "South Africa",
+          "value": "0.4"
+        },
+        {
+          "rank": 92,
+          "name": "Tajikistan",
+          "value": "0.3"
+        },
+        {
+          "rank": 93,
+          "name": "Georgia",
+          "value": "0.2"
+        },
+        {
+          "rank": 93,
+          "name": "Taiwan",
+          "value": "0.2"
+        },
+        {
+          "rank": 95,
+          "name": "Jordan",
+          "value": "under 0.1"
+        },
+        {
+          "rank": 95,
+          "name": "Morocco",
+          "value": "under 0.1"
+        },
+        {
+          "rank": 95,
+          "name": "Slovakia",
+          "value": "under 0.1"
+        },
+        {
+          "rank": 95,
+          "name": "Spain",
+          "value": "under 0.1"
+        },
+        {
+          "rank": 99,
+          "name": "Bosnia and Herzegovina",
+          "value": "0"
+        },
+        {
+          "rank": 99,
+          "name": "Estonia",
+          "value": "0"
+        },
+        {
+          "rank": 99,
+          "name": "Ireland",
+          "value": "0"
+        },
+        {
+          "rank": 99,
+          "name": "South Korea",
+          "value": "0"
+        },
+        {
+          "rank": 99,
+          "name": "Ukraine",
+          "value": "0"
+        },
+        {
+          "rank": 99,
+          "name": "Zimbabwe",
+          "value": "0"
+        }
       ]
     },
     {
-      "date": "2026-11-01", "no": "005", "category": "History", "kind": "person",
+      "date": "2026-11-01",
+      "no": "005",
+      "category": "History",
+      "kind": "person",
       "title": "US presidents with the highest peak Gallup approval",
       "unit": "% approval at their peak",
       "asOf": "Gallup polling, 1938–2025",
-      "source": { "name": "Gallup presidential approval highs, via Wikipedia", "url": "https://en.wikipedia.org/wiki/United_States_presidential_approval_rating" },
+      "source": {
+        "name": "Gallup presidential approval highs, via Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/United_States_presidential_approval_rating"
+      },
       "answers": [
-        { "rank": 1, "name": "George W. Bush", "value": "90", "aliases": ["george bush jr", "bush jr", "george w bush", "dubya", "w bush", "gw bush"] },
-        { "rank": 2, "name": "George H. W. Bush", "value": "89", "aliases": ["george bush sr", "bush sr", "george hw bush", "hw bush", "bush senior", "george bush senior"] },
-        { "rank": 3, "name": "Harry Truman", "value": "87", "aliases": ["harry s truman"] },
-        { "rank": 4, "name": "Franklin D. Roosevelt", "value": "83", "aliases": ["fdr", "franklin roosevelt", "roosevelt"] },
-        { "rank": 5, "name": "John F. Kennedy", "value": "82", "aliases": ["jfk", "john kennedy"] },
-        { "rank": 6, "name": "Dwight D. Eisenhower", "value": "79", "aliases": ["ike", "dwight eisenhower"] },
-        { "rank": 6, "name": "Lyndon B. Johnson", "value": "79", "aliases": ["lbj", "lyndon johnson"] },
-        { "rank": 8, "name": "Jimmy Carter", "value": "75" },
-        { "rank": 9, "name": "Bill Clinton", "value": "73" },
-        { "rank": 10, "name": "Gerald Ford", "value": "71" }
+        {
+          "rank": 1,
+          "name": "George W. Bush",
+          "value": "90",
+          "aliases": [
+            "george bush jr",
+            "bush jr",
+            "george w bush",
+            "dubya",
+            "w bush",
+            "gw bush"
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "George H. W. Bush",
+          "value": "89",
+          "aliases": [
+            "george bush sr",
+            "bush sr",
+            "george hw bush",
+            "hw bush",
+            "bush senior",
+            "george bush senior"
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "Harry Truman",
+          "value": "87",
+          "aliases": [
+            "harry s truman"
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "Franklin D. Roosevelt",
+          "value": "83",
+          "aliases": [
+            "fdr",
+            "franklin roosevelt",
+            "roosevelt"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "John F. Kennedy",
+          "value": "82",
+          "aliases": [
+            "jfk",
+            "john kennedy"
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "Dwight D. Eisenhower",
+          "value": "79",
+          "aliases": [
+            "ike",
+            "dwight eisenhower"
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "Lyndon B. Johnson",
+          "value": "79",
+          "aliases": [
+            "lbj",
+            "lyndon johnson"
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "Jimmy Carter",
+          "value": "75"
+        },
+        {
+          "rank": 9,
+          "name": "Bill Clinton",
+          "value": "73"
+        },
+        {
+          "rank": 10,
+          "name": "Gerald Ford",
+          "value": "71"
+        }
       ],
       "close": [
-        { "rank": 11, "name": "Barack Obama", "value": "69" },
-        { "rank": 12, "name": "Ronald Reagan", "value": "68" },
-        { "rank": 13, "name": "Richard Nixon", "value": "67" }
+        {
+          "rank": 11,
+          "name": "Barack Obama",
+          "value": "69"
+        },
+        {
+          "rank": 12,
+          "name": "Ronald Reagan",
+          "value": "68"
+        },
+        {
+          "rank": 13,
+          "name": "Richard Nixon",
+          "value": "67"
+        }
       ],
       "free": [
-        { "match": ["george bush", "bush"], "note": "Which George Bush? Try George W. Bush or George H. W. Bush. No miss." },
-        { "match": ["trump", "donald trump"], "note": "Trump's Gallup peak was 49% (first term), outside the top 10.", "miss": true }
+        {
+          "match": [
+            "george bush",
+            "bush"
+          ],
+          "note": "Which George Bush? Try George W. Bush or George H. W. Bush. No miss."
+        },
+        {
+          "match": [
+            "trump",
+            "donald trump"
+          ],
+          "note": "Trump's Gallup peak was 49% (first term), outside the top 10.",
+          "miss": true
+        }
       ]
     },
     {
-      "date": "2026-11-02", "no": "006", "category": "Trade", "kind": "country",
+      "date": "2026-11-02",
+      "no": "006",
+      "category": "Trade",
+      "kind": "country",
       "title": "The world's 10 biggest coffee producers",
       "unit": "million 60 kg bags",
       "asOf": "2026/27 forecast",
-      "source": { "name": "USDA Foreign Agricultural Service, Coffee: World Markets and Trade (July 2026)", "url": "https://apps.fas.usda.gov/psdonline/circulars/coffee.pdf" },
+      "source": {
+        "name": "USDA Foreign Agricultural Service, Coffee: World Markets and Trade (July 2026)",
+        "url": "https://apps.fas.usda.gov/psdonline/circulars/coffee.pdf"
+      },
       "answers": [
-        { "rank": 1, "name": "Brazil", "value": "71.9" },
-        { "rank": 2, "name": "Vietnam", "value": "32.5" },
-        { "rank": 3, "name": "Colombia", "value": "13.4" },
-        { "rank": 4, "name": "Ethiopia", "value": "12.1" },
-        { "rank": 5, "name": "Indonesia", "value": "11.4" },
-        { "rank": 6, "name": "Uganda", "value": "7.2" },
-        { "rank": 7, "name": "India", "value": "6.1" },
-        { "rank": 8, "name": "Honduras", "value": "6.0" },
-        { "rank": 9, "name": "Peru", "value": "4.8" },
-        { "rank": 10, "name": "Mexico", "value": "4.1" }
+        {
+          "rank": 1,
+          "name": "Brazil",
+          "value": "71.9"
+        },
+        {
+          "rank": 2,
+          "name": "Vietnam",
+          "value": "32.5"
+        },
+        {
+          "rank": 3,
+          "name": "Colombia",
+          "value": "13.4"
+        },
+        {
+          "rank": 4,
+          "name": "Ethiopia",
+          "value": "12.1"
+        },
+        {
+          "rank": 5,
+          "name": "Indonesia",
+          "value": "11.4"
+        },
+        {
+          "rank": 6,
+          "name": "Uganda",
+          "value": "7.2"
+        },
+        {
+          "rank": 7,
+          "name": "India",
+          "value": "6.1"
+        },
+        {
+          "rank": 8,
+          "name": "Honduras",
+          "value": "6.0"
+        },
+        {
+          "rank": 9,
+          "name": "Peru",
+          "value": "4.8"
+        },
+        {
+          "rank": 10,
+          "name": "Mexico",
+          "value": "4.1"
+        }
       ],
-      "close": [
-        { "rank": 11, "name": "Guatemala", "value": "3.3" },
-        { "rank": 12, "name": "Nicaragua", "value": "2.4" }
+      "rest": [
+        {
+          "rank": 11,
+          "name": "Guatemala",
+          "value": "3.3"
+        },
+        {
+          "rank": 12,
+          "name": "Nicaragua",
+          "value": "2.4"
+        },
+        {
+          "rank": 13,
+          "name": "China",
+          "value": "1.9"
+        },
+        {
+          "rank": 14,
+          "name": "Tanzania",
+          "value": "1.6"
+        },
+        {
+          "rank": 15,
+          "name": "Malaysia",
+          "value": "1.5"
+        },
+        {
+          "rank": 16,
+          "name": "Ivory Coast",
+          "value": "1.3"
+        },
+        {
+          "rank": 17,
+          "name": "Costa Rica",
+          "value": "1.2"
+        },
+        {
+          "rank": 18,
+          "name": "Kenya",
+          "value": "0.95"
+        },
+        {
+          "rank": 19,
+          "name": "Thailand",
+          "value": "0.9"
+        },
+        {
+          "rank": 20,
+          "name": "Papua New Guinea",
+          "value": "0.8"
+        },
+        {
+          "rank": 21,
+          "name": "El Salvador",
+          "value": "0.54"
+        },
+        {
+          "rank": 22,
+          "name": "Laos",
+          "value": "0.5"
+        },
+        {
+          "rank": 22,
+          "name": "Venezuela",
+          "value": "0.5"
+        },
+        {
+          "rank": 24,
+          "name": "Philippines",
+          "value": "0.47"
+        },
+        {
+          "rank": 25,
+          "name": "Ecuador",
+          "value": "0.35"
+        }
       ]
     },
     {
-      "date": "2026-11-03", "no": "007", "category": "Sport", "kind": "person",
+      "date": "2026-11-03",
+      "no": "007",
+      "category": "Sport",
+      "kind": "person",
       "title": "NBA all-time leading scorers",
       "unit": "regular-season points",
       "asOf": "27 October 2026",
-      "source": { "name": "Wikipedia, List of NBA career scoring leaders (27 Oct 2026)", "url": "https://en.wikipedia.org/wiki/List_of_NBA_career_scoring_leaders" },
+      "source": {
+        "name": "Wikipedia, List of NBA career scoring leaders (27 Oct 2026)",
+        "url": "https://en.wikipedia.org/wiki/List_of_NBA_career_scoring_leaders"
+      },
       "answers": [
-        { "rank": 1, "name": "LeBron James", "value": "43,489", "aliases": ["lebron", "king james"] },
-        { "rank": 2, "name": "Kareem Abdul-Jabbar", "value": "38,387", "aliases": ["kareem", "abdul jabbar", "jabbar", "lew alcindor"] },
-        { "rank": 3, "name": "Karl Malone", "value": "36,928" },
-        { "rank": 4, "name": "Kobe Bryant", "value": "33,643", "aliases": ["kobe"] },
-        { "rank": 5, "name": "Kevin Durant", "value": "32,691", "aliases": ["kd"] },
-        { "rank": 6, "name": "Michael Jordan", "value": "32,292", "aliases": ["mj"] },
-        { "rank": 7, "name": "Dirk Nowitzki", "value": "31,560", "aliases": ["dirk"] },
-        { "rank": 8, "name": "Wilt Chamberlain", "value": "31,419", "aliases": ["wilt"] },
-        { "rank": 9, "name": "James Harden", "value": "29,386" },
-        { "rank": 10, "name": "Shaquille O'Neal", "value": "28,596", "aliases": ["shaq", "shaquille oneal", "oneal"] }
+        {
+          "rank": 1,
+          "name": "LeBron James",
+          "value": "43,489",
+          "aliases": [
+            "lebron",
+            "king james"
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "Kareem Abdul-Jabbar",
+          "value": "38,387",
+          "aliases": [
+            "kareem",
+            "abdul jabbar",
+            "jabbar",
+            "lew alcindor"
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "Karl Malone",
+          "value": "36,928"
+        },
+        {
+          "rank": 4,
+          "name": "Kobe Bryant",
+          "value": "33,643",
+          "aliases": [
+            "kobe"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "Kevin Durant",
+          "value": "32,691",
+          "aliases": [
+            "kd"
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "Michael Jordan",
+          "value": "32,292",
+          "aliases": [
+            "mj"
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "Dirk Nowitzki",
+          "value": "31,560",
+          "aliases": [
+            "dirk"
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "Wilt Chamberlain",
+          "value": "31,419",
+          "aliases": [
+            "wilt"
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "James Harden",
+          "value": "29,386"
+        },
+        {
+          "rank": 10,
+          "name": "Shaquille O'Neal",
+          "value": "28,596",
+          "aliases": [
+            "shaq",
+            "shaquille oneal",
+            "oneal"
+          ]
+        }
       ],
       "close": [
-        { "rank": 11, "name": "Carmelo Anthony", "value": "28,289", "aliases": ["melo"] },
-        { "rank": 12, "name": "Moses Malone", "value": "27,409" },
-        { "rank": 13, "name": "Elvin Hayes", "value": "27,313" }
+        {
+          "rank": 11,
+          "name": "Carmelo Anthony",
+          "value": "28,289",
+          "aliases": [
+            "melo"
+          ]
+        },
+        {
+          "rank": 12,
+          "name": "Moses Malone",
+          "value": "27,409"
+        },
+        {
+          "rank": 13,
+          "name": "Elvin Hayes",
+          "value": "27,313"
+        }
       ]
     },
     {
-      "date": "2026-11-04", "no": "008", "category": "Geography", "kind": "country",
+      "date": "2026-11-04",
+      "no": "008",
+      "category": "Geography",
+      "kind": "country",
       "title": "The 10 most populous countries",
-      "unit": "million people",
-      "asOf": "2025 estimate",
-      "source": { "name": "UN World Population Prospects 2024", "url": "https://population.un.org/wpp/" },
+      "unit": "people",
+      "asOf": "UN estimate, 1 July 2023",
+      "source": {
+        "name": "UN World Population Prospects (2023 estimates), via Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/List_of_countries_and_dependencies_by_population_(United_Nations)"
+      },
       "answers": [
-        { "rank": 1, "name": "India", "value": "1,464" },
-        { "rank": 2, "name": "China", "value": "1,416" },
-        { "rank": 3, "name": "United States", "value": "347" },
-        { "rank": 4, "name": "Indonesia", "value": "286" },
-        { "rank": 5, "name": "Pakistan", "value": "255" },
-        { "rank": 6, "name": "Nigeria", "value": "238" },
-        { "rank": 7, "name": "Brazil", "value": "213" },
-        { "rank": 8, "name": "Bangladesh", "value": "176" },
-        { "rank": 9, "name": "Russia", "value": "144" },
-        { "rank": 10, "name": "Ethiopia", "value": "135" }
+        {
+          "rank": 1,
+          "name": "India",
+          "value": "1,438,069,596"
+        },
+        {
+          "rank": 2,
+          "name": "China",
+          "value": "1,422,584,933"
+        },
+        {
+          "rank": 3,
+          "name": "United States",
+          "value": "343,477,335"
+        },
+        {
+          "rank": 4,
+          "name": "Indonesia",
+          "value": "281,190,067"
+        },
+        {
+          "rank": 5,
+          "name": "Pakistan",
+          "value": "247,504,495"
+        },
+        {
+          "rank": 6,
+          "name": "Nigeria",
+          "value": "227,882,945"
+        },
+        {
+          "rank": 7,
+          "name": "Brazil",
+          "value": "211,140,729"
+        },
+        {
+          "rank": 8,
+          "name": "Bangladesh",
+          "value": "171,466,990"
+        },
+        {
+          "rank": 9,
+          "name": "Russia",
+          "value": "145,440,500"
+        },
+        {
+          "rank": 10,
+          "name": "Mexico",
+          "value": "129,739,759"
+        }
       ],
-      "close": [
-        { "rank": 11, "name": "Mexico", "value": "132" },
-        { "rank": 12, "name": "Japan", "value": "123" },
-        { "rank": 13, "name": "Egypt", "value": "118" }
+      "rest": [
+        {
+          "rank": 11,
+          "name": "Ethiopia",
+          "value": "128,691,692"
+        },
+        {
+          "rank": 12,
+          "name": "Japan",
+          "value": "124,370,947"
+        },
+        {
+          "rank": 13,
+          "name": "Philippines",
+          "value": "114,891,199"
+        },
+        {
+          "rank": 14,
+          "name": "Egypt",
+          "value": "114,535,772"
+        },
+        {
+          "rank": 15,
+          "name": "DR Congo",
+          "value": "105,789,731"
+        },
+        {
+          "rank": 16,
+          "name": "Vietnam",
+          "value": "100,352,192"
+        },
+        {
+          "rank": 17,
+          "name": "Iran",
+          "value": "90,608,707"
+        },
+        {
+          "rank": 18,
+          "name": "Turkey",
+          "value": "87,270,501"
+        },
+        {
+          "rank": 19,
+          "name": "Germany",
+          "value": "84,548,231"
+        },
+        {
+          "rank": 20,
+          "name": "Thailand",
+          "value": "71,702,435"
+        },
+        {
+          "rank": 21,
+          "name": "United Kingdom",
+          "value": "68,682,962"
+        },
+        {
+          "rank": 22,
+          "name": "Tanzania",
+          "value": "66,617,606"
+        },
+        {
+          "rank": 23,
+          "name": "France",
+          "value": "66,438,822"
+        },
+        {
+          "rank": 24,
+          "name": "South Africa",
+          "value": "63,212,384"
+        },
+        {
+          "rank": 25,
+          "name": "Italy",
+          "value": "59,499,453"
+        },
+        {
+          "rank": 26,
+          "name": "Kenya",
+          "value": "55,339,003"
+        },
+        {
+          "rank": 27,
+          "name": "Myanmar",
+          "value": "54,133,798"
+        },
+        {
+          "rank": 28,
+          "name": "Colombia",
+          "value": "52,321,152"
+        },
+        {
+          "rank": 29,
+          "name": "South Korea",
+          "value": "51,748,739"
+        },
+        {
+          "rank": 30,
+          "name": "Sudan",
+          "value": "50,042,791"
+        },
+        {
+          "rank": 31,
+          "name": "Uganda",
+          "value": "48,656,601"
+        },
+        {
+          "rank": 32,
+          "name": "Spain",
+          "value": "47,911,579"
+        },
+        {
+          "rank": 33,
+          "name": "Algeria",
+          "value": "46,164,219"
+        },
+        {
+          "rank": 34,
+          "name": "Argentina",
+          "value": "45,538,401"
+        },
+        {
+          "rank": 35,
+          "name": "Iraq",
+          "value": "45,074,049"
+        },
+        {
+          "rank": 36,
+          "name": "Afghanistan",
+          "value": "41,454,761"
+        },
+        {
+          "rank": 37,
+          "name": "Yemen",
+          "value": "39,390,799"
+        },
+        {
+          "rank": 38,
+          "name": "Canada",
+          "value": "39,299,105"
+        },
+        {
+          "rank": 39,
+          "name": "Poland",
+          "value": "38,762,844"
+        },
+        {
+          "rank": 40,
+          "name": "Ukraine",
+          "value": "37,732,836"
+        },
+        {
+          "rank": 41,
+          "name": "Morocco",
+          "value": "37,712,505"
+        },
+        {
+          "rank": 42,
+          "name": "Angola",
+          "value": "36,749,906"
+        },
+        {
+          "rank": 43,
+          "name": "Uzbekistan",
+          "value": "35,652,307"
+        },
+        {
+          "rank": 44,
+          "name": "Malaysia",
+          "value": "35,126,298"
+        },
+        {
+          "rank": 45,
+          "name": "Peru",
+          "value": "33,845,617"
+        },
+        {
+          "rank": 46,
+          "name": "Ghana",
+          "value": "33,787,914"
+        },
+        {
+          "rank": 47,
+          "name": "Mozambique",
+          "value": "33,635,160"
+        },
+        {
+          "rank": 48,
+          "name": "Saudi Arabia",
+          "value": "32,264,292"
+        },
+        {
+          "rank": 49,
+          "name": "Madagascar",
+          "value": "31,195,932"
+        },
+        {
+          "rank": 50,
+          "name": "Ivory Coast",
+          "value": "31,165,654"
+        },
+        {
+          "rank": 51,
+          "name": "Nepal",
+          "value": "29,964,614"
+        },
+        {
+          "rank": 52,
+          "name": "Cameroon",
+          "value": "28,372,687"
+        },
+        {
+          "rank": 53,
+          "name": "Venezuela",
+          "value": "28,300,854"
+        },
+        {
+          "rank": 54,
+          "name": "Australia",
+          "value": "26,451,124"
+        },
+        {
+          "rank": 55,
+          "name": "North Korea",
+          "value": "26,418,204"
+        },
+        {
+          "rank": 56,
+          "name": "Niger",
+          "value": "26,159,867"
+        },
+        {
+          "rank": 57,
+          "name": "Mali",
+          "value": "23,769,127"
+        },
+        {
+          "rank": 58,
+          "name": "Syria",
+          "value": "23,594,623"
+        },
+        {
+          "rank": 59,
+          "name": "Taiwan",
+          "value": "23,317,145"
+        },
+        {
+          "rank": 60,
+          "name": "Burkina Faso",
+          "value": "23,025,776"
+        },
+        {
+          "rank": 61,
+          "name": "Sri Lanka",
+          "value": "22,971,617"
+        },
+        {
+          "rank": 62,
+          "name": "Malawi",
+          "value": "21,104,482"
+        },
+        {
+          "rank": 63,
+          "name": "Zambia",
+          "value": "20,723,965"
+        },
+        {
+          "rank": 64,
+          "name": "Kazakhstan",
+          "value": "20,330,104"
+        },
+        {
+          "rank": 65,
+          "name": "Chile",
+          "value": "19,658,835"
+        },
+        {
+          "rank": 66,
+          "name": "Chad",
+          "value": "19,319,064"
+        },
+        {
+          "rank": 67,
+          "name": "Romania",
+          "value": "19,118,479"
+        },
+        {
+          "rank": 68,
+          "name": "Somalia",
+          "value": "18,358,615"
+        },
+        {
+          "rank": 69,
+          "name": "Guatemala",
+          "value": "18,124,838"
+        },
+        {
+          "rank": 70,
+          "name": "Netherlands",
+          "value": "18,092,524"
+        },
+        {
+          "rank": 71,
+          "name": "Senegal",
+          "value": "18,077,573"
+        },
+        {
+          "rank": 72,
+          "name": "Ecuador",
+          "value": "17,980,083"
+        },
+        {
+          "rank": 73,
+          "name": "Cambodia",
+          "value": "17,423,880"
+        },
+        {
+          "rank": 74,
+          "name": "Zimbabwe",
+          "value": "16,340,822"
+        },
+        {
+          "rank": 75,
+          "name": "Guinea",
+          "value": "14,405,465"
+        },
+        {
+          "rank": 76,
+          "name": "Benin",
+          "value": "14,111,034"
+        },
+        {
+          "rank": 77,
+          "name": "Rwanda",
+          "value": "13,954,471"
+        },
+        {
+          "rank": 78,
+          "name": "Burundi",
+          "value": "13,689,450"
+        },
+        {
+          "rank": 79,
+          "name": "Bolivia",
+          "value": "12,244,159"
+        },
+        {
+          "rank": 80,
+          "name": "Tunisia",
+          "value": "12,200,431"
+        },
+        {
+          "rank": 81,
+          "name": "Belgium",
+          "value": "11,712,893"
+        },
+        {
+          "rank": 82,
+          "name": "Haiti",
+          "value": "11,637,398"
+        },
+        {
+          "rank": 83,
+          "name": "South Sudan",
+          "value": "11,483,374"
+        },
+        {
+          "rank": 84,
+          "name": "Jordan",
+          "value": "11,439,213"
+        },
+        {
+          "rank": 85,
+          "name": "Dominican Republic",
+          "value": "11,331,265"
+        },
+        {
+          "rank": 86,
+          "name": "Cuba",
+          "value": "11,019,931"
+        },
+        {
+          "rank": 87,
+          "name": "Czechia",
+          "value": "10,809,716"
+        },
+        {
+          "rank": 88,
+          "name": "Honduras",
+          "value": "10,644,851"
+        },
+        {
+          "rank": 89,
+          "name": "United Arab Emirates",
+          "value": "10,642,081"
+        },
+        {
+          "rank": 90,
+          "name": "Sweden",
+          "value": "10,551,494"
+        },
+        {
+          "rank": 91,
+          "name": "Portugal",
+          "value": "10,430,738"
+        },
+        {
+          "rank": 92,
+          "name": "Tajikistan",
+          "value": "10,389,799"
+        },
+        {
+          "rank": 93,
+          "name": "Papua New Guinea",
+          "value": "10,389,635"
+        },
+        {
+          "rank": 94,
+          "name": "Azerbaijan",
+          "value": "10,318,207"
+        },
+        {
+          "rank": 95,
+          "name": "Greece",
+          "value": "10,242,908"
+        },
+        {
+          "rank": 96,
+          "name": "Hungary",
+          "value": "9,686,463"
+        },
+        {
+          "rank": 97,
+          "name": "Togo",
+          "value": "9,304,337"
+        },
+        {
+          "rank": 98,
+          "name": "Israel",
+          "value": "9,256,314"
+        },
+        {
+          "rank": 99,
+          "name": "Austria",
+          "value": "9,130,429"
+        },
+        {
+          "rank": 100,
+          "name": "Belarus",
+          "value": "9,115,680"
+        },
+        {
+          "rank": 101,
+          "name": "Switzerland",
+          "value": "8,870,561"
+        },
+        {
+          "rank": 102,
+          "name": "Sierra Leone",
+          "value": "8,460,512"
+        },
+        {
+          "rank": 103,
+          "name": "Laos",
+          "value": "7,664,993"
+        },
+        {
+          "rank": 104,
+          "name": "Turkmenistan",
+          "value": "7,364,438"
+        },
+        {
+          "rank": 105,
+          "name": "Libya",
+          "value": "7,305,659"
+        },
+        {
+          "rank": 106,
+          "name": "Kyrgyzstan",
+          "value": "7,073,516"
+        },
+        {
+          "rank": 107,
+          "name": "Paraguay",
+          "value": "6,844,146"
+        },
+        {
+          "rank": 108,
+          "name": "Nicaragua",
+          "value": "6,823,613"
+        },
+        {
+          "rank": 109,
+          "name": "Bulgaria",
+          "value": "6,795,803"
+        },
+        {
+          "rank": 110,
+          "name": "Serbia",
+          "value": "6,773,201"
+        },
+        {
+          "rank": 111,
+          "name": "El Salvador",
+          "value": "6,309,624"
+        },
+        {
+          "rank": 112,
+          "name": "Republic of the Congo",
+          "value": "6,182,885"
+        },
+        {
+          "rank": 113,
+          "name": "Denmark",
+          "value": "5,948,136"
+        },
+        {
+          "rank": 114,
+          "name": "Singapore",
+          "value": "5,789,090"
+        },
+        {
+          "rank": 115,
+          "name": "Lebanon",
+          "value": "5,733,493"
+        },
+        {
+          "rank": 116,
+          "name": "Finland",
+          "value": "5,601,185"
+        },
+        {
+          "rank": 117,
+          "name": "Norway",
+          "value": "5,519,167"
+        },
+        {
+          "rank": 118,
+          "name": "Slovakia",
+          "value": "5,518,055"
+        },
+        {
+          "rank": 119,
+          "name": "Liberia",
+          "value": "5,493,031"
+        },
+        {
+          "rank": 120,
+          "name": "Palestine",
+          "value": "5,409,202"
+        },
+        {
+          "rank": 121,
+          "name": "Ireland",
+          "value": "5,196,630"
+        },
+        {
+          "rank": 122,
+          "name": "New Zealand",
+          "value": "5,172,836"
+        },
+        {
+          "rank": 123,
+          "name": "Central African Republic",
+          "value": "5,152,421"
+        },
+        {
+          "rank": 124,
+          "name": "Costa Rica",
+          "value": "5,105,525"
+        },
+        {
+          "rank": 125,
+          "name": "Oman",
+          "value": "5,049,269"
+        },
+        {
+          "rank": 126,
+          "name": "Mauritania",
+          "value": "5,022,441"
+        },
+        {
+          "rank": 127,
+          "name": "Kuwait",
+          "value": "4,838,782"
+        },
+        {
+          "rank": 128,
+          "name": "Panama",
+          "value": "4,458,759"
+        },
+        {
+          "rank": 129,
+          "name": "Croatia",
+          "value": "3,896,023"
+        },
+        {
+          "rank": 130,
+          "name": "Georgia",
+          "value": "3,807,492"
+        },
+        {
+          "rank": 131,
+          "name": "Eritrea",
+          "value": "3,470,390"
+        },
+        {
+          "rank": 132,
+          "name": "Mongolia",
+          "value": "3,431,932"
+        },
+        {
+          "rank": 133,
+          "name": "Uruguay",
+          "value": "3,388,081"
+        },
+        {
+          "rank": 134,
+          "name": "Bosnia and Herzegovina",
+          "value": "3,185,073"
+        },
+        {
+          "rank": 135,
+          "name": "Moldova",
+          "value": "3,067,070"
+        },
+        {
+          "rank": 136,
+          "name": "Qatar",
+          "value": "2,979,082"
+        },
+        {
+          "rank": 137,
+          "name": "Namibia",
+          "value": "2,963,095"
+        },
+        {
+          "rank": 138,
+          "name": "Armenia",
+          "value": "2,943,393"
+        },
+        {
+          "rank": 139,
+          "name": "Lithuania",
+          "value": "2,854,099"
+        },
+        {
+          "rank": 140,
+          "name": "Jamaica",
+          "value": "2,839,786"
+        },
+        {
+          "rank": 141,
+          "name": "Albania",
+          "value": "2,811,655"
+        },
+        {
+          "rank": 142,
+          "name": "Gambia",
+          "value": "2,697,845"
+        },
+        {
+          "rank": 143,
+          "name": "Gabon",
+          "value": "2,484,789"
+        },
+        {
+          "rank": 144,
+          "name": "Botswana",
+          "value": "2,480,244"
+        },
+        {
+          "rank": 145,
+          "name": "Lesotho",
+          "value": "2,311,472"
+        },
+        {
+          "rank": 146,
+          "name": "Guinea-Bissau",
+          "value": "2,153,339"
+        },
+        {
+          "rank": 147,
+          "name": "Slovenia",
+          "value": "2,118,396"
+        },
+        {
+          "rank": 148,
+          "name": "Latvia",
+          "value": "1,882,396"
+        },
+        {
+          "rank": 149,
+          "name": "Equatorial Guinea",
+          "value": "1,847,549"
+        },
+        {
+          "rank": 150,
+          "name": "North Macedonia",
+          "value": "1,831,802"
+        },
+        {
+          "rank": 151,
+          "name": "Kosovo",
+          "value": "1,700,031"
+        },
+        {
+          "rank": 152,
+          "name": "Bahrain",
+          "value": "1,569,666"
+        },
+        {
+          "rank": 153,
+          "name": "Trinidad and Tobago",
+          "value": "1,502,932"
+        },
+        {
+          "rank": 154,
+          "name": "East Timor",
+          "value": "1,384,286"
+        },
+        {
+          "rank": 155,
+          "name": "Estonia",
+          "value": "1,367,196"
+        },
+        {
+          "rank": 156,
+          "name": "Cyprus",
+          "value": "1,344,976"
+        },
+        {
+          "rank": 157,
+          "name": "Mauritius",
+          "value": "1,273,588"
+        },
+        {
+          "rank": 158,
+          "name": "Eswatini",
+          "value": "1,230,506"
+        },
+        {
+          "rank": 159,
+          "name": "Djibouti",
+          "value": "1,152,944"
+        },
+        {
+          "rank": 160,
+          "name": "Fiji",
+          "value": "924,145"
+        },
+        {
+          "rank": 161,
+          "name": "Comoros",
+          "value": "850,387"
+        },
+        {
+          "rank": 162,
+          "name": "Guyana",
+          "value": "826,353"
+        },
+        {
+          "rank": 163,
+          "name": "Solomon Islands",
+          "value": "800,005"
+        },
+        {
+          "rank": 164,
+          "name": "Bhutan",
+          "value": "786,385"
+        },
+        {
+          "rank": 165,
+          "name": "Luxembourg",
+          "value": "665,098"
+        },
+        {
+          "rank": 166,
+          "name": "Montenegro",
+          "value": "633,552"
+        },
+        {
+          "rank": 167,
+          "name": "Suriname",
+          "value": "628,886"
+        },
+        {
+          "rank": 168,
+          "name": "Malta",
+          "value": "532,956"
+        },
+        {
+          "rank": 169,
+          "name": "Maldives",
+          "value": "525,994"
+        },
+        {
+          "rank": 170,
+          "name": "Cape Verde",
+          "value": "522,331"
+        },
+        {
+          "rank": 171,
+          "name": "Brunei",
+          "value": "458,949"
+        },
+        {
+          "rank": 172,
+          "name": "Belize",
+          "value": "411,106"
+        },
+        {
+          "rank": 173,
+          "name": "Bahamas",
+          "value": "399,440"
+        },
+        {
+          "rank": 174,
+          "name": "Iceland",
+          "value": "387,558"
+        },
+        {
+          "rank": 175,
+          "name": "Vanuatu",
+          "value": "320,409"
+        },
+        {
+          "rank": 176,
+          "name": "Barbados",
+          "value": "282,336"
+        },
+        {
+          "rank": 177,
+          "name": "Sao Tome and Principe",
+          "value": "230,871"
+        },
+        {
+          "rank": 178,
+          "name": "Samoa",
+          "value": "216,663"
+        },
+        {
+          "rank": 179,
+          "name": "Saint Lucia",
+          "value": "179,285"
+        },
+        {
+          "rank": 180,
+          "name": "Kiribati",
+          "value": "132,530"
+        },
+        {
+          "rank": 181,
+          "name": "Seychelles",
+          "value": "127,951"
+        },
+        {
+          "rank": 182,
+          "name": "Grenada",
+          "value": "117,081"
+        },
+        {
+          "rank": 183,
+          "name": "Micronesia",
+          "value": "112,630"
+        },
+        {
+          "rank": 184,
+          "name": "Tonga",
+          "value": "104,597"
+        },
+        {
+          "rank": 185,
+          "name": "Saint Vincent and the Grenadines",
+          "value": "101,323"
+        },
+        {
+          "rank": 186,
+          "name": "Antigua and Barbuda",
+          "value": "93,316"
+        },
+        {
+          "rank": 187,
+          "name": "Andorra",
+          "value": "80,856"
+        },
+        {
+          "rank": 188,
+          "name": "Dominica",
+          "value": "66,510"
+        },
+        {
+          "rank": 189,
+          "name": "Saint Kitts and Nevis",
+          "value": "46,758"
+        },
+        {
+          "rank": 190,
+          "name": "Liechtenstein",
+          "value": "39,598"
+        },
+        {
+          "rank": 191,
+          "name": "Monaco",
+          "value": "38,956"
+        },
+        {
+          "rank": 192,
+          "name": "Marshall Islands",
+          "value": "38,827"
+        },
+        {
+          "rank": 193,
+          "name": "San Marino",
+          "value": "33,733"
+        },
+        {
+          "rank": 194,
+          "name": "Palau",
+          "value": "17,727"
+        },
+        {
+          "rank": 195,
+          "name": "Nauru",
+          "value": "11,875"
+        },
+        {
+          "rank": 196,
+          "name": "Tuvalu",
+          "value": "9,816"
+        },
+        {
+          "rank": 197,
+          "name": "Vatican City",
+          "value": "496"
+        }
       ]
     }
   ]
