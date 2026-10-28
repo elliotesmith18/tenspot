@@ -1,0 +1,205 @@
+{
+  "_readme": "One list per start date; the newest whose date has arrived (player's local time) is today's. kind 'country' turns on country spell-checking and suggestions. aliases are extra accepted spellings; for people, a unique surname is accepted automatically. close = ranks just outside the top 10 (still a miss, but the game says how close). free = guesses that get a note and don't cost a miss.",
+  "puzzles": [
+    {
+      "date": "2026-10-28", "no": "001", "category": "Geography", "kind": "country",
+      "title": "The 10 largest countries by total area",
+      "unit": "km²",
+      "source": { "name": "CIA World Factbook, total area (land + water)", "url": "https://www.cia.gov/the-world-factbook/field/area/country-comparison/" },
+      "answers": [
+        { "rank": 1, "name": "Russia", "value": "17,098,242" },
+        { "rank": 2, "name": "Canada", "value": "9,984,670" },
+        { "rank": 3, "name": "United States", "value": "9,833,517" },
+        { "rank": 4, "name": "China", "value": "9,596,960" },
+        { "rank": 5, "name": "Brazil", "value": "8,515,770" },
+        { "rank": 6, "name": "Australia", "value": "7,741,220" },
+        { "rank": 7, "name": "India", "value": "3,287,263" },
+        { "rank": 8, "name": "Argentina", "value": "2,780,400" },
+        { "rank": 9, "name": "Kazakhstan", "value": "2,724,900" },
+        { "rank": 10, "name": "Algeria", "value": "2,381,741" }
+      ],
+      "close": [
+        { "rank": 11, "name": "DR Congo", "value": "2,344,858" },
+        { "rank": 12, "name": "Saudi Arabia", "value": "2,149,690" },
+        { "rank": 13, "name": "Mexico", "value": "1,964,375" }
+      ],
+      "free": [
+        { "match": ["greenland"], "note": "Greenland is part of the Kingdom of Denmark, so it isn't counted as a country here. No miss." },
+        { "match": ["antarctica"], "note": "Antarctica isn't a country. No miss." }
+      ]
+    },
+    {
+      "date": "2026-10-29", "no": "002", "category": "Football", "kind": "person",
+      "title": "Premier League all-time top goalscorers",
+      "unit": "goals",
+      "asOf": "end of the 2025–26 season",
+      "source": { "name": "Premier League records, via Wikipedia (as of 24 May 2026)", "url": "https://en.wikipedia.org/wiki/Premier_League#Top_scorers" },
+      "answers": [
+        { "rank": 1, "name": "Alan Shearer", "value": "260" },
+        { "rank": 2, "name": "Harry Kane", "value": "213" },
+        { "rank": 3, "name": "Wayne Rooney", "value": "208" },
+        { "rank": 4, "name": "Mohamed Salah", "value": "193", "aliases": ["mo salah", "mohammed salah"] },
+        { "rank": 5, "name": "Andy Cole", "value": "187", "aliases": ["andrew cole"] },
+        { "rank": 6, "name": "Sergio Agüero", "value": "184", "aliases": ["kun aguero"] },
+        { "rank": 7, "name": "Frank Lampard", "value": "177" },
+        { "rank": 8, "name": "Thierry Henry", "value": "175" },
+        { "rank": 9, "name": "Robbie Fowler", "value": "163" },
+        { "rank": 10, "name": "Jermain Defoe", "value": "162" }
+      ],
+      "close": [
+        { "rank": 11, "name": "Michael Owen", "value": "150" },
+        { "rank": 12, "name": "Les Ferdinand", "value": "149" },
+        { "rank": 13, "name": "Teddy Sheringham", "value": "146" }
+      ]
+    },
+    {
+      "date": "2026-10-30", "no": "003", "category": "Pop culture", "kind": "film",
+      "title": "The 10 highest-grossing films of all time",
+      "unit": "worldwide box office",
+      "asOf": "late October 2026",
+      "source": { "name": "Wikipedia, List of highest-grossing films (week of 23 Oct 2026)", "url": "https://en.wikipedia.org/wiki/List_of_highest-grossing_films" },
+      "answers": [
+        { "rank": 1, "name": "Avengers: Endgame", "value": "$2.94B", "aliases": ["endgame", "avengers endgame", "avengers 4", "avengers"] },
+        { "rank": 2, "name": "Avatar", "value": "$2.92B", "aliases": ["avatar 1", "avatar 2009"] },
+        { "rank": 3, "name": "Spider-Man: Brand New Day", "value": "$2.52B", "aliases": ["brand new day", "spiderman brand new day", "spider man brand new day", "spider-man 4", "spiderman 4", "spider-man", "spiderman", "spider man"] },
+        { "rank": 4, "name": "Avatar: The Way of Water", "value": "$2.33B", "aliases": ["the way of water", "way of water", "avatar 2", "avatar way of water"] },
+        { "rank": 5, "name": "Titanic", "value": "$2.26B" },
+        { "rank": 6, "name": "Ne Zha 2", "value": "$2.22B", "aliases": ["nezha 2"] },
+        { "rank": 7, "name": "Star Wars: The Force Awakens", "value": "$2.07B", "aliases": ["the force awakens", "force awakens", "star wars 7", "star wars vii", "star wars episode vii", "star wars episode 7"] },
+        { "rank": 8, "name": "Avengers: Infinity War", "value": "$2.05B", "aliases": ["infinity war", "avengers infinity war", "avengers 3", "avengers"] },
+        { "rank": 9, "name": "Spider-Man: No Way Home", "value": "$1.92B", "aliases": ["no way home", "spiderman no way home", "spider man no way home", "spider-man", "spiderman", "spider man"] },
+        { "rank": 10, "name": "Zootopia 2", "value": "$1.87B", "aliases": ["zootropolis 2"] }
+      ],
+      "close": [
+        { "rank": 11, "name": "The Odyssey", "value": "$1.80B", "aliases": ["odyssey"] }
+      ],
+      "free": [
+        { "match": ["star wars"], "note": "Which Star Wars film? Add the subtitle or episode. No miss." },
+        { "match": ["zootopia", "zootropolis"], "note": "The first Zootopia or the sequel? Add the number. No miss." },
+        { "match": ["ne zha", "nezha"], "note": "The first Ne Zha or the sequel? Add the number. No miss." }
+      ]
+    },
+    {
+      "date": "2026-10-31", "no": "004", "category": "Trade", "kind": "country",
+      "title": "The world's 10 biggest oil producers",
+      "unit": "million barrels a day",
+      "asOf": "2023, all petroleum liquids",
+      "source": { "name": "U.S. Energy Information Administration (2023 data)", "url": "https://www.eia.gov/tools/faqs/faq.php?id=709&t=6" },
+      "answers": [
+        { "rank": 1, "name": "United States", "value": "21.91" },
+        { "rank": 2, "name": "Saudi Arabia", "value": "11.13" },
+        { "rank": 3, "name": "Russia", "value": "10.75" },
+        { "rank": 4, "name": "Canada", "value": "5.76" },
+        { "rank": 5, "name": "China", "value": "5.26" },
+        { "rank": 6, "name": "Iraq", "value": "4.42" },
+        { "rank": 7, "name": "Brazil", "value": "4.28" },
+        { "rank": 8, "name": "United Arab Emirates", "value": "4.16" },
+        { "rank": 9, "name": "Iran", "value": "3.99" },
+        { "rank": 10, "name": "Kuwait", "value": "2.91" }
+      ],
+      "close": [
+        { "rank": 11, "name": "Norway" },
+        { "rank": 12, "name": "Mexico" }
+      ]
+    },
+    {
+      "date": "2026-11-01", "no": "005", "category": "History", "kind": "person",
+      "title": "US presidents with the highest peak Gallup approval",
+      "unit": "% approval at their peak",
+      "asOf": "Gallup polling, 1938–2025",
+      "source": { "name": "Gallup presidential approval highs, via Wikipedia", "url": "https://en.wikipedia.org/wiki/United_States_presidential_approval_rating" },
+      "answers": [
+        { "rank": 1, "name": "George W. Bush", "value": "90", "aliases": ["george bush jr", "bush jr", "george w bush", "dubya", "w bush", "gw bush"] },
+        { "rank": 2, "name": "George H. W. Bush", "value": "89", "aliases": ["george bush sr", "bush sr", "george hw bush", "hw bush", "bush senior", "george bush senior"] },
+        { "rank": 3, "name": "Harry Truman", "value": "87", "aliases": ["harry s truman"] },
+        { "rank": 4, "name": "Franklin D. Roosevelt", "value": "83", "aliases": ["fdr", "franklin roosevelt", "roosevelt"] },
+        { "rank": 5, "name": "John F. Kennedy", "value": "82", "aliases": ["jfk", "john kennedy"] },
+        { "rank": 6, "name": "Dwight D. Eisenhower", "value": "79", "aliases": ["ike", "dwight eisenhower"] },
+        { "rank": 6, "name": "Lyndon B. Johnson", "value": "79", "aliases": ["lbj", "lyndon johnson"] },
+        { "rank": 8, "name": "Jimmy Carter", "value": "75" },
+        { "rank": 9, "name": "Bill Clinton", "value": "73" },
+        { "rank": 10, "name": "Gerald Ford", "value": "71" }
+      ],
+      "close": [
+        { "rank": 11, "name": "Barack Obama", "value": "69" },
+        { "rank": 12, "name": "Ronald Reagan", "value": "68" },
+        { "rank": 13, "name": "Richard Nixon", "value": "67" }
+      ],
+      "free": [
+        { "match": ["george bush", "bush"], "note": "Which George Bush? Try George W. Bush or George H. W. Bush. No miss." },
+        { "match": ["trump", "donald trump"], "note": "Trump's Gallup peak was 49% (first term), outside the top 10.", "miss": true }
+      ]
+    },
+    {
+      "date": "2026-11-02", "no": "006", "category": "Trade", "kind": "country",
+      "title": "The world's 10 biggest coffee producers",
+      "unit": "million 60 kg bags",
+      "asOf": "2026/27 forecast",
+      "source": { "name": "USDA Foreign Agricultural Service, Coffee: World Markets and Trade (July 2026)", "url": "https://apps.fas.usda.gov/psdonline/circulars/coffee.pdf" },
+      "answers": [
+        { "rank": 1, "name": "Brazil", "value": "71.9" },
+        { "rank": 2, "name": "Vietnam", "value": "32.5" },
+        { "rank": 3, "name": "Colombia", "value": "13.4" },
+        { "rank": 4, "name": "Ethiopia", "value": "12.1" },
+        { "rank": 5, "name": "Indonesia", "value": "11.4" },
+        { "rank": 6, "name": "Uganda", "value": "7.2" },
+        { "rank": 7, "name": "India", "value": "6.1" },
+        { "rank": 8, "name": "Honduras", "value": "6.0" },
+        { "rank": 9, "name": "Peru", "value": "4.8" },
+        { "rank": 10, "name": "Mexico", "value": "4.1" }
+      ],
+      "close": [
+        { "rank": 11, "name": "Guatemala", "value": "3.3" },
+        { "rank": 12, "name": "Nicaragua", "value": "2.4" }
+      ]
+    },
+    {
+      "date": "2026-11-03", "no": "007", "category": "Sport", "kind": "person",
+      "title": "NBA all-time leading scorers",
+      "unit": "regular-season points",
+      "asOf": "27 October 2026",
+      "source": { "name": "Wikipedia, List of NBA career scoring leaders (27 Oct 2026)", "url": "https://en.wikipedia.org/wiki/List_of_NBA_career_scoring_leaders" },
+      "answers": [
+        { "rank": 1, "name": "LeBron James", "value": "43,489", "aliases": ["lebron", "king james"] },
+        { "rank": 2, "name": "Kareem Abdul-Jabbar", "value": "38,387", "aliases": ["kareem", "abdul jabbar", "jabbar", "lew alcindor"] },
+        { "rank": 3, "name": "Karl Malone", "value": "36,928" },
+        { "rank": 4, "name": "Kobe Bryant", "value": "33,643", "aliases": ["kobe"] },
+        { "rank": 5, "name": "Kevin Durant", "value": "32,691", "aliases": ["kd"] },
+        { "rank": 6, "name": "Michael Jordan", "value": "32,292", "aliases": ["mj"] },
+        { "rank": 7, "name": "Dirk Nowitzki", "value": "31,560", "aliases": ["dirk"] },
+        { "rank": 8, "name": "Wilt Chamberlain", "value": "31,419", "aliases": ["wilt"] },
+        { "rank": 9, "name": "James Harden", "value": "29,386" },
+        { "rank": 10, "name": "Shaquille O'Neal", "value": "28,596", "aliases": ["shaq", "shaquille oneal", "oneal"] }
+      ],
+      "close": [
+        { "rank": 11, "name": "Carmelo Anthony", "value": "28,289", "aliases": ["melo"] },
+        { "rank": 12, "name": "Moses Malone", "value": "27,409" },
+        { "rank": 13, "name": "Elvin Hayes", "value": "27,313" }
+      ]
+    },
+    {
+      "date": "2026-11-04", "no": "008", "category": "Geography", "kind": "country",
+      "title": "The 10 most populous countries",
+      "unit": "million people",
+      "asOf": "2025 estimate",
+      "source": { "name": "UN World Population Prospects 2024", "url": "https://population.un.org/wpp/" },
+      "answers": [
+        { "rank": 1, "name": "India", "value": "1,464" },
+        { "rank": 2, "name": "China", "value": "1,416" },
+        { "rank": 3, "name": "United States", "value": "347" },
+        { "rank": 4, "name": "Indonesia", "value": "286" },
+        { "rank": 5, "name": "Pakistan", "value": "255" },
+        { "rank": 6, "name": "Nigeria", "value": "238" },
+        { "rank": 7, "name": "Brazil", "value": "213" },
+        { "rank": 8, "name": "Bangladesh", "value": "176" },
+        { "rank": 9, "name": "Russia", "value": "144" },
+        { "rank": 10, "name": "Ethiopia", "value": "135" }
+      ],
+      "close": [
+        { "rank": 11, "name": "Mexico", "value": "132" },
+        { "rank": 12, "name": "Japan", "value": "123" },
+        { "rank": 13, "name": "Egypt", "value": "118" }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,569 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ten Spot · a daily top-10 game</title>
+<meta name="description" content="One top-10 list a day. Name as many as you can before you run out of misses.">
+<meta property="og:title" content="Ten Spot">
+<meta property="og:description" content="One top-10 list a day. Name as many as you can before you run out of misses.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://tenspot.play2dgames.com/">
+<meta name="theme-color" content="#1b1030">
+<link rel="stylesheet" href="fonts.css">
+<style>
+/* Layout: one column. Header, the list's question, a 10-row LED scoreboard, then a guess bar pinned to the
+   bottom of the screen. The results sheet replaces the guess bar when the game ends. */
+:root {
+  color-scheme: dark;
+  --bg: #1b1030; --bg-2: #241540; --panel: #2c1a4d; --panel-2: #36215c; --line: #45306e; --line-2: #5d4590;
+  --amber: #ffb454; --amber-dim: #6b4a2a; --mint: #72e3a9; --mint-dark: #1f5a45; --red: #ff6b7f; --cyan: #8fe3f0;
+  --ink: #f7efe2; --ink-soft: #c4b8dc; --ink-faint: #8a7bad; --dark-ink: #160c26;
+  --drop: 4px 4px 0 #0c0618;
+  --font-px: "Silkscreen", ui-monospace, Menlo, monospace;
+  --font-head: "Pixelify Sans", ui-monospace, Menlo, monospace;
+  --font-num: "VT323", ui-monospace, Menlo, monospace;
+}
+* { box-sizing: border-box; }
+html, body { min-height: 100%; }
+body {
+  margin: 0; background: var(--bg); color: var(--ink);
+  font: 21px/1.2 var(--font-num); -webkit-font-smoothing: none; overflow-x: hidden;
+  background-image: repeating-linear-gradient(to bottom, rgba(0,0,0,.12) 0 1px, transparent 1px 3px), radial-gradient(ellipse at 50% 0%, #34195e 0%, transparent 65%);
+  background-attachment: fixed;
+}
+a { color: var(--cyan); }
+button { font: inherit; color: inherit; }
+.wrap { width: min(600px, calc(100% - 32px)); margin: 0 auto; padding: calc(14px + env(safe-area-inset-top, 0px)) 0 calc(150px + env(safe-area-inset-bottom, 0px)); }
+
+/* Header */
+.top { display: flex; align-items: center; gap: 10px; }
+.logo { margin: 0; font-family: var(--font-head); font-weight: 700; font-size: 30px; letter-spacing: .06em; line-height: 1; text-shadow: -2px 0 var(--red), 2px 0 var(--cyan), 0 3px 0 #0c0618; white-space: nowrap; }
+.logo b { color: var(--amber); font-weight: 700; }
+.meta { font-family: var(--font-num); font-size: 19px; color: var(--ink-faint); margin-right: auto; white-space: nowrap; }
+.icon-btn { width: 38px; height: 38px; display: grid; place-items: center; background: var(--panel); border: 2px solid var(--line-2); box-shadow: 3px 3px 0 #0c0618; cursor: pointer; font-family: var(--font-px); font-size: 14px; color: var(--ink-soft); }
+.icon-btn:hover { color: var(--amber); border-color: var(--amber); }
+.icon-btn:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0 #0c0618; }
+.icon-btn:focus-visible, .btn:focus-visible, .guess input:focus-visible { outline: 2px solid var(--cyan); outline-offset: 2px; }
+
+/* The question */
+.q { margin: 18px 0 12px; }
+.chip { display: inline-block; font-family: var(--font-px); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; background: var(--amber); color: var(--dark-ink); padding: 3px 7px; box-shadow: 2px 2px 0 #0c0618; }
+.q h2 { margin: 10px 0 4px; font-family: var(--font-head); font-weight: 700; font-size: clamp(24px, 6vw, 32px); line-height: 1.1; }
+.q .by { margin: 0; color: var(--ink-soft); font-size: 20px; }
+.status { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin: 12px 0 10px; }
+.count { font-family: var(--font-px); font-size: 12px; letter-spacing: .1em; color: var(--ink-soft); }
+.count b { font-family: var(--font-num); font-size: 28px; color: var(--mint); font-weight: 400; letter-spacing: 0; vertical-align: -3px; }
+.misses { display: flex; align-items: center; gap: 6px; }
+.misses .lbl { font-family: var(--font-px); font-size: 11px; letter-spacing: .1em; color: var(--ink-faint); margin-right: 2px; }
+.x { width: 22px; height: 22px; image-rendering: pixelated; }
+.x rect { fill: var(--line); }
+.x.on rect { fill: var(--red); }
+.x.on { animation: pop .3s steps(3); }
+@keyframes pop { 50% { transform: scale(1.35); } }
+
+/* Scoreboard */
+.board { list-style: none; margin: 0; padding: 8px; background: var(--dark-ink); border: 2px solid var(--line-2); box-shadow: var(--drop); display: grid; gap: 6px; }
+.row { display: grid; grid-template-columns: 44px 1fr auto; align-items: center; min-height: 46px; background: var(--panel); border: 2px solid var(--line); position: relative; }
+.rk { align-self: stretch; display: grid; place-items: center; font-family: var(--font-num); font-size: 28px; color: var(--amber); background: var(--bg-2); border-right: 2px solid var(--line); }
+.nm { padding: 4px 12px; font-size: 22px; line-height: 1.05; overflow-wrap: anywhere; }
+.val { padding: 0 12px; font-size: 22px; color: var(--ink-soft); white-space: nowrap; text-align: right; }
+.row .hidden { display: block; height: 12px; width: 70%; background: repeating-linear-gradient(90deg, var(--line) 0 6px, transparent 6px 10px); opacity: .7; }
+.row .clue { font-family: var(--font-num); letter-spacing: .12em; color: var(--amber); }
+.row.hit { background: var(--mint-dark); border-color: var(--mint); }
+.row.hit .rk { background: var(--mint); color: var(--dark-ink); border-color: var(--mint); }
+.row.hit .val { color: var(--ink); }
+.row.flip { animation: flip .45s steps(4); }
+@keyframes flip { 0% { transform: scaleY(1); } 40% { transform: scaleY(.1); } 100% { transform: scaleY(1); } }
+.row.revealed .nm, .row.revealed .val { color: var(--ink-faint); }
+.row.revealed .rk { color: var(--ink-faint); }
+
+/* Guess bar */
+.dock { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; padding: 8px 16px calc(12px + env(safe-area-inset-bottom, 0px)); background: var(--bg); border-top: 2px solid var(--line); box-shadow: 0 -8px 16px rgba(12,6,24,.6); }
+.dock-in { width: min(600px, 100%); margin: 0 auto; }
+.feedback { min-height: 26px; margin: 0 0 6px; font-size: 20px; text-align: center; color: var(--ink-soft); text-shadow: 0 2px 0 #0c0618; }
+.feedback.good { color: var(--mint); } .feedback.bad { color: var(--red); } .feedback.warn { color: var(--amber); }
+.guess { display: flex; gap: 8px; }
+.guess input { flex: 1; min-width: 0; height: 48px; padding: 0 12px; background: var(--dark-ink); color: var(--ink); border: 2px solid var(--amber); box-shadow: var(--drop); font: 24px var(--font-num); -webkit-font-smoothing: none; border-radius: 0; }
+.guess input::placeholder { color: var(--ink-faint); }
+.btn { height: 48px; padding: 0 16px; border: 2px solid var(--dark-ink); background: var(--amber); color: var(--dark-ink); font: 13px var(--font-px); letter-spacing: .08em; text-transform: uppercase; cursor: pointer; box-shadow: inset -3px -3px 0 rgba(0,0,0,.2), 3px 3px 0 #0c0618; white-space: nowrap; }
+.btn:active { transform: translate(2px, 2px); box-shadow: inset -3px -3px 0 rgba(0,0,0,.2), 1px 1px 0 #0c0618; }
+.btn:disabled { opacity: .45; cursor: default; transform: none; }
+.btn.ghost { background: var(--panel); color: var(--ink-soft); border-color: var(--line-2); box-shadow: 3px 3px 0 #0c0618; }
+.btn.small { height: 34px; padding: 0 10px; font-size: 11px; }
+.tools { display: flex; justify-content: space-between; gap: 8px; margin-top: 8px; }
+
+/* Results */
+.sheet { margin-top: 20px; background: var(--panel); border: 2px solid var(--amber); box-shadow: var(--drop); padding: 16px; }
+.eyebrow { font-family: var(--font-px); font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 6px; }
+.big { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; }
+.big .score { font-family: var(--font-num); font-size: 72px; line-height: .9; color: var(--mint); }
+.big .score small { font-size: 36px; color: var(--ink-faint); }
+.big .title { font-family: var(--font-head); font-weight: 700; font-size: 26px; }
+.sheet p { margin: 8px 0; color: var(--ink-soft); }
+.share-row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0 4px; }
+.next { font-size: 20px; color: var(--ink-soft); }
+.next b { font-weight: 400; color: var(--amber); }
+.dist { margin-top: 18px; padding-top: 14px; border-top: 2px dashed var(--line); }
+.dist-head { margin: 0 0 10px; font-size: 22px; color: var(--ink); }
+.dist-head b { color: var(--mint); font-weight: 400; }
+.dist-chart { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; height: 110px; align-items: end; }
+.dist-col { position: relative; height: 100%; display: flex; align-items: flex-end; }
+.dist-col i { display: block; width: 100%; background: var(--line-2); border-radius: 3px 3px 0 0; min-height: 0; }
+.dist-col.me i { background: var(--mint); }
+.dist-col .you { position: absolute; left: 50%; transform: translateX(-50%); font-family: var(--font-px); font-size: 9px; color: var(--mint); white-space: nowrap; }
+.dist-axis { display: grid; grid-template-columns: repeat(11, 1fr); gap: 4px; margin-top: 4px; font-size: 18px; color: var(--ink-faint); text-align: center; }
+.dist-msg { color: var(--ink-soft); }
+.source { margin-top: 14px; font-size: 18px; color: var(--ink-faint); }
+.tip { position: fixed; z-index: 40; pointer-events: none; background: var(--dark-ink); border: 2px solid var(--line-2); padding: 2px 8px; font-size: 18px; }
+
+/* Help modal */
+.modal { position: fixed; inset: 0; z-index: 50; display: grid; place-items: center; padding: 16px; background: rgba(8,4,18,.75); }
+.modal[hidden] { display: none; }
+.card { width: min(520px, 100%); max-height: calc(100vh - 32px); overflow: auto; background: var(--panel); border: 2px solid var(--amber); box-shadow: var(--drop); padding: 18px; }
+.card h3 { margin: 0 0 10px; font-family: var(--font-head); font-weight: 700; font-size: 26px; }
+.card ol { padding-left: 22px; margin: 8px 0; }
+.card li { margin: 6px 0; color: var(--ink-soft); }
+.card li b { color: var(--ink); font-weight: 400; }
+.site-links { display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 14px; padding-top: 12px; border-top: 2px dashed var(--line); font-family: var(--font-px); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.site-links a, .site-links button { color: var(--ink-soft); text-decoration: none; background: none; border: 0; padding: 0; font: inherit; letter-spacing: inherit; text-transform: inherit; cursor: pointer; }
+.site-links a:hover, .site-links button:hover { color: var(--amber); }
+.stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; text-align: center; margin: 6px 0 4px; }
+.stats-grid b { display: block; font-family: var(--font-num); font-weight: 400; font-size: 40px; line-height: 1; color: var(--amber); }
+.stats-grid span { font-family: var(--font-px); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-faint); }
+
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+@media (max-width: 420px) {
+  .logo { font-size: 24px; } .meta { font-size: 17px; }
+  .row { grid-template-columns: 38px 1fr auto; min-height: 42px; } .rk { font-size: 24px; }
+  .nm, .val { font-size: 20px; } .val { padding: 0 8px; }
+  .btn { padding: 0 12px; }
+}
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <h1 class="logo">TEN <b>SPOT</b></h1>
+    <span class="meta" id="meta"></span>
+    <button class="icon-btn" id="statsBtn" type="button" aria-label="Your stats" title="Your stats">▥</button>
+    <button class="icon-btn" id="helpBtn" type="button" aria-label="How to play" title="How to play">?</button>
+  </header>
+
+  <section class="q" aria-live="polite">
+    <span class="chip" id="cat"></span>
+    <h2 id="title">Loading today's list…</h2>
+    <p class="by" id="by"></p>
+  </section>
+
+  <div class="status">
+    <div class="count"><b id="found">0</b> / 10 FOUND</div>
+    <div class="misses" id="misses" aria-label="Misses"></div>
+  </div>
+
+  <ol class="board" id="board" aria-label="The top 10"></ol>
+  <div id="sheet"></div>
+</div>
+
+<div class="dock" id="dock">
+  <div class="dock-in">
+    <p class="feedback" id="feedback" role="status" aria-live="polite"></p>
+    <form class="guess" id="guessForm" autocomplete="off">
+      <label class="sr" for="guess">Your guess</label>
+      <input id="guess" type="text" placeholder="Type a guess…" enterkeyhint="go" autocapitalize="words" spellcheck="false">
+      <button class="btn" type="submit">Guess</button>
+    </form>
+    <div class="tools">
+      <button class="btn ghost small" id="clueBtn" type="button">Clue · 1 free</button>
+      <button class="btn ghost small" id="giveUp" type="button">Give up</button>
+    </div>
+  </div>
+</div>
+<datalist id="countryList"></datalist>
+
+<div class="modal" id="help" hidden role="dialog" aria-modal="true" aria-labelledby="helpTitle">
+  <div class="card">
+    <h3 id="helpTitle">How to play</h3>
+    <p style="margin:0;color:var(--ink-soft)">Every day there's one new top 10. Name as many entries as you can.</p>
+    <ol>
+      <li><b>Type a guess.</b> If it's on the list, it lands in its spot on the board.</li>
+      <li><b>You have 5 misses.</b> A wrong guess costs one. Small typos still count, and repeats or vague answers ("Bush", "Star Wars") are free.</li>
+      <li><b>Just outside?</b> If your guess is #11–13, you'll hear how close you were, but it still counts as a miss.</li>
+      <li><b>One free clue</b> shows the first letters of the lowest unfound answer.</li>
+      <li><b>1 point per answer</b>, so 10 is a perfect game. A new list arrives at midnight.</li>
+    </ol>
+    <button class="btn" type="button" id="helpClose" style="margin-top:6px">Let's play</button>
+    <nav class="site-links" aria-label="Site">
+      <a href="https://play2dgames.com/">More games</a>
+      <a href="https://play2dgames.com/privacy.html">Privacy</a>
+      <button type="button" data-consent-open>Cookie settings</button>
+    </nav>
+  </div>
+</div>
+
+<div class="modal" id="statsModal" hidden role="dialog" aria-modal="true" aria-labelledby="statsTitle">
+  <div class="card">
+    <h3 id="statsTitle">Your stats</h3>
+    <div class="stats-grid" id="statsGrid"></div>
+    <p style="color:var(--ink-faint);font-size:18px;margin:10px 0 12px">Saved on this device only.</p>
+    <button class="btn" type="button" id="statsClose">Close</button>
+  </div>
+</div>
+<div class="tip" id="tip" hidden></div>
+
+<script src="consent.js"></script>
+<script>
+"use strict";
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const MAX_MISSES = 5;
+
+/* ================= Puzzle data =================
+   puzzles.json holds one list per start date; the newest one whose date has arrived (local time) is today's. */
+let PUZZLE, PUZZLES = [];
+const localISO = (d = new Date()) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+function todayISO() {
+  // Testing only: ?date=YYYY-MM-DD works on a local server, never on the live site.
+  const q = new URLSearchParams(location.search).get("date");
+  if (q && /^\d{4}-\d{2}-\d{2}$/.test(q) && /^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return q;
+  return localISO();
+}
+function puzzleFor(iso) { return [...PUZZLES].reverse().find(p => p.date <= iso) || PUZZLES[0]; }
+function dateLabel(iso) { return new Date(iso + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" }); }
+
+/* ================= Countries =================
+   Every country (so a misspelt or made-up one doesn't cost a miss), with the other names people type for it. */
+const COUNTRIES = `Afghanistan|Albania|Algeria|Andorra|Angola|Antigua and Barbuda|Argentina|Armenia|Australia|Austria|Azerbaijan|Bahamas|Bahrain|Bangladesh|Barbados|Belarus|Belgium|Belize|Benin|Bhutan|Bolivia|Bosnia and Herzegovina=bosnia|Botswana|Brazil=brasil|Brunei|Bulgaria|Burkina Faso|Burundi|Cambodia|Cameroon|Canada|Cape Verde=cabo verde|Central African Republic=car|Chad|Chile|China=prc,peoples republic of china|Colombia|Comoros|Costa Rica|Croatia|Cuba|Cyprus|Czechia=czech republic|DR Congo=democratic republic of the congo,drc,congo kinshasa,zaire,congo|Denmark|Djibouti|Dominica|Dominican Republic|East Timor=timor leste|Ecuador|Egypt|El Salvador|Equatorial Guinea|Eritrea|Estonia|Eswatini=swaziland|Ethiopia|Fiji|Finland|France|Gabon|Gambia|Georgia|Germany|Ghana|Greece|Grenada|Guatemala|Guinea|Guinea-Bissau|Guyana|Haiti|Honduras|Hungary|Iceland|India|Indonesia|Iran=persia|Iraq|Ireland|Israel|Italy|Ivory Coast=cote divoire|Jamaica|Japan|Jordan|Kazakhstan|Kenya|Kiribati|Kosovo|Kuwait|Kyrgyzstan|Laos|Latvia|Lebanon|Lesotho|Liberia|Libya|Liechtenstein|Lithuania|Luxembourg|Madagascar|Malawi|Malaysia|Maldives|Mali|Malta|Marshall Islands|Mauritania|Mauritius|Mexico|Micronesia|Moldova|Monaco|Mongolia|Montenegro|Morocco|Mozambique|Myanmar=burma|Namibia|Nauru|Nepal|Netherlands=holland|New Zealand|Nicaragua|Niger|Nigeria|North Korea=dprk|North Macedonia=macedonia|Norway|Oman|Pakistan|Palau|Palestine|Panama|Papua New Guinea=png|Paraguay|Peru|Philippines|Poland|Portugal|Qatar|Republic of the Congo=congo brazzaville,congo|Romania|Russia=russian federation|Rwanda|Saint Kitts and Nevis|Saint Lucia|Saint Vincent and the Grenadines|Samoa|San Marino|Sao Tome and Principe|Saudi Arabia=saudi,ksa|Senegal|Serbia|Seychelles|Sierra Leone|Singapore|Slovakia|Slovenia|Solomon Islands|Somalia|South Africa|South Korea=korea|South Sudan|Spain|Sri Lanka|Sudan|Suriname|Sweden|Switzerland|Syria|Taiwan|Tajikistan|Tanzania|Thailand|Togo|Tonga|Trinidad and Tobago|Tunisia|Turkey=turkiye|Turkmenistan|Tuvalu|Uganda|Ukraine|United Arab Emirates=uae,emirates,the emirates|United Kingdom=uk,britain,great britain,england,scotland,wales|United States=usa,us,america,united states of america,the us,the usa,the states|Uruguay|Uzbekistan|Vanuatu|Vatican City=vatican,holy see|Venezuela|Vietnam=viet nam|Yemen|Zambia|Zimbabwe`
+  .split("|").map(s => { const [name, al] = s.split("="); return { name, aliases: al ? al.split(",") : [] }; });
+
+/* ================= Matching =================
+   Guesses and answers are compared after normalizing (no accents, case or punctuation). A guess counts if it
+   matches a name or alias exactly, or is a near miss in spelling. If it fits more than one entry it's too vague,
+   and the player is asked to be more specific instead of being charged a miss. */
+function norm(s) {
+  return String(s).normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase()
+    .replace(/&/g, " and ").replace(/['’`.]/g, "").replace(/[^a-z0-9]+/g, " ").trim().replace(/^the /, "");
+}
+function dist(a, b) {   // optimal string alignment distance (Levenshtein + swapped neighbours)
+  const m = a.length, n = b.length, d = Array.from({ length: m + 1 }, (_, i) => [i, ...Array(n).fill(0)]);
+  for (let j = 1; j <= n; j++) d[0][j] = j;
+  for (let i = 1; i <= m; i++) for (let j = 1; j <= n; j++) {
+    const c = a[i - 1] === b[j - 1] ? 0 : 1;
+    d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1, d[i - 1][j - 1] + c);
+    if (i > 1 && j > 1 && a[i - 1] === b[j - 2] && a[i - 2] === b[j - 1]) d[i][j] = Math.min(d[i][j], d[i - 2][j - 2] + 1);
+  }
+  return d[m][n];
+}
+const tolerance = len => len <= 4 ? 0 : len <= 7 ? 1 : 2;
+function keysFor(entry, kind) {
+  const full = norm(entry.name), keys = new Set([full, ...(entry.aliases || []).map(norm)]);
+  if (kind === "person") {
+    const parts = full.split(" ").filter(w => !/^[a-z]$/.test(w));   // drop middle initials
+    keys.add(parts.join(" "));
+    if (parts.length > 1 && parts[parts.length - 1].length >= 3) keys.add(parts[parts.length - 1]);   // surname
+  }
+  return [...keys].filter(Boolean);
+}
+// Returns the entries a guess points at: one is a match, several means "be more specific", none is a miss.
+function lookup(g, entries) {
+  const exact = entries.filter(e => e.keys.includes(g));
+  if (exact.length) {
+    const full = exact.filter(e => norm(e.name) === g);   // the full name always wins over a shared alias
+    return full.length === 1 ? full : exact;
+  }
+  let best = Infinity, hits = [];
+  for (const e of entries) {
+    let d = Infinity;
+    for (const k of e.keys) { if (k.length >= 4 && Math.abs(k.length - g.length) <= 2) { const x = dist(g, k); if (x <= tolerance(k.length) && x < d) d = x; } }
+    if (d < best) { best = d; hits = [e]; } else if (d === best && d < Infinity) hits.push(e);
+  }
+  return hits;
+}
+
+/* ================= State =================
+   Today's progress lives in localStorage, keyed to the list number, so a reload picks up where you left off. */
+let state, ENTRIES, WORLD;
+const SAVE_KEY = "tenspot-state", STATS_KEY = "tenspot-stats";
+function fresh() { return { no: PUZZLE.no, found: [], misses: [], tried: [], clue: null, done: false, gaveUp: false, submitted: false }; }
+function save() { try { localStorage.setItem(SAVE_KEY, JSON.stringify(state)); } catch (e) {} }
+function load() {
+  try { const s = JSON.parse(localStorage.getItem(SAVE_KEY)); if (s && s.no === PUZZLE.no) return s; } catch (e) {}
+  return fresh();
+}
+function readStats() { try { return JSON.parse(localStorage.getItem(STATS_KEY)) || {}; } catch (e) { return {}; } }
+function recordStats() {
+  const st = readStats(); if (st.lastNo === PUZZLE.no) return;
+  const sc = state.found.length;
+  st.played = (st.played || 0) + 1; st.total = (st.total || 0) + sc; st.best = Math.max(st.best || 0, sc);
+  st.perfect = (st.perfect || 0) + (sc === 10 ? 1 : 0);
+  const prev = PUZZLES[PUZZLES.findIndex(p => p.no === PUZZLE.no) - 1];
+  st.streak = prev && st.lastNo === prev.no ? (st.streak || 0) + 1 : 1;
+  st.lastNo = PUZZLE.no;
+  try { localStorage.setItem(STATS_KEY, JSON.stringify(st)); } catch (e) {}
+}
+
+/* ================= Rendering ================= */
+const xIcon = on => `<svg class="x${on ? " on" : ""}" viewBox="0 0 7 7" shape-rendering="crispEdges" aria-hidden="true"><rect x="0" y="0" width="2" height="2"/><rect x="5" y="0" width="2" height="2"/><rect x="1" y="1" width="2" height="2"/><rect x="4" y="1" width="2" height="2"/><rect x="2" y="2" width="3" height="3"/><rect x="1" y="4" width="2" height="2"/><rect x="4" y="4" width="2" height="2"/><rect x="0" y="5" width="2" height="2"/><rect x="5" y="5" width="2" height="2"/></svg>`;
+function rankLabel(i) {
+  const r = PUZZLE.answers[i].rank, tied = PUZZLE.answers.filter(a => a.rank === r).length > 1;
+  return r + (tied ? "=" : "");
+}
+function clueText(name) { return name.split(/\s+/).map(w => w[0] + "_".repeat(Math.max(0, w.length - 1))).join(" "); }
+function renderBoard(flipIdx) {
+  $("#board").innerHTML = PUZZLE.answers.map((a, i) => {
+    const hit = state.found.includes(i), show = hit || state.done;
+    const cls = hit ? " hit" : state.done ? " revealed" : "";
+    const nm = show ? esc(a.name) : state.clue === i ? `<span class="clue">${esc(clueText(a.name))}</span>` : `<span class="hidden"></span>`;
+    return `<li class="row${cls}${i === flipIdx ? " flip" : ""}" id="row${i}">
+      <span class="rk">${rankLabel(i)}</span><span class="nm">${nm}</span><span class="val">${show && a.value ? esc(a.value) : ""}</span></li>`;
+  }).join("");
+  $("#found").textContent = state.found.length;
+  $("#misses").innerHTML = `<span class="lbl">MISSES</span>` + Array.from({ length: MAX_MISSES }, (_, i) => xIcon(i < state.misses.length)).join("");
+  $("#misses").setAttribute("aria-label", `${state.misses.length} of ${MAX_MISSES} misses used`);
+  $("#clueBtn").disabled = state.clue !== null || state.done;
+  $("#clueBtn").textContent = state.clue !== null ? "Clue used" : "Clue · 1 free";
+}
+function say(text, tone) {
+  const f = $("#feedback"); f.textContent = text; f.className = "feedback" + (tone ? " " + tone : "");
+}
+
+/* ================= Guessing ================= */
+function guess(raw) {
+  const g = norm(raw);
+  if (!g || state.done) return;
+  if (state.tried.includes(g)) { say(`You already tried "${raw.trim()}".`, "warn"); return; }
+  const free = (PUZZLE.free || []).find(f => f.match.map(norm).includes(g));
+  if (free && !free.miss) { say(free.note, "warn"); return; }
+
+  let hits = lookup(g, ENTRIES);
+  if (PUZZLE.kind === "country") {
+    // Resolve to a real country first: unknown places and typos that fit nothing don't cost a miss.
+    const c = free ? [] : lookup(g, WORLD);
+    if (!free && !c.length) { say(`"${raw.trim()}" isn't a country I know. Check the spelling. No miss.`, "warn"); return; }
+    if (c.length > 1) { say(`"${raw.trim()}" could be ${c.map(e => e.name).join(" or ")}. Be more specific. No miss.`, "warn"); return; }
+    hits = c.length ? ENTRIES.filter(e => e.name === c[0].name) : [];
+  }
+  if (hits.length > 1) { say(`"${raw.trim()}" fits more than one name. Be more specific. No miss.`, "warn"); return; }
+
+  const e = hits[0];
+  if (e && e.answer !== undefined) {
+    if (state.found.includes(e.answer)) { say(`${e.name} is already on the board.`, "warn"); return; }
+    state.found.push(e.answer); state.tried.push(g);
+    say(`${e.name}, #${rankLabel(e.answer)}!`, "good");
+    renderBoard(e.answer);
+    $("#row" + e.answer)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if (state.found.length === PUZZLE.answers.length) finish();
+    save(); return;
+  }
+  state.tried.push(g);
+  if (e) { state.misses.push({ text: raw.trim(), close: e.rank }); say(`So close! ${e.name} is #${e.rank}, just outside the top 10.`, "bad"); }
+  else if (free) { state.misses.push({ text: raw.trim() }); say(free.note, "bad"); }
+  else { state.misses.push({ text: raw.trim() }); say(`${raw.trim()} isn't in the top 10.`, "bad"); }
+  renderBoard();
+  if (state.misses.length >= MAX_MISSES) finish();
+  save();
+}
+function useClue() {
+  if (state.clue !== null || state.done) return;
+  // The lowest-ranked answer still hidden: usually the hardest one.
+  for (let i = PUZZLE.answers.length - 1; i >= 0; i--) if (!state.found.includes(i)) { state.clue = i; break; }
+  save(); renderBoard();
+  say(`Clue: #${rankLabel(state.clue)} starts with ${clueText(PUZZLE.answers[state.clue].name)}.`, "warn");
+  $("#row" + state.clue)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+
+/* ================= End of game ================= */
+function finish(gaveUp) {
+  state.done = true; state.gaveUp = !!gaveUp; save();
+  recordStats(); renderBoard(); renderSheet();
+}
+function title(sc) {
+  return sc === 10 ? "Perfect Ten" : sc >= 8 ? "Sharpshooter" : sc >= 6 ? "Contender" : sc >= 4 ? "Halfway There" : sc >= 1 ? "Warming Up" : "Fresh Start";
+}
+function shareText() {
+  const sc = state.found.length;
+  const board = PUZZLE.answers.map((_, i) => state.found.includes(i) ? "🟩" : "⬛").join("");
+  const miss = "❌".repeat(state.misses.length) + "⬜".repeat(MAX_MISSES - state.misses.length);
+  return `Ten Spot No. ${PUZZLE.no}: ${sc}/10${state.clue !== null ? " 💡" : ""}\n${PUZZLE.title}\n${board}\nMisses ${miss}\nhttps://tenspot.play2dgames.com/`;
+}
+function renderSheet() {
+  $("#dock").hidden = true;
+  const sc = state.found.length, next = PUZZLES.find(p => p.date > todayISO());
+  $("#sheet").innerHTML = `<section class="sheet" aria-label="Your result">
+    <div class="eyebrow">No. ${esc(PUZZLE.no)} · ${state.gaveUp ? "You stopped at" : sc === 10 ? "Cleared the board" : "Out of misses"}</div>
+    <div class="big"><span class="score">${sc}<small>/10</small></span><span class="title">${title(sc)}</span></div>
+    <p>${state.misses.length} miss${state.misses.length === 1 ? "" : "es"}${state.clue !== null ? " · clue used" : ""}${state.misses.some(m => m.close) ? ` · so close with ${state.misses.filter(m => m.close).map(m => esc(m.text)).join(", ")}` : ""}</p>
+    <div class="share-row">
+      <button class="btn" id="shareBtn" type="button">Share result</button>
+      <span class="next" id="next">${next ? "" : "More lists coming soon."}</span>
+    </div>
+    <div class="dist" id="dist"></div>
+    <p class="source">Source: <a href="${esc(PUZZLE.source.url)}" target="_blank" rel="noopener">${esc(PUZZLE.source.name)}</a>${PUZZLE.unit ? ` · ranked by ${esc(PUZZLE.unit)}` : ""}</p>
+    <nav class="site-links" aria-label="Site"><a href="https://play2dgames.com/">More games</a><a href="https://play2dgames.com/privacy.html">Privacy</a><button type="button" data-consent-open>Cookie settings</button></nav>
+  </section>`;
+  $("#shareBtn").addEventListener("click", share);
+  if (next) tickNext();
+  loadDistribution(sc);
+  setTimeout(() => $("#sheet").scrollIntoView({ behavior: "smooth", block: "start" }), 350);
+}
+async function share() {
+  const text = shareText();
+  try { if (navigator.share && matchMedia("(pointer: coarse)").matches) { await navigator.share({ text }); return; } } catch (e) { if (e.name === "AbortError") return; }
+  try { await navigator.clipboard.writeText(text); $("#shareBtn").textContent = "Copied!"; }
+  catch (e) { prompt("Copy your result:", text); }
+  setTimeout(() => { const b = $("#shareBtn"); if (b) b.textContent = "Share result"; }, 1800);
+}
+let nextTimer;
+function tickNext() {
+  clearInterval(nextTimer);
+  const draw = () => {
+    const now = new Date(), mid = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+    const s = Math.max(0, Math.floor((mid - now) / 1000)), p = n => String(n).padStart(2, "0");
+    const el = $("#next"); if (el) el.innerHTML = `Next list in <b>${p(Math.floor(s / 3600))}:${p(Math.floor(s / 60) % 60)}:${p(s % 60)}</b>`;
+  };
+  draw(); nextTimer = setInterval(draw, 1000);
+}
+
+/* ================= Global scores (Supabase) =================
+   Each finished game posts one row (list number, anonymous player id, score 0–10). Raw rows aren't readable;
+   score_dist() returns only counts per score. Leave these blank and the results sheet says it isn't connected. */
+const SUPABASE_URL = "";
+const SUPABASE_KEY = "";   // the project's public "anon" key, meant to be used in browsers
+function playerId() {
+  try {
+    let id = localStorage.getItem("tenspot-player");
+    if (!id) { id = crypto.randomUUID(); localStorage.setItem("tenspot-player", id); }
+    return id;
+  } catch (e) { return null; }
+}
+function sb(path, body, prefer) {
+  return fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    method: "POST",
+    headers: { apikey: SUPABASE_KEY, Authorization: `Bearer ${SUPABASE_KEY}`, "Content-Type": "application/json", ...(prefer ? { Prefer: prefer } : {}) },
+    body: JSON.stringify(body)
+  }).then(r => {
+    if (!r.ok) throw Object.assign(new Error(r.status), { status: r.status });
+    return r.status === 201 || r.status === 204 ? null : r.json();
+  });
+}
+async function submitScore() {
+  if (!SUPABASE_URL || state.submitted) return;
+  const id = playerId(); if (!id) return;
+  // Plain insert: the table's unique (puzzle, player) key turns a repeat into a 409, which counts as already saved.
+  try { await sb("scores", { puzzle_no: PUZZLE.no, player_id: id, score: state.found.length }, "return=minimal"); state.submitted = true; }
+  catch (e) { if (e.status === 409) state.submitted = true; }
+  save();
+}
+async function loadDistribution(mine) {
+  const box = $("#dist"); if (!box) return;
+  const msg = t => { box.innerHTML = `<div class="eyebrow">Today's players</div><p class="dist-msg">${t}</p>`; };
+  if (!SUPABASE_URL) { msg("Global scores aren't connected yet. Once they are, you'll see how you compare with everyone who played today."); return; }
+  await submitScore();
+  let rows;
+  try { rows = await sb("rpc/score_dist", { p_no: PUZZLE.no }); } catch (e) { msg("Couldn't load today's scores. Try again later."); return; }
+  if (!$("#dist")) return;
+  renderDistribution(rows.map(r => ({ score: +r.score, n: +r.n })), mine);
+}
+function renderDistribution(rows, mine) {
+  const bins = Array.from({ length: 11 }, (_, i) => ({ s: i, n: 0 }));
+  let total = 0, below = 0, same = 0;
+  for (const { score: sc, n } of rows) {
+    if (sc < 0 || sc > 10) continue;
+    bins[sc].n += n; total += n; if (sc < mine) below += n; else if (sc === mine) same += n;
+  }
+  const others = total - 1;
+  // Percentile: players you beat, plus half of any ties (not counting yourself).
+  const pct = others > 0 ? Math.round(100 * (below + Math.max(0, same - 1) / 2) / others) : null;
+  const peak = Math.max(1, ...bins.map(b => b.n));
+  $("#dist").innerHTML = `<div class="eyebrow">Today's players · ${total.toLocaleString("en-US")}</div>
+    <p class="dist-head">${pct === null ? "You're the first to finish today." : `Better than <b>${pct}%</b> of today's players`}</p>
+    <div class="dist-chart" role="img" aria-label="Score distribution from 0 to 10. You scored ${mine}.">
+      ${bins.map(b => { const h = b.n ? Math.max(4, Math.round(b.n / peak * 100)) : 0; return `<div class="dist-col${b.s === mine ? " me" : ""}" data-tip="${b.s}/10: ${b.n} player${b.n === 1 ? "" : "s"}">
+        ${b.s === mine ? `<span class="you" style="bottom:calc(${h}% + 4px)">YOU</span>` : ""}<i style="height:${h}%"></i></div>`; }).join("")}
+    </div>
+    <div class="dist-axis">${bins.map(b => `<span>${b.s}</span>`).join("")}</div>`;
+  const tip = $("#tip");
+  $("#dist").querySelectorAll(".dist-col").forEach(c => {
+    c.addEventListener("pointerenter", () => { tip.hidden = false; tip.textContent = c.dataset.tip; });
+    c.addEventListener("pointermove", e => { tip.style.left = (e.clientX + 12) + "px"; tip.style.top = (e.clientY - 30) + "px"; });
+    c.addEventListener("pointerleave", () => { tip.hidden = true; });
+  });
+}
+
+/* ================= Modals ================= */
+function openModal(id) { $(id).hidden = false; $(id).querySelector(".btn")?.focus(); }
+function closeModal(id) { $(id).hidden = true; if (!state?.done) $("#guess").focus({ preventScroll: true }); }
+function showStats() {
+  const st = readStats();
+  $("#statsGrid").innerHTML = [["Played", st.played || 0], ["Average", st.played ? (st.total / st.played).toFixed(1) : "–"], ["Perfect", st.perfect || 0], ["Streak", st.streak || 0]]
+    .map(([k, v]) => `<div><b>${v}</b><span>${k}</span></div>`).join("");
+  openModal("#statsModal");
+}
+
+/* ================= Boot ================= */
+async function start() {
+  try { PUZZLES = (await fetch("puzzles.json", { cache: "no-cache" }).then(r => r.json())).puzzles; }
+  catch (e) { $("#title").textContent = "Couldn't load today's list. Check your connection and refresh."; return; }
+  PUZZLE = puzzleFor(todayISO());
+  ENTRIES = [
+    ...PUZZLE.answers.map((a, i) => ({ ...a, answer: i, keys: keysFor(a, PUZZLE.kind) })),
+    ...(PUZZLE.close || []).map(c => ({ ...c, keys: keysFor(c, PUZZLE.kind) }))
+  ];
+  if (PUZZLE.kind === "country") {
+    WORLD = COUNTRIES.map(c => ({ ...c, keys: keysFor(c, "country") }));
+    $("#countryList").innerHTML = COUNTRIES.map(c => `<option value="${esc(c.name)}">`).join("");
+    $("#guess").setAttribute("list", "countryList");
+    $("#guess").placeholder = "Type a country…";
+  }
+  state = load();
+  $("#meta").textContent = `No. ${PUZZLE.no} · ${dateLabel(PUZZLE.date)}`;
+  $("#cat").textContent = PUZZLE.category;
+  $("#title").textContent = PUZZLE.title;
+  $("#by").textContent = `Ranked by ${PUZZLE.unit}${PUZZLE.asOf ? ` · ${PUZZLE.asOf}` : ""}`;
+  renderBoard();
+  if (state.done) renderSheet();
+
+  $("#guessForm").addEventListener("submit", e => { e.preventDefault(); const v = $("#guess").value; $("#guess").value = ""; guess(v); });
+  $("#clueBtn").addEventListener("click", useClue);
+  $("#giveUp").addEventListener("click", () => {
+    if (state.done) return;
+    if (confirm(`Reveal the list and end today's game with ${state.found.length}/10?`)) finish(true);
+  });
+  $("#helpBtn").addEventListener("click", () => openModal("#help"));
+  $("#helpClose").addEventListener("click", () => { closeModal("#help"); try { localStorage.setItem("tenspot-seen-help", "1"); } catch (e) {} });
+  $("#statsBtn").addEventListener("click", showStats);
+  $("#statsClose").addEventListener("click", () => closeModal("#statsModal"));
+  document.querySelectorAll(".modal").forEach(m => m.addEventListener("click", e => { if (e.target === m) closeModal("#" + m.id); }));
+  document.addEventListener("keydown", e => { if (e.key === "Escape") document.querySelectorAll(".modal:not([hidden])").forEach(m => closeModal("#" + m.id)); });
+
+  let seen = false; try { seen = !!localStorage.getItem("tenspot-seen-help"); } catch (e) {}
+  if (!seen) openModal("#help"); else if (!state.done && matchMedia("(pointer: fine)").matches) $("#guess").focus({ preventScroll: true });
+  watchMidnight();
+}
+
+/* ================= Midnight rollover =================
+   At local midnight (or when a sleeping tab wakes on a new day) a new list may be out. Swap straight to it if
+   the player hasn't started or has finished; otherwise offer it without interrupting their game. */
+function watchMidnight() {
+  const check = async () => {
+    try { PUZZLES = (await fetch("puzzles.json", { cache: "no-cache" }).then(r => r.json())).puzzles; } catch (e) {}
+    const next = puzzleFor(todayISO());
+    if (next.no === PUZZLE.no) return;
+    if (state.done || !state.tried.length) { location.reload(); return; }
+    say("A new list is out. Finish this one, or refresh to play it.", "warn");
+  };
+  const arm = () => {
+    const now = new Date(), mid = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 5);
+    setTimeout(() => { check(); arm(); }, mid - now);
+  };
+  arm();
+  let lastDay = localISO();
+  document.addEventListener("visibilitychange", () => {
+    if (document.visibilityState === "visible" && localISO() !== lastDay) { lastDay = localISO(); check(); }
+  });
+}
+start();
+</script>
+</body>
+</html>
