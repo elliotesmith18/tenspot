@@ -1,5 +1,5 @@
 {
-  "_readme": "One list per start date; the newest whose date has arrived (player's local time) is today's. kind 'country' turns on country spell-checking and suggestions. aliases are extra accepted spellings; for people, a unique surname is accepted automatically. close = ranks just outside the top 10 (people/film lists); rest = every ranked country beyond #10 (country lists), so misses show their real rank (still a miss, but the game says how close). free = guesses that get a note and don't cost a miss.",
+  "_readme": "One list per start date; the newest whose date has arrived (player's local time) is today's. kind 'country' turns on country spell-checking and suggestions. aliases are extra accepted spellings; for people, a unique surname is accepted automatically. rest = the source's ranking beyond #10, so a miss shows where it really ranks (#11-13 count as 'so close'); unranked = what to call a miss the source doesn't rank. suffix = what follows a value in a sentence. free = guesses that get a note and don't cost a miss.",
   "puzzles": [
     {
       "date": "2026-10-28",
@@ -1014,7 +1014,8 @@
           "name": "Vatican City",
           "value": "0.44"
         }
-      ]
+      ],
+      "suffix": " km²"
     },
     {
       "date": "2026-10-29",
@@ -1025,8 +1026,8 @@
       "unit": "goals",
       "asOf": "end of the 2025–26 season",
       "source": {
-        "name": "Premier League records, via Wikipedia (as of 24 May 2026)",
-        "url": "https://en.wikipedia.org/wiki/Premier_League#Top_scorers"
+        "name": "Wikipedia, footballers with 100 or more Premier League goals",
+        "url": "https://en.wikipedia.org/wiki/List_of_footballers_with_100_or_more_Premier_League_goals"
       },
       "answers": [
         {
@@ -1090,7 +1091,7 @@
           "value": "162"
         }
       ],
-      "close": [
+      "rest": [
         {
           "rank": 11,
           "name": "Michael Owen",
@@ -1105,8 +1106,156 @@
           "rank": 13,
           "name": "Teddy Sheringham",
           "value": "146"
+        },
+        {
+          "rank": 14,
+          "name": "Jamie Vardy",
+          "value": "145"
+        },
+        {
+          "rank": 15,
+          "name": "Robin van Persie",
+          "value": "144",
+          "aliases": [
+            "van persie",
+            "rvp"
+          ]
+        },
+        {
+          "rank": 16,
+          "name": "Jimmy Floyd Hasselbaink",
+          "value": "127",
+          "aliases": [
+            "jimmy floyd",
+            "hasselbaink"
+          ]
+        },
+        {
+          "rank": 16,
+          "name": "Son Heung-min",
+          "value": "127",
+          "aliases": [
+            "son",
+            "sonny",
+            "heung min son",
+            "son heung min"
+          ]
+        },
+        {
+          "rank": 18,
+          "name": "Robbie Keane",
+          "value": "126"
+        },
+        {
+          "rank": 19,
+          "name": "Nicolas Anelka",
+          "value": "125",
+          "aliases": [
+            "anelka"
+          ]
+        },
+        {
+          "rank": 20,
+          "name": "Dwight Yorke",
+          "value": "123"
+        },
+        {
+          "rank": 20,
+          "name": "Raheem Sterling",
+          "value": "123"
+        },
+        {
+          "rank": 22,
+          "name": "Erling Haaland",
+          "value": "121",
+          "aliases": [
+            "haaland",
+            "erling haland"
+          ]
+        },
+        {
+          "rank": 22,
+          "name": "Romelu Lukaku",
+          "value": "121",
+          "aliases": [
+            "lukaku"
+          ]
+        },
+        {
+          "rank": 24,
+          "name": "Steven Gerrard",
+          "value": "120"
+        },
+        {
+          "rank": 25,
+          "name": "Ian Wright",
+          "value": "113"
+        },
+        {
+          "rank": 26,
+          "name": "Sadio Mané",
+          "value": "111",
+          "aliases": [
+            "mane"
+          ]
+        },
+        {
+          "rank": 26,
+          "name": "Dion Dublin",
+          "value": "111"
+        },
+        {
+          "rank": 28,
+          "name": "Emile Heskey",
+          "value": "110"
+        },
+        {
+          "rank": 29,
+          "name": "Ryan Giggs",
+          "value": "109"
+        },
+        {
+          "rank": 30,
+          "name": "Peter Crouch",
+          "value": "108"
+        },
+        {
+          "rank": 31,
+          "name": "Paul Scholes",
+          "value": "107"
+        },
+        {
+          "rank": 32,
+          "name": "Darren Bent",
+          "value": "106"
+        },
+        {
+          "rank": 33,
+          "name": "Didier Drogba",
+          "value": "104"
+        },
+        {
+          "rank": 34,
+          "name": "Cristiano Ronaldo",
+          "value": "103",
+          "aliases": [
+            "ronaldo",
+            "cristiano",
+            "cr7"
+          ]
+        },
+        {
+          "rank": 35,
+          "name": "Matt Le Tissier",
+          "value": "100",
+          "aliases": [
+            "le tissier",
+            "le tiss"
+          ]
         }
-      ]
+      ],
+      "suffix": " goals",
+      "unranked": "under 100 goals"
     },
     {
       "date": "2026-10-30",
@@ -1226,16 +1375,6 @@
           ]
         }
       ],
-      "close": [
-        {
-          "rank": 11,
-          "name": "The Odyssey",
-          "value": "$1.80B",
-          "aliases": [
-            "odyssey"
-          ]
-        }
-      ],
       "free": [
         {
           "match": [
@@ -1256,8 +1395,360 @@
             "nezha"
           ],
           "note": "The first Ne Zha or the sequel? Add the number. No miss."
+        },
+        {
+          "match": [
+            "harry potter"
+          ],
+          "note": "Which Harry Potter film? Add the subtitle. No miss."
+        },
+        {
+          "match": [
+            "fast and furious",
+            "fast furious",
+            "the fast and the furious"
+          ],
+          "note": "Which Fast & Furious film? Add the number or subtitle. No miss."
         }
-      ]
+      ],
+      "rest": [
+        {
+          "rank": 11,
+          "name": "The Odyssey",
+          "value": "$1.80B",
+          "aliases": [
+            "odyssey"
+          ]
+        },
+        {
+          "rank": 12,
+          "name": "Inside Out 2",
+          "value": "$1.70B",
+          "aliases": [
+            "inside out"
+          ]
+        },
+        {
+          "rank": 13,
+          "name": "Jurassic World",
+          "value": "$1.67B"
+        },
+        {
+          "rank": 14,
+          "name": "The Lion King",
+          "value": "$1.66B",
+          "aliases": [
+            "lion king",
+            "lion king 2019"
+          ]
+        },
+        {
+          "rank": 15,
+          "name": "The Avengers",
+          "value": "$1.52B",
+          "aliases": [
+            "avengers 1",
+            "avengers assemble",
+            "avengers"
+          ]
+        },
+        {
+          "rank": 16,
+          "name": "Furious 7",
+          "value": "$1.52B",
+          "aliases": [
+            "fast 7",
+            "fast and furious 7",
+            "fast furious 7"
+          ]
+        },
+        {
+          "rank": 17,
+          "name": "Top Gun: Maverick",
+          "value": "$1.50B",
+          "aliases": [
+            "top gun maverick",
+            "top gun 2",
+            "maverick",
+            "top gun"
+          ]
+        },
+        {
+          "rank": 18,
+          "name": "Avatar: Fire and Ash",
+          "value": "$1.49B",
+          "aliases": [
+            "fire and ash",
+            "avatar 3"
+          ]
+        },
+        {
+          "rank": 19,
+          "name": "Frozen 2",
+          "value": "$1.45B",
+          "aliases": [
+            "frozen ii"
+          ]
+        },
+        {
+          "rank": 20,
+          "name": "Barbie",
+          "value": "$1.45B"
+        },
+        {
+          "rank": 21,
+          "name": "Avengers: Age of Ultron",
+          "value": "$1.40B",
+          "aliases": [
+            "age of ultron",
+            "avengers 2",
+            "avengers"
+          ]
+        },
+        {
+          "rank": 22,
+          "name": "The Super Mario Bros. Movie",
+          "value": "$1.36B",
+          "aliases": [
+            "super mario bros movie",
+            "super mario bros",
+            "super mario",
+            "mario movie",
+            "mario"
+          ]
+        },
+        {
+          "rank": 23,
+          "name": "Black Panther",
+          "value": "$1.35B"
+        },
+        {
+          "rank": 24,
+          "name": "Harry Potter and the Deathly Hallows – Part 2",
+          "value": "$1.34B",
+          "aliases": [
+            "deathly hallows part 2",
+            "deathly hallows 2",
+            "harry potter 8",
+            "harry potter and the deathly hallows part 2"
+          ]
+        },
+        {
+          "rank": 25,
+          "name": "Deadpool & Wolverine",
+          "value": "$1.34B",
+          "aliases": [
+            "deadpool and wolverine",
+            "deadpool 3",
+            "deadpool"
+          ]
+        },
+        {
+          "rank": 26,
+          "name": "Star Wars: The Last Jedi",
+          "value": "$1.33B",
+          "aliases": [
+            "the last jedi",
+            "last jedi",
+            "star wars 8",
+            "star wars viii",
+            "star wars episode viii"
+          ]
+        },
+        {
+          "rank": 27,
+          "name": "Jurassic World: Fallen Kingdom",
+          "value": "$1.31B",
+          "aliases": [
+            "fallen kingdom",
+            "jurassic world 2"
+          ]
+        },
+        {
+          "rank": 28,
+          "name": "Frozen",
+          "value": "$1.29B"
+        },
+        {
+          "rank": 29,
+          "name": "Beauty and the Beast",
+          "value": "$1.26B"
+        },
+        {
+          "rank": 30,
+          "name": "Incredibles 2",
+          "value": "$1.24B",
+          "aliases": [
+            "the incredibles 2"
+          ]
+        },
+        {
+          "rank": 31,
+          "name": "The Fate of the Furious",
+          "value": "$1.24B",
+          "aliases": [
+            "fate of the furious",
+            "fast 8",
+            "fast and furious 8",
+            "f8"
+          ]
+        },
+        {
+          "rank": 32,
+          "name": "Iron Man 3",
+          "value": "$1.21B"
+        },
+        {
+          "rank": 33,
+          "name": "Minions",
+          "value": "$1.16B"
+        },
+        {
+          "rank": 34,
+          "name": "Captain America: Civil War",
+          "value": "$1.15B",
+          "aliases": [
+            "civil war",
+            "captain america 3"
+          ]
+        },
+        {
+          "rank": 35,
+          "name": "Toy Story 5",
+          "value": "$1.15B",
+          "aliases": [
+            "toy story"
+          ]
+        },
+        {
+          "rank": 36,
+          "name": "Aquaman",
+          "value": "$1.15B"
+        },
+        {
+          "rank": 37,
+          "name": "The Lord of the Rings: The Return of the King",
+          "value": "$1.15B",
+          "aliases": [
+            "return of the king",
+            "lotr return of the king",
+            "lord of the rings 3",
+            "lord of the rings",
+            "lotr"
+          ]
+        },
+        {
+          "rank": 38,
+          "name": "Spider-Man: Far From Home",
+          "value": "$1.13B",
+          "aliases": [
+            "far from home",
+            "spiderman far from home",
+            "spider man far from home",
+            "spider-man",
+            "spiderman",
+            "spider man"
+          ]
+        },
+        {
+          "rank": 39,
+          "name": "Captain Marvel",
+          "value": "$1.13B"
+        },
+        {
+          "rank": 40,
+          "name": "Transformers: Dark of the Moon",
+          "value": "$1.12B",
+          "aliases": [
+            "dark of the moon",
+            "transformers 3",
+            "transformers"
+          ]
+        },
+        {
+          "rank": 41,
+          "name": "Skyfall",
+          "value": "$1.11B"
+        },
+        {
+          "rank": 42,
+          "name": "Transformers: Age of Extinction",
+          "value": "$1.10B",
+          "aliases": [
+            "age of extinction",
+            "transformers 4",
+            "transformers"
+          ]
+        },
+        {
+          "rank": 43,
+          "name": "The Dark Knight Rises",
+          "value": "$1.08B",
+          "aliases": [
+            "dark knight rises"
+          ]
+        },
+        {
+          "rank": 44,
+          "name": "Joker",
+          "value": "$1.07B",
+          "aliases": [
+            "joker 2019"
+          ]
+        },
+        {
+          "rank": 45,
+          "name": "Star Wars: The Rise of Skywalker",
+          "value": "$1.07B",
+          "aliases": [
+            "rise of skywalker",
+            "star wars 9",
+            "star wars ix",
+            "star wars episode ix"
+          ]
+        },
+        {
+          "rank": 46,
+          "name": "Toy Story 4",
+          "value": "$1.07B",
+          "aliases": [
+            "toy story"
+          ]
+        },
+        {
+          "rank": 47,
+          "name": "Toy Story 3",
+          "value": "$1.07B",
+          "aliases": [
+            "toy story"
+          ]
+        },
+        {
+          "rank": 48,
+          "name": "Pirates of the Caribbean: Dead Man's Chest",
+          "value": "$1.07B",
+          "aliases": [
+            "dead mans chest",
+            "pirates of the caribbean 2",
+            "pirates of the caribbean",
+            "pirates 2"
+          ]
+        },
+        {
+          "rank": 49,
+          "name": "Moana 2",
+          "value": "$1.06B"
+        },
+        {
+          "rank": 50,
+          "name": "Rogue One: A Star Wars Story",
+          "value": "$1.06B",
+          "aliases": [
+            "rogue one"
+          ]
+        }
+      ],
+      "unranked": "outside top 50"
     },
     {
       "date": "2026-10-31",
@@ -1794,7 +2285,8 @@
           "name": "Zimbabwe",
           "value": "0"
         }
-      ]
+      ],
+      "suffix": " thousand barrels a day"
     },
     {
       "date": "2026-11-01",
@@ -1896,7 +2388,16 @@
           "value": "71"
         }
       ],
-      "close": [
+      "free": [
+        {
+          "match": [
+            "george bush",
+            "bush"
+          ],
+          "note": "Which George Bush? Try George W. Bush or George H. W. Bush. No miss."
+        }
+      ],
+      "rest": [
         {
           "rank": 11,
           "name": "Barack Obama",
@@ -1911,25 +2412,23 @@
           "rank": 13,
           "name": "Richard Nixon",
           "value": "67"
-        }
-      ],
-      "free": [
-        {
-          "match": [
-            "george bush",
-            "bush"
-          ],
-          "note": "Which George Bush? Try George W. Bush or George H. W. Bush. No miss."
         },
         {
-          "match": [
-            "trump",
-            "donald trump"
-          ],
-          "note": "Trump's Gallup peak was 49% (first term), outside the top 10.",
-          "miss": true
+          "rank": 14,
+          "name": "Joe Biden",
+          "value": "57"
+        },
+        {
+          "rank": 15,
+          "name": "Donald Trump",
+          "value": "49",
+          "aliases": [
+            "trump"
+          ]
         }
-      ]
+      ],
+      "suffix": "%",
+      "unranked": "no Gallup rating"
     },
     {
       "date": "2026-11-02",
@@ -2071,7 +2570,9 @@
           "name": "Ecuador",
           "value": "0.35"
         }
-      ]
+      ],
+      "suffix": " million bags",
+      "unranked": "not a listed producer"
     },
     {
       "date": "2026-11-03",
@@ -2167,7 +2668,7 @@
           ]
         }
       ],
-      "close": [
+      "rest": [
         {
           "rank": 11,
           "name": "Carmelo Anthony",
@@ -2185,8 +2686,243 @@
           "rank": 13,
           "name": "Elvin Hayes",
           "value": "27,313"
+        },
+        {
+          "rank": 14,
+          "name": "Russell Westbrook",
+          "value": "27,176",
+          "aliases": [
+            "russ"
+          ]
+        },
+        {
+          "rank": 15,
+          "name": "Hakeem Olajuwon",
+          "value": "26,946",
+          "aliases": [
+            "hakeem",
+            "the dream"
+          ]
+        },
+        {
+          "rank": 16,
+          "name": "DeMar DeRozan",
+          "value": "26,757",
+          "aliases": [
+            "derozan",
+            "demar derozan"
+          ]
+        },
+        {
+          "rank": 17,
+          "name": "Oscar Robertson",
+          "value": "26,710",
+          "aliases": [
+            "big o"
+          ]
+        },
+        {
+          "rank": 18,
+          "name": "Dominique Wilkins",
+          "value": "26,668",
+          "aliases": [
+            "nique"
+          ]
+        },
+        {
+          "rank": 19,
+          "name": "Stephen Curry",
+          "value": "26,599",
+          "aliases": [
+            "steph curry",
+            "steph"
+          ]
+        },
+        {
+          "rank": 20,
+          "name": "Tim Duncan",
+          "value": "26,496"
+        },
+        {
+          "rank": 21,
+          "name": "Paul Pierce",
+          "value": "26,397"
+        },
+        {
+          "rank": 22,
+          "name": "John Havlicek",
+          "value": "26,395"
+        },
+        {
+          "rank": 23,
+          "name": "Kevin Garnett",
+          "value": "26,071",
+          "aliases": [
+            "kg"
+          ]
+        },
+        {
+          "rank": 24,
+          "name": "Vince Carter",
+          "value": "25,728"
+        },
+        {
+          "rank": 25,
+          "name": "Alex English",
+          "value": "25,613"
+        },
+        {
+          "rank": 26,
+          "name": "Reggie Miller",
+          "value": "25,279"
+        },
+        {
+          "rank": 27,
+          "name": "Jerry West",
+          "value": "25,192"
+        },
+        {
+          "rank": 28,
+          "name": "Patrick Ewing",
+          "value": "24,815"
+        },
+        {
+          "rank": 29,
+          "name": "Ray Allen",
+          "value": "24,505"
+        },
+        {
+          "rank": 30,
+          "name": "Allen Iverson",
+          "value": "24,368",
+          "aliases": [
+            "iverson",
+            "ai"
+          ]
+        },
+        {
+          "rank": 31,
+          "name": "Charles Barkley",
+          "value": "23,757",
+          "aliases": [
+            "chuck"
+          ]
+        },
+        {
+          "rank": 32,
+          "name": "Robert Parish",
+          "value": "23,334"
+        },
+        {
+          "rank": 33,
+          "name": "Adrian Dantley",
+          "value": "23,177"
+        },
+        {
+          "rank": 34,
+          "name": "Dwyane Wade",
+          "value": "23,165",
+          "aliases": [
+            "dwayne wade",
+            "d wade"
+          ]
+        },
+        {
+          "rank": 35,
+          "name": "Elgin Baylor",
+          "value": "23,149"
+        },
+        {
+          "rank": 36,
+          "name": "Chris Paul",
+          "value": "23,058",
+          "aliases": [
+            "cp3"
+          ]
+        },
+        {
+          "rank": 37,
+          "name": "Damian Lillard",
+          "value": "22,663",
+          "aliases": [
+            "dame"
+          ]
+        },
+        {
+          "rank": 38,
+          "name": "Clyde Drexler",
+          "value": "22,195"
+        },
+        {
+          "rank": 39,
+          "name": "Gary Payton",
+          "value": "21,813"
+        },
+        {
+          "rank": 40,
+          "name": "Larry Bird",
+          "value": "21,791"
+        },
+        {
+          "rank": 41,
+          "name": "Giannis Antetokounmpo",
+          "value": "21,645",
+          "aliases": [
+            "giannis",
+            "greek freak"
+          ]
+        },
+        {
+          "rank": 42,
+          "name": "Hal Greer",
+          "value": "21,586"
+        },
+        {
+          "rank": 43,
+          "name": "Walt Bellamy",
+          "value": "20,941"
+        },
+        {
+          "rank": 44,
+          "name": "Pau Gasol",
+          "value": "20,894"
+        },
+        {
+          "rank": 45,
+          "name": "Bob Pettit",
+          "value": "20,880"
+        },
+        {
+          "rank": 46,
+          "name": "David Robinson",
+          "value": "20,790"
+        },
+        {
+          "rank": 47,
+          "name": "George Gervin",
+          "value": "20,708",
+          "aliases": [
+            "iceman"
+          ]
+        },
+        {
+          "rank": 48,
+          "name": "LaMarcus Aldridge",
+          "value": "20,558"
+        },
+        {
+          "rank": 49,
+          "name": "Mitch Richmond",
+          "value": "20,497"
+        },
+        {
+          "rank": 50,
+          "name": "Joe Johnson",
+          "value": "20,407"
         }
-      ]
+      ],
+      "suffix": " points",
+      "unranked": "outside top 50"
     },
     {
       "date": "2026-11-04",
@@ -3188,7 +3924,8 @@
           "name": "Vatican City",
           "value": "496"
         }
-      ]
+      ],
+      "suffix": " people"
     }
   ]
 }

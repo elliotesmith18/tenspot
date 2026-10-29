@@ -354,6 +354,7 @@ function renderBoard(flipIdx) {
   $("#clueBtn").textContent = state.clue !== null ? "Clue used" : "Clue · 1 free";
   renderMisses();
 }
+function rankText(r) { return r + (ENTRIES.filter(e => e.answer === undefined && e.rank === r).length > 1 ? "=" : ""); }
 // Misses sorted by where they really rank on the full list; ones the source doesn't rank go last.
 function renderMisses() {
   const items = state.misses.map((m, i) => {
@@ -362,8 +363,8 @@ function renderMisses() {
   }).sort((a, b) => a.rank - b.rank || a.i - b.i);
   $("#missed").hidden = !items.length;
   $("#missList").innerHTML = items.map(m => m.rank === Infinity
-    ? `<li class="unranked"><span class="mr">–</span><span class="mn">${esc(m.name)}</span><span class="mv">${PUZZLE.kind === "country" && PUZZLE.rest ? "not ranked" : "not top " + (10 + ENTRIES.filter(e => e.answer === undefined).length)}</span></li>`
-    : `<li class="${m.rank <= 13 ? "near" : ""}"><span class="mr">#${m.rank}</span><span class="mn">${esc(m.name)}</span><span class="mv">${m.value ? esc(m.value) : ""}</span></li>`).join("");
+    ? `<li class="unranked"><span class="mr">–</span><span class="mn">${esc(m.name)}</span><span class="mv">${esc(PUZZLE.unranked || "not ranked")}</span></li>`
+    : `<li class="${m.rank <= 13 ? "near" : ""}"><span class="mr">#${rankText(m.rank)}</span><span class="mn">${esc(m.name)}</span><span class="mv">${m.value ? esc(m.value) : ""}</span></li>`).join("");
 }
 function say(text, tone) {
   const f = $("#feedback"); f.textContent = text; f.className = "feedback" + (tone ? " " + tone : "");
@@ -412,9 +413,8 @@ function guess(raw) {
   state.tried.push(g);
   state.misses.push({ text: shown });
   if (r.note) say(r.note, "bad");
-  else if (e && e.rank <= 13) say(`So close! ${e.name} is #${e.rank}, just outside the top 10.`, "bad");
-  else if (e) say(`${e.name} is #${e.rank}. Not top 10.`, "bad");
-  else say(`${r.name || shown} isn't in the top 10.`, "bad");
+  else if (e) say(`${e.rank <= 13 ? "So close! " : ""}${e.name} is #${rankText(e.rank)}${e.value ? ` with ${e.value}${PUZZLE.suffix || ""}` : ""}.`, "bad");
+  else say(`${r.name || shown} isn't in the top 10${PUZZLE.unranked ? ` (${PUZZLE.unranked})` : ""}.`, "bad");
   renderBoard();
   if (state.misses.length >= MAX_MISSES) finish();
   save();
