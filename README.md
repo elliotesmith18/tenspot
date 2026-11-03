@@ -16,7 +16,7 @@ A daily top-10 list game from [Play 2D Games](https://play2dgames.com/). Name as
 Copy an entry in `puzzles.json`, give it the next `date` and `no`, and fill in:
 
 - `kind`: `country` (checks spelling against every country and suggests names), `person` (a unique surname is enough), or `film` / anything else (name or listed aliases).
-- `answers`: exactly 10, each with `rank`, `name`, `value` and optional `aliases` (other accepted spellings). Tied ranks share a number and show as "6=".
+- `answers`: 10, each with `rank`, `name`, `value` and optional `aliases` (other accepted spellings). Tied ranks share a number and show as "6=". If a tie runs past #10, list every tied name: the board keeps 10 rows, and the last ones fill with whichever tied names the player finds.
 - `close`: #11–13, so near misses get a "so close" message (still a miss).
 - `free`: guesses that get a note and cost nothing, e.g. `{"match": ["bush"], "note": "Which George Bush? …"}`. Add `"miss": true` to make the note still cost a miss.
 - `source`: name and link for where the ranking comes from. Only use lists with a public source.

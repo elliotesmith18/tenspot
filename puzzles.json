@@ -3926,6 +3926,1663 @@
         }
       ],
       "suffix": " people"
+    },
+    {
+      "date": "2026-11-05",
+      "no": "009",
+      "category": "History",
+      "kind": "person",
+      "title": "US presidents with the lowest Gallup approval rating",
+      "unit": "% approval at their lowest point",
+      "asOf": "Gallup polling, Truman to Biden (Trump's first term)",
+      "source": {
+        "name": "Gallup presidential approval lows, via Wikipedia",
+        "url": "https://en.wikipedia.org/wiki/United_States_presidential_approval_rating"
+      },
+      "answers": [
+        {
+          "rank": 1,
+          "name": "Harry Truman",
+          "value": "22",
+          "aliases": [
+            "harry s truman"
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "Richard Nixon",
+          "value": "24",
+          "aliases": [
+            "dick nixon"
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "George W. Bush",
+          "value": "25",
+          "aliases": [
+            "george bush jr",
+            "bush jr",
+            "george w bush",
+            "dubya",
+            "w bush",
+            "gw bush"
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "Jimmy Carter",
+          "value": "28"
+        },
+        {
+          "rank": 5,
+          "name": "George H. W. Bush",
+          "value": "29",
+          "aliases": [
+            "george bush sr",
+            "bush sr",
+            "george hw bush",
+            "hw bush",
+            "bush senior",
+            "george bush senior"
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "Donald Trump",
+          "value": "34"
+        },
+        {
+          "rank": 7,
+          "name": "Lyndon B. Johnson",
+          "value": "35",
+          "aliases": [
+            "lyndon johnson",
+            "lbj"
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "Ronald Reagan",
+          "value": "35"
+        },
+        {
+          "rank": 9,
+          "name": "Joe Biden",
+          "value": "36"
+        },
+        {
+          "rank": 10,
+          "name": "Gerald Ford",
+          "value": "37"
+        },
+        {
+          "rank": 10,
+          "name": "Bill Clinton",
+          "value": "37"
+        }
+      ],
+      "rest": [
+        {
+          "rank": 12,
+          "name": "Barack Obama",
+          "value": "38"
+        },
+        {
+          "rank": 13,
+          "name": "Dwight Eisenhower",
+          "value": "48",
+          "aliases": [
+            "dwight d eisenhower",
+            "ike"
+          ]
+        },
+        {
+          "rank": 14,
+          "name": "John F. Kennedy",
+          "value": "56",
+          "aliases": [
+            "jfk",
+            "john kennedy"
+          ]
+        }
+      ],
+      "free": [
+        {
+          "match": [
+            "george bush",
+            "bush"
+          ],
+          "note": "Which George Bush? Try George W. Bush or George H. W. Bush. No miss."
+        }
+      ],
+      "suffix": "%",
+      "unranked": "not in Gallup's table, which starts with Truman"
+    },
+    {
+      "date": "2026-11-06",
+      "no": "010",
+      "category": "Trade",
+      "kind": "country",
+      "title": "The world's 10 biggest exporters of goods",
+      "unit": "value of goods exported (US$)",
+      "asOf": "2023, UN trade data",
+      "source": {
+        "name": "UN Trade Map figures, via Wikipedia's merchandise exports list",
+        "url": "https://en.wikipedia.org/wiki/List_of_countries_by_merchandise_exports"
+      },
+      "answers": [
+        {
+          "rank": 1,
+          "name": "China",
+          "value": "$3,389B"
+        },
+        {
+          "rank": 2,
+          "name": "United States",
+          "value": "$2,019B"
+        },
+        {
+          "rank": 3,
+          "name": "Germany",
+          "value": "$1,702B"
+        },
+        {
+          "rank": 4,
+          "name": "Netherlands",
+          "value": "$742B"
+        },
+        {
+          "rank": 5,
+          "name": "Japan",
+          "value": "$720B"
+        },
+        {
+          "rank": 6,
+          "name": "France",
+          "value": "$719B"
+        },
+        {
+          "rank": 7,
+          "name": "Italy",
+          "value": "$677B"
+        },
+        {
+          "rank": 8,
+          "name": "South Korea",
+          "value": "$632B"
+        },
+        {
+          "rank": 9,
+          "name": "India",
+          "value": "$582B"
+        },
+        {
+          "rank": 10,
+          "name": "Mexico",
+          "value": "$576B"
+        }
+      ],
+      "rest": [
+        {
+          "rank": 11,
+          "name": "Belgium",
+          "value": "$569B"
+        },
+        {
+          "rank": 12,
+          "name": "Canada",
+          "value": "$568B"
+        },
+        {
+          "rank": 13,
+          "name": "United Kingdom",
+          "value": "$520B"
+        },
+        {
+          "rank": 14,
+          "name": "Singapore",
+          "value": "$475B"
+        },
+        {
+          "rank": 15,
+          "name": "Vietnam",
+          "value": "$454B"
+        },
+        {
+          "rank": 16,
+          "name": "Taiwan",
+          "value": "$433B"
+        },
+        {
+          "rank": 17,
+          "name": "Switzerland",
+          "value": "$421B"
+        },
+        {
+          "rank": 18,
+          "name": "Spain",
+          "value": "$420B"
+        },
+        {
+          "rank": 19,
+          "name": "Russia",
+          "value": "$408B"
+        },
+        {
+          "rank": 20,
+          "name": "Australia",
+          "value": "$371B"
+        },
+        {
+          "rank": 21,
+          "name": "Poland",
+          "value": "$355B"
+        },
+        {
+          "rank": 22,
+          "name": "Brazil",
+          "value": "$340B"
+        },
+        {
+          "rank": 23,
+          "name": "Malaysia",
+          "value": "$313B"
+        },
+        {
+          "rank": 24,
+          "name": "Saudi Arabia",
+          "value": "$304B"
+        },
+        {
+          "rank": 25,
+          "name": "Thailand",
+          "value": "$280B"
+        },
+        {
+          "rank": 26,
+          "name": "United Arab Emirates",
+          "value": "$280B"
+        },
+        {
+          "rank": 27,
+          "name": "Indonesia",
+          "value": "$259B"
+        },
+        {
+          "rank": 28,
+          "name": "Turkey",
+          "value": "$254B"
+        },
+        {
+          "rank": 29,
+          "name": "Czechia",
+          "value": "$253B"
+        },
+        {
+          "rank": 30,
+          "name": "Austria",
+          "value": "$222B"
+        },
+        {
+          "rank": 31,
+          "name": "Ireland",
+          "value": "$213B"
+        },
+        {
+          "rank": 32,
+          "name": "Sweden",
+          "value": "$198B"
+        },
+        {
+          "rank": 33,
+          "name": "Norway",
+          "value": "$177B"
+        },
+        {
+          "rank": 34,
+          "name": "Hungary",
+          "value": "$158B"
+        },
+        {
+          "rank": 35,
+          "name": "Denmark",
+          "value": "$136B"
+        },
+        {
+          "rank": 36,
+          "name": "Slovakia",
+          "value": "$117B"
+        },
+        {
+          "rank": 37,
+          "name": "South Africa",
+          "value": "$111B"
+        },
+        {
+          "rank": 38,
+          "name": "Iraq",
+          "value": "$108B"
+        },
+        {
+          "rank": 39,
+          "name": "Romania",
+          "value": "$101B"
+        },
+        {
+          "rank": 40,
+          "name": "Chile",
+          "value": "$100B"
+        },
+        {
+          "rank": 41,
+          "name": "Qatar",
+          "value": "$100B"
+        },
+        {
+          "rank": 42,
+          "name": "Kuwait",
+          "value": "$90B"
+        },
+        {
+          "rank": 43,
+          "name": "Argentina",
+          "value": "$88B"
+        },
+        {
+          "rank": 44,
+          "name": "Finland",
+          "value": "$86B"
+        },
+        {
+          "rank": 45,
+          "name": "Kazakhstan",
+          "value": "$84B"
+        },
+        {
+          "rank": 46,
+          "name": "Portugal",
+          "value": "$82B"
+        },
+        {
+          "rank": 47,
+          "name": "Oman",
+          "value": "$80B"
+        },
+        {
+          "rank": 48,
+          "name": "Philippines",
+          "value": "$79B"
+        },
+        {
+          "rank": 49,
+          "name": "Israel",
+          "value": "$74B"
+        },
+        {
+          "rank": 50,
+          "name": "Algeria",
+          "value": "$67B"
+        },
+        {
+          "rank": 51,
+          "name": "Bangladesh",
+          "value": "$66B"
+        },
+        {
+          "rank": 52,
+          "name": "Nigeria",
+          "value": "$63B"
+        },
+        {
+          "rank": 53,
+          "name": "Peru",
+          "value": "$58B"
+        },
+        {
+          "rank": 54,
+          "name": "Greece",
+          "value": "$58B"
+        },
+        {
+          "rank": 55,
+          "name": "Slovenia",
+          "value": "$55B"
+        },
+        {
+          "rank": 56,
+          "name": "Angola",
+          "value": "$51B"
+        },
+        {
+          "rank": 57,
+          "name": "Bulgaria",
+          "value": "$50B"
+        },
+        {
+          "rank": 58,
+          "name": "Egypt",
+          "value": "$48B"
+        },
+        {
+          "rank": 59,
+          "name": "Lithuania",
+          "value": "$47B"
+        },
+        {
+          "rank": 60,
+          "name": "Ukraine",
+          "value": "$44B"
+        }
+      ],
+      "free": [
+        {
+          "match": [
+            "hong kong"
+          ],
+          "note": "Hong Kong is listed separately in the source, with $431B, but it isn't a country. No miss."
+        },
+        {
+          "match": [
+            "european union",
+            "eu"
+          ],
+          "note": "The EU is a bloc, not a country. No miss."
+        }
+      ],
+      "suffix": " in goods exports",
+      "unranked": "outside the top 60"
+    },
+    {
+      "date": "2026-11-07",
+      "no": "011",
+      "category": "Football",
+      "kind": "person",
+      "title": "Most goals at the men's World Cup",
+      "unit": "World Cup goals",
+      "asOf": "after the 2026 World Cup",
+      "source": {
+        "name": "Wikipedia: List of FIFA World Cup top goalscorers",
+        "url": "https://en.wikipedia.org/wiki/List_of_FIFA_World_Cup_top_goalscorers"
+      },
+      "answers": [
+        {
+          "rank": 1,
+          "name": "Kylian Mbappé",
+          "value": "22",
+          "aliases": [
+            "mbappe"
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "Lionel Messi",
+          "value": "21"
+        },
+        {
+          "rank": 3,
+          "name": "Miroslav Klose",
+          "value": "16"
+        },
+        {
+          "rank": 4,
+          "name": "Ronaldo Nazário",
+          "value": "15",
+          "aliases": [
+            "ronaldo",
+            "ronaldo nazario",
+            "r9",
+            "brazilian ronaldo",
+            "ronaldo brazil",
+            "ronaldo nazario de lima"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "Gerd Müller",
+          "value": "14",
+          "aliases": [
+            "gerd muller",
+            "gerd mueller"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "Harry Kane",
+          "value": "14"
+        },
+        {
+          "rank": 7,
+          "name": "Just Fontaine",
+          "value": "13"
+        },
+        {
+          "rank": 8,
+          "name": "Pelé",
+          "value": "12",
+          "aliases": [
+            "pele"
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "Sándor Kocsis",
+          "value": "11",
+          "aliases": [
+            "sandor kocsis"
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "Jürgen Klinsmann",
+          "value": "11",
+          "aliases": [
+            "jurgen klinsmann"
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "Cristiano Ronaldo",
+          "value": "11",
+          "aliases": [
+            "cr7",
+            "cristiano"
+          ]
+        }
+      ],
+      "rest": [
+        {
+          "rank": 12,
+          "name": "Helmut Rahn",
+          "value": "10"
+        },
+        {
+          "rank": 12,
+          "name": "Gary Lineker",
+          "value": "10"
+        },
+        {
+          "rank": 12,
+          "name": "Gabriel Batistuta",
+          "value": "10"
+        },
+        {
+          "rank": 12,
+          "name": "Teófilo Cubillas",
+          "value": "10"
+        },
+        {
+          "rank": 12,
+          "name": "Thomas Müller",
+          "value": "10",
+          "aliases": [
+            "thomas muller",
+            "thomas mueller"
+          ]
+        },
+        {
+          "rank": 12,
+          "name": "Grzegorz Lato",
+          "value": "10"
+        },
+        {
+          "rank": 18,
+          "name": "Ademir",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "Eusébio",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "Christian Vieri",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "Vavá",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "David Villa",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "Paolo Rossi",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "Neymar",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "Jairzinho",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "Roberto Baggio",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "Karl-Heinz Rummenigge",
+          "value": "9"
+        },
+        {
+          "rank": 18,
+          "name": "Uwe Seeler",
+          "value": "9"
+        },
+        {
+          "rank": 29,
+          "name": "Guillermo Stábile",
+          "value": "8"
+        },
+        {
+          "rank": 29,
+          "name": "Leônidas",
+          "value": "8"
+        },
+        {
+          "rank": 29,
+          "name": "Óscar Míguez",
+          "value": "8"
+        },
+        {
+          "rank": 29,
+          "name": "Jude Bellingham",
+          "value": "8"
+        },
+        {
+          "rank": 29,
+          "name": "Rivaldo",
+          "value": "8"
+        },
+        {
+          "rank": 29,
+          "name": "Rudi Völler",
+          "value": "8"
+        },
+        {
+          "rank": 29,
+          "name": "Romelu Lukaku",
+          "value": "8"
+        },
+        {
+          "rank": 29,
+          "name": "Diego Maradona",
+          "value": "8"
+        },
+        {
+          "rank": 37,
+          "name": "Erling Haaland",
+          "value": "7"
+        },
+        {
+          "rank": 37,
+          "name": "Oldřich Nejedlý",
+          "value": "7"
+        },
+        {
+          "rank": 37,
+          "name": "Lajos Tichy",
+          "value": "7"
+        },
+        {
+          "rank": 37,
+          "name": "Careca",
+          "value": "7"
+        },
+        {
+          "rank": 37,
+          "name": "Johnny Rep",
+          "value": "7"
+        },
+        {
+          "rank": 37,
+          "name": "Andrzej Szarmach",
+          "value": "7"
+        },
+        {
+          "rank": 37,
+          "name": "Hans Schäfer",
+          "value": "7"
+        },
+        {
+          "rank": 37,
+          "name": "Luis Suárez",
+          "value": "7"
+        },
+        {
+          "rank": 37,
+          "name": "Ivan Perišić",
+          "value": "7"
+        },
+        {
+          "rank": 46,
+          "name": "Josef Hügi",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Oleg Salenko",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "György Sárosi",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Max Morlock",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Erich Probst",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Salvatore Schillaci",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Davor Šuker",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Helmut Haller",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Cody Gakpo",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Hristo Stoichkov",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Diego Forlán",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Enner Valencia",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Asamoah Gyan",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Bukayo Saka",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Dennis Bergkamp",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Rob Rensenbrink",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "James Rodríguez",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Rivellino",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Bebeto",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Arjen Robben",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Zbigniew Boniek",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Thierry Henry",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Robin van Persie",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Wesley Sneijder",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Mario Kempes",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Ousmane Dembélé",
+          "value": "6"
+        },
+        {
+          "rank": 46,
+          "name": "Lothar Matthäus",
+          "value": "6"
+        }
+      ],
+      "suffix": " goals",
+      "unranked": "fewer than 6 World Cup goals"
+    },
+    {
+      "date": "2026-11-08",
+      "no": "012",
+      "category": "History",
+      "kind": "person",
+      "title": "The longest-serving British prime ministers",
+      "unit": "total time in office",
+      "asOf": "all terms combined",
+      "source": {
+        "name": "Wikipedia: Prime ministers of the UK by length of tenure",
+        "url": "https://en.wikipedia.org/wiki/List_of_prime_ministers_of_the_United_Kingdom_by_length_of_tenure"
+      },
+      "answers": [
+        {
+          "rank": 1,
+          "name": "Robert Walpole",
+          "value": "20 years, 314 days",
+          "aliases": [
+            "sir robert walpole"
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "William Pitt the Younger",
+          "value": "18 years, 343 days",
+          "aliases": [
+            "pitt",
+            "pitt the younger",
+            "william pitt"
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "Lord Liverpool",
+          "value": "14 years, 305 days",
+          "aliases": [
+            "earl of liverpool",
+            "liverpool",
+            "robert jenkinson",
+            "jenkinson"
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "Lord Salisbury",
+          "value": "13 years, 252 days",
+          "aliases": [
+            "marquess of salisbury",
+            "salisbury",
+            "robert cecil",
+            "robert gascoyne cecil"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "William Gladstone",
+          "value": "12 years, 126 days",
+          "aliases": [
+            "william ewart gladstone"
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "Lord North",
+          "value": "12 years, 58 days",
+          "aliases": [
+            "frederick north",
+            "north"
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "Margaret Thatcher",
+          "value": "11 years, 208 days"
+        },
+        {
+          "rank": 8,
+          "name": "Henry Pelham",
+          "value": "10 years, 191 days"
+        },
+        {
+          "rank": 9,
+          "name": "Tony Blair",
+          "value": "10 years, 56 days"
+        },
+        {
+          "rank": 10,
+          "name": "Lord Palmerston",
+          "value": "9 years, 141 days",
+          "aliases": [
+            "viscount palmerston",
+            "palmerston",
+            "henry temple",
+            "henry john temple"
+          ]
+        }
+      ],
+      "rest": [
+        {
+          "rank": 11,
+          "name": "H. H. Asquith",
+          "value": "8 years, 244 days",
+          "aliases": [
+            "herbert asquith",
+            "asquith"
+          ]
+        },
+        {
+          "rank": 12,
+          "name": "Winston Churchill",
+          "value": "8 years, 239 days",
+          "aliases": [
+            "sir winston churchill"
+          ]
+        },
+        {
+          "rank": 13,
+          "name": "Harold Wilson",
+          "value": "7 years, 279 days"
+        },
+        {
+          "rank": 14,
+          "name": "Duke of Newcastle",
+          "value": "7 years, 205 days",
+          "aliases": [
+            "newcastle",
+            "thomas pelham holles",
+            "pelham holles"
+          ]
+        },
+        {
+          "rank": 15,
+          "name": "Stanley Baldwin",
+          "value": "7 years, 82 days"
+        },
+        {
+          "rank": 16,
+          "name": "Benjamin Disraeli",
+          "value": "6 years, 339 days"
+        },
+        {
+          "rank": 17,
+          "name": "Ramsay MacDonald",
+          "value": "6 years, 289 days"
+        },
+        {
+          "rank": 18,
+          "name": "Harold Macmillan",
+          "value": "6 years, 281 days"
+        },
+        {
+          "rank": 19,
+          "name": "Lord Melbourne",
+          "value": "6 years, 255 days",
+          "aliases": [
+            "viscount melbourne",
+            "melbourne",
+            "william lamb"
+          ]
+        },
+        {
+          "rank": 20,
+          "name": "John Major",
+          "value": "6 years, 155 days"
+        },
+        {
+          "rank": 21,
+          "name": "Lord John Russell",
+          "value": "6 years, 110 days",
+          "aliases": [
+            "john russell",
+            "earl russell"
+          ]
+        },
+        {
+          "rank": 22,
+          "name": "Clement Attlee",
+          "value": "6 years, 92 days"
+        },
+        {
+          "rank": 23,
+          "name": "David Cameron",
+          "value": "6 years, 63 days"
+        },
+        {
+          "rank": 24,
+          "name": "David Lloyd George",
+          "value": "5 years, 317 days",
+          "aliases": [
+            "lloyd george"
+          ]
+        },
+        {
+          "rank": 25,
+          "name": "Robert Peel",
+          "value": "5 years, 57 days",
+          "aliases": [
+            "sir robert peel"
+          ]
+        },
+        {
+          "rank": 26,
+          "name": "Lord Derby",
+          "value": "3 years, 280 days",
+          "aliases": [
+            "earl of derby",
+            "derby",
+            "edward smith stanley"
+          ]
+        },
+        {
+          "rank": 27,
+          "name": "Edward Heath",
+          "value": "3 years, 259 days",
+          "aliases": [
+            "ted heath"
+          ]
+        },
+        {
+          "rank": 28,
+          "name": "Earl Grey",
+          "value": "3 years, 229 days",
+          "aliases": [
+            "charles grey",
+            "lord grey"
+          ]
+        },
+        {
+          "rank": 29,
+          "name": "Arthur Balfour",
+          "value": "3 years, 145 days"
+        },
+        {
+          "rank": 30,
+          "name": "Duke of Portland",
+          "value": "3 years, 82 days",
+          "aliases": [
+            "portland",
+            "william cavendish bentinck"
+          ]
+        }
+      ],
+      "suffix": " in office",
+      "unranked": "under 3 years, 82 days in office",
+      "free": [
+        {
+          "match": [
+            "pitt the elder",
+            "william pitt the elder",
+            "chatham",
+            "earl of chatham"
+          ],
+          "note": "Pitt the Elder served only about 2½ years as PM. His son is the one you want. No miss.",
+          "miss": true
+        }
+      ]
+    },
+    {
+      "date": "2026-11-09",
+      "no": "013",
+      "category": "Pop culture",
+      "kind": "person",
+      "title": "Most Grammy Awards won",
+      "unit": "Grammy wins",
+      "asOf": "after the 2026 ceremony",
+      "source": {
+        "name": "Wikipedia: Grammy Award milestones",
+        "url": "https://en.wikipedia.org/wiki/List_of_Grammy_Award_records"
+      },
+      "answers": [
+        {
+          "rank": 1,
+          "name": "Beyoncé",
+          "value": "35",
+          "aliases": [
+            "beyonce",
+            "beyonce knowles"
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "Georg Solti",
+          "value": "31",
+          "aliases": [
+            "sir georg solti",
+            "solti"
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "Chick Corea",
+          "value": "29"
+        },
+        {
+          "rank": 4,
+          "name": "Quincy Jones",
+          "value": "28"
+        },
+        {
+          "rank": 5,
+          "name": "Alison Krauss",
+          "value": "27"
+        },
+        {
+          "rank": 5,
+          "name": "Kendrick Lamar",
+          "value": "27",
+          "aliases": [
+            "kendrick"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "John Williams",
+          "value": "27"
+        },
+        {
+          "rank": 8,
+          "name": "Pierre Boulez",
+          "value": "26"
+        },
+        {
+          "rank": 9,
+          "name": "Vladimir Horowitz",
+          "value": "25"
+        },
+        {
+          "rank": 9,
+          "name": "Stevie Wonder",
+          "value": "25"
+        },
+        {
+          "rank": 9,
+          "name": "David Frost",
+          "value": "25"
+        },
+        {
+          "rank": 9,
+          "name": "Jay-Z",
+          "value": "25",
+          "aliases": [
+            "jay z",
+            "jayz",
+            "shawn carter"
+          ]
+        }
+      ],
+      "rest": [
+        {
+          "rank": 13,
+          "name": "Ye",
+          "value": "24",
+          "aliases": [
+            "kanye west",
+            "kanye",
+            "ye west"
+          ]
+        },
+        {
+          "rank": 13,
+          "name": "Şerban Ghenea",
+          "value": "24",
+          "aliases": [
+            "serban ghenea"
+          ]
+        },
+        {
+          "rank": 15,
+          "name": "Vince Gill",
+          "value": "22"
+        },
+        {
+          "rank": 15,
+          "name": "U2",
+          "value": "22",
+          "aliases": [
+            "u 2"
+          ]
+        },
+        {
+          "rank": 17,
+          "name": "Pat Metheny",
+          "value": "20"
+        },
+        {
+          "rank": 17,
+          "name": "Al Schmitt",
+          "value": "20"
+        },
+        {
+          "rank": 17,
+          "name": "Bruce Springsteen",
+          "value": "20",
+          "aliases": [
+            "springsteen",
+            "the boss"
+          ]
+        },
+        {
+          "rank": 17,
+          "name": "Henry Mancini",
+          "value": "20"
+        },
+        {
+          "rank": 17,
+          "name": "Kirk Franklin",
+          "value": "20"
+        },
+        {
+          "rank": 17,
+          "name": "Yo-Yo Ma",
+          "value": "20",
+          "aliases": [
+            "yo yo ma",
+            "yoyo ma"
+          ]
+        }
+      ],
+      "suffix": " Grammys",
+      "unranked": "fewer than 20 Grammys"
+    },
+    {
+      "date": "2026-11-10",
+      "no": "014",
+      "category": "Geography",
+      "kind": "country",
+      "title": "The world's 10 most visited countries",
+      "unit": "international tourist arrivals",
+      "asOf": "2024, UN Tourism",
+      "source": {
+        "name": "UN Tourism figures, via Wikipedia's World Tourism rankings",
+        "url": "https://en.wikipedia.org/wiki/World_Tourism_rankings"
+      },
+      "answers": [
+        {
+          "rank": 1,
+          "name": "France",
+          "value": "102.0"
+        },
+        {
+          "rank": 2,
+          "name": "Spain",
+          "value": "93.8"
+        },
+        {
+          "rank": 3,
+          "name": "United States",
+          "value": "72.4"
+        },
+        {
+          "rank": 4,
+          "name": "Turkey",
+          "value": "60.6"
+        },
+        {
+          "rank": 5,
+          "name": "Italy",
+          "value": "57.7"
+        },
+        {
+          "rank": 6,
+          "name": "Mexico",
+          "value": "45.0"
+        },
+        {
+          "rank": 7,
+          "name": "United Kingdom",
+          "value": "41.8"
+        },
+        {
+          "rank": 8,
+          "name": "Germany",
+          "value": "37.5"
+        },
+        {
+          "rank": 9,
+          "name": "Japan",
+          "value": "36.9"
+        },
+        {
+          "rank": 10,
+          "name": "Greece",
+          "value": "36.0"
+        }
+      ],
+      "free": [
+        {
+          "match": [
+            "china",
+            "prc",
+            "peoples republic of china"
+          ],
+          "note": "UN Tourism's table has no comparable 2024 figure for China, so it isn't ranked here. No miss."
+        },
+        {
+          "match": [
+            "hong kong",
+            "macau",
+            "macao"
+          ],
+          "note": "That's a territory of China, not a country. No miss."
+        }
+      ],
+      "suffix": " million arrivals",
+      "unranked": "fewer than 36 million arrivals"
+    },
+    {
+      "date": "2026-11-11",
+      "no": "015",
+      "category": "History",
+      "kind": "person",
+      "title": "The longest-reigning monarchs in history",
+      "unit": "length of reign",
+      "asOf": "sovereign states with verifiable dates",
+      "source": {
+        "name": "Wikipedia: List of longest-reigning monarchs",
+        "url": "https://en.wikipedia.org/wiki/List_of_longest-reigning_monarchs"
+      },
+      "answers": [
+        {
+          "rank": 1,
+          "name": "Louis XIV",
+          "value": "72 years, 110 days",
+          "aliases": [
+            "louis 14",
+            "louis the 14th",
+            "sun king",
+            "the sun king",
+            "louis quatorze"
+          ]
+        },
+        {
+          "rank": 2,
+          "name": "Elizabeth II",
+          "value": "70 years, 214 days",
+          "aliases": [
+            "elizabeth",
+            "queen elizabeth",
+            "queen elizabeth ii",
+            "elizabeth 2",
+            "the queen"
+          ]
+        },
+        {
+          "rank": 3,
+          "name": "Bhumibol Adulyadej",
+          "value": "70 years, 126 days",
+          "aliases": [
+            "bhumibol",
+            "rama ix",
+            "rama 9",
+            "king bhumibol"
+          ]
+        },
+        {
+          "rank": 4,
+          "name": "Johann II",
+          "value": "70 years, 91 days",
+          "aliases": [
+            "johann 2",
+            "john ii",
+            "johann the good"
+          ]
+        },
+        {
+          "rank": 5,
+          "name": "Kʼinich Janaabʼ Pakal I",
+          "value": "68 years, 33 days",
+          "aliases": [
+            "pakal",
+            "pakal the great",
+            "kinich janaab pakal",
+            "kinich janab pakal",
+            "pacal"
+          ]
+        },
+        {
+          "rank": 6,
+          "name": "Franz Joseph I",
+          "value": "67 years, 355 days",
+          "aliases": [
+            "franz joseph",
+            "franz josef",
+            "franz josef i",
+            "francis joseph",
+            "francis joseph i"
+          ]
+        },
+        {
+          "rank": 7,
+          "name": "Chan Imix Kʼawiil",
+          "value": "67 years, 130 days",
+          "aliases": [
+            "chan imix kawiil",
+            "smoke imix",
+            "chan imix"
+          ]
+        },
+        {
+          "rank": 8,
+          "name": "Ramesses II",
+          "value": "66 years, 74 days",
+          "aliases": [
+            "ramesses",
+            "ramses",
+            "ramses ii",
+            "rameses ii",
+            "ramesses the great",
+            "ozymandias",
+            "ramses 2",
+            "ramesses 2"
+          ]
+        },
+        {
+          "rank": 9,
+          "name": "Ferdinand III of Sicily",
+          "value": "65 years, 90 days",
+          "aliases": [
+            "ferdinand iii",
+            "ferdinand iv",
+            "ferdinand i of the two sicilies",
+            "ferdinand iv of naples"
+          ]
+        },
+        {
+          "rank": 10,
+          "name": "Victoria",
+          "value": "63 years, 216 days",
+          "aliases": [
+            "queen victoria"
+          ]
+        }
+      ],
+      "rest": [
+        {
+          "rank": 11,
+          "name": "James I of Aragon",
+          "value": "62 years, 319 days",
+          "aliases": [
+            "james i",
+            "james the conqueror",
+            "jaume i"
+          ]
+        },
+        {
+          "rank": 12,
+          "name": "Hirohito",
+          "value": "62 years, 13 days",
+          "aliases": [
+            "emperor hirohito",
+            "showa",
+            "emperor showa"
+          ]
+        },
+        {
+          "rank": 13,
+          "name": "Kangxi Emperor",
+          "value": "61 years, 318 days",
+          "aliases": [
+            "kangxi"
+          ]
+        },
+        {
+          "rank": 14,
+          "name": "Itzamnaaj Bahlam III",
+          "value": "60 years, 238 days",
+          "aliases": [
+            "itzamnaaj bahlam",
+            "shield jaguar"
+          ]
+        },
+        {
+          "rank": 15,
+          "name": "Kʼakʼ Tiliw Chan Yopaat",
+          "value": "60 years, 210 days",
+          "aliases": [
+            "kak tiliw chan yopaat",
+            "cauac sky"
+          ]
+        },
+        {
+          "rank": 16,
+          "name": "Qianlong Emperor",
+          "value": "60 years, 114 days",
+          "aliases": [
+            "qianlong"
+          ]
+        },
+        {
+          "rank": 17,
+          "name": "Christian IV",
+          "value": "59 years, 330 days",
+          "aliases": [
+            "christian 4"
+          ]
+        },
+        {
+          "rank": 18,
+          "name": "Maria Teresa Cybo-Malaspina",
+          "value": "59 years, 133 days",
+          "aliases": [
+            "mary teresa",
+            "maria teresa"
+          ]
+        },
+        {
+          "rank": 19,
+          "name": "George III",
+          "value": "59 years, 96 days",
+          "aliases": [
+            "george 3",
+            "king george iii"
+          ]
+        },
+        {
+          "rank": 20,
+          "name": "Honoré III",
+          "value": "59 years, 73 days",
+          "aliases": [
+            "honore iii"
+          ]
+        },
+        {
+          "rank": 21,
+          "name": "Louis XV",
+          "value": "58 years, 251 days",
+          "aliases": [
+            "louis 15",
+            "louis the 15th"
+          ]
+        },
+        {
+          "rank": 22,
+          "name": "Pedro II",
+          "value": "58 years, 222 days",
+          "aliases": [
+            "pedro 2",
+            "dom pedro ii"
+          ]
+        },
+        {
+          "rank": 23,
+          "name": "Al-Mustansir Billah",
+          "value": "58 years, 199 days",
+          "aliases": [
+            "al mustansir",
+            "mustansir"
+          ]
+        },
+        {
+          "rank": 24,
+          "name": "Nicholas I of Montenegro",
+          "value": "58 years, 105 days",
+          "aliases": [
+            "nicholas i",
+            "nikola i",
+            "nikola i petrovic"
+          ]
+        },
+        {
+          "rank": 25,
+          "name": "Wilhelmina",
+          "value": "57 years, 286 days",
+          "aliases": [
+            "queen wilhelmina"
+          ]
+        }
+      ],
+      "suffix": " on the throne",
+      "unranked": "reigned less than 57 years, 286 days",
+      "free": [
+        {
+          "match": [
+            "sobhuza ii",
+            "sobhuza"
+          ],
+          "note": "Sobhuza II's 82 years are counted from infancy and include years before Eswatini's independence, so this list leaves him out. No miss."
+        }
+      ]
     }
   ]
 }

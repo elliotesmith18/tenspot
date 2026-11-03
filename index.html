@@ -302,9 +302,10 @@ function lookup(g, entries) {
     return full.length === 1 ? full : exact;
   }
   let best = Infinity, hits = [];
+  const num = s => (s.match(/ ([ivx]+|\d+)$/) || [])[1], gn = num(g);
   for (const e of entries) {
     let d = Infinity;
-    for (const k of e.keys) { if (k.length >= 4 && Math.abs(k.length - g.length) <= 2) { const x = dist(g, k); if (x <= tolerance(k.length) && x < d) d = x; } }
+    for (const k of e.keys) { if (gn && gn !== num(k)) continue; if (k.length >= 4 && Math.abs(k.length - g.length) <= 2) { const x = dist(g, k); if (x <= tolerance(k.length) && x < d) d = x; } }
     if (d < best) { best = d; hits = [e]; } else if (d === best && d < Infinity) hits.push(e);
   }
   return hits;
@@ -338,13 +339,27 @@ function rankLabel(i) {
   const r = PUZZLE.answers[i].rank, tied = PUZZLE.answers.filter(a => a.rank === r).length > 1;
   return r + (tied ? "=" : "");
 }
+// A tie at the bottom can have more names than rows left. Those rows fill with whichever tied names you find,
+// so the board always has 10 rows. Each row is { i: answer index, filled, tie } (tie = the tied rows' leftover names).
+const ROWS = 10;
+function boardRows() {
+  const A = PUZZLE.answers, all = A.map((_, i) => i);
+  if (A.length <= ROWS) return all.map(i => ({ i, filled: state.found.includes(i) }));
+  const r = A[ROWS - 1].rank, pool = all.filter(i => A[i].rank === r), fixed = all.filter(i => A[i].rank !== r);
+  const got = state.found.filter(i => pool.includes(i)), left = pool.filter(i => !got.includes(i)), n = ROWS - fixed.length;
+  return [...fixed.map(i => ({ i, filled: state.found.includes(i) })),
+    ...Array.from({ length: n }, (_, j) => j < got.length ? { i: got[j], filled: true, pool }
+      : { i: left[j - got.length], filled: false, pool, rest: j === n - 1 ? left.slice(j - got.length) : null })];
+}
+const rowOf = i => boardRows().findIndex(r => r.i === i);
 function clueText(name) { return name.split(/\s+/).map(w => w[0] + "_".repeat(Math.max(0, w.length - 1))).join(" "); }
 function renderBoard(flipIdx) {
-  $("#board").innerHTML = PUZZLE.answers.map((a, i) => {
-    const hit = state.found.includes(i), show = hit || state.done;
+  $("#board").innerHTML = boardRows().map((row, n) => {
+    const i = row.i, a = PUZZLE.answers[i], hit = row.filled, show = hit || state.done;
     const cls = hit ? " hit" : state.done ? " revealed" : "";
-    const nm = show ? esc(a.name) : state.clue === i ? `<span class="clue">${esc(clueText(a.name))}</span>` : `<span class="hidden"></span>`;
-    return `<li class="row${cls}${i === flipIdx ? " flip" : ""}" id="row${i}">
+    const full = !hit && row.rest ? row.rest.map(j => PUZZLE.answers[j].name).join(" / ") : a.name;
+    const nm = show ? esc(full) : state.clue === i ? `<span class="clue">${esc(clueText(a.name))}</span>` : `<span class="hidden"></span>`;
+    return `<li class="row${cls}${i === flipIdx ? " flip" : ""}" id="row${n}">
       <span class="rk">${rankLabel(i)}</span><span class="nm">${nm}</span><span class="val">${show && a.value ? esc(a.value) : ""}</span></li>`;
   }).join("");
   $("#found").textContent = state.found.length;
@@ -402,11 +417,12 @@ function guess(raw) {
   const e = r.e;
   if (r.type === "hit") {
     if (state.found.includes(e.answer)) { say(`${e.name} is already on the board.`, "warn"); return; }
+    if (boardRows().filter(r => r.pool && r.pool.includes(e.answer)).every(r => r.filled) && rowOf(e.answer) < 0) { say(`${e.name} is tied at #${rankLabel(e.answer)} too, but those spots are filled. No miss.`, "warn"); return; }
     state.found.push(e.answer); state.tried.push(g);
     say(`${e.name}, #${rankLabel(e.answer)}!`, "good");
     renderBoard(e.answer);
-    $("#row" + e.answer)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
-    if (state.found.length === PUZZLE.answers.length) finish();
+    $("#row" + rowOf(e.answer))?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    if (state.found.length === Math.min(ROWS, PUZZLE.answers.length)) finish();
     save(); return;
   }
   if (r.name && state.misses.some(m => resolve(m.text)?.name === r.name)) { say(`You already tried ${r.name}.`, "warn"); return; }
@@ -461,10 +477,10 @@ function submitGuess(text) { $("#guess").value = ""; hideSuggest(); guess(text);
 function useClue() {
   if (state.clue !== null || state.done) return;
   // The lowest-ranked answer still hidden: usually the hardest one.
-  for (let i = PUZZLE.answers.length - 1; i >= 0; i--) if (!state.found.includes(i)) { state.clue = i; break; }
+  state.clue = boardRows().reverse().find(r => !r.filled).i;
   save(); renderBoard();
   say(`Clue: #${rankLabel(state.clue)} starts with ${clueText(PUZZLE.answers[state.clue].name)}.`, "warn");
-  $("#row" + state.clue)?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+  $("#row" + rowOf(state.clue))?.scrollIntoView({ block: "nearest", behavior: "smooth" });
 }
 
 /* ================= End of game ================= */
@@ -477,7 +493,7 @@ function title(sc) {
 }
 function shareText() {
   const sc = state.found.length;
-  const board = PUZZLE.answers.map((_, i) => state.found.includes(i) ? "🟩" : "⬛").join("");
+  const board = boardRows().map(r => r.filled ? "🟩" : "⬛").join("");
   const miss = "❌".repeat(state.misses.length) + "⬜".repeat(MAX_MISSES - state.misses.length);
   return `Ten Spot No. ${PUZZLE.no}: ${sc}/10${state.clue !== null ? " 💡" : ""}\n${PUZZLE.title}\n${board}\nMisses ${miss}\nhttps://tenspot.play2dgames.com/`;
 }
@@ -542,6 +558,7 @@ function sb(path, body, prefer) {
   });
 }
 async function submitScore() {
+  if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) return;   // local test plays never reach the real scores
   if (!SUPABASE_URL || state.submitted) return;
   const id = playerId(); if (!id) return;
   // Plain insert: the table's unique (puzzle, player) key turns a repeat into a 409, which counts as already saved.
